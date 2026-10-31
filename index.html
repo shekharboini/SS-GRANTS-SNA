@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SMC SNA SPARSH Management System - HUSNABAD</title>
+  <title>SAMAGRA SHIKSHA – SNA SPARSH (HUSNABAD)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @media print {
@@ -12,14 +12,9 @@
       body { background: white !important; font-size: 11pt; color: black; }
       .sheet { box-shadow: none !important; border: 1px solid #000 !important; margin: 0 0 20px 0 !important; padding: 20px !important; }
     }
-    .editable:hover {
-      outline: 2px dashed #3b82f6;
-      background-color: #f8fafc;
-    }
-    /* Editable input highlight */
     .user-editable {
-      background-color: #fffbeb !important; /* amber-50 */
-      border: 1.5px solid #f59e0b !important; /* amber-500 */
+      background-color: #fffbeb !important;
+      border: 1.5px solid #f59e0b !important;
       color: #78350f !important;
       font-weight: 600;
     }
@@ -29,9 +24,8 @@
       border-color: #d97706 !important;
       box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
     }
-    /* Locked readonly fields */
     .user-locked {
-      background-color: #f3f4f6 !important; /* gray-100 */
+      background-color: #f3f4f6 !important;
       border: 1px solid #d1d5db !important;
       color: #4b5563 !important;
       cursor: not-allowed;
@@ -40,34 +34,61 @@
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans min-h-screen">
 
-  <!-- TOP HEADER -->
-  <header class="no-print bg-slate-900 text-white p-4 shadow sticky top-0 z-50 flex flex-wrap justify-between items-center gap-3">
-    <div>
-      <h1 class="text-xl font-bold tracking-tight">SMC SNA SPARSH — Grant Documentation System</h1>
-      <p class="text-xs text-slate-300">HUSNABAD Mandal - 62 Records Pre-Loaded</p>
-    </div>
-    <div class="flex gap-2">
-      <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
-        🖨️ Print / Save PDF
-      </button>
-      <button onclick="alert('Data Saved Successfully!')" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
-        💾 Save
-      </button>
+  <!-- TOP BRANDING HEADER -->
+  <header class="no-print bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 text-white p-4 shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center p-1 shadow">
+          <svg class="w-10 h-10 text-blue-900" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl md:text-2xl font-black tracking-wide text-yellow-300">SAMAGRA SHIKSHA – SNA SPARSH</h1>
+          <p class="text-xs md:text-sm text-blue-100 font-medium">Composite, Sports & GCEAC Grants FY 2026–27 (Husnabad Mandal)</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs md:text-sm font-bold px-4 py-2 rounded shadow transition flex items-center gap-1.5">
+          <span>🖨️</span> Print / Save PDF
+        </button>
+        <button onclick="alert('Data Saved Successfully!')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-sm font-bold px-4 py-2 rounded shadow transition flex items-center gap-1.5">
+          <span>💾</span> Save
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- NAVIGATION TABS -->
+  <!-- COLORFUL NAVIGATION BUTTONS -->
   <nav class="no-print max-w-7xl mx-auto mt-4 px-4">
-    <div class="flex flex-wrap gap-2 border-b border-gray-300 pb-2">
-      <button onclick="switchTab('form')" id="btn-form" class="tab-btn bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium">1. School Selection & Form</button>
-      <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">2. Proceedings</button>
-      <button onclick="switchTab('resolution')" id="btn-resolution" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">3. Resolution</button>
-      <button onclick="switchTab('budget')" id="btn-budget" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">4. Budget Register</button>
-      <button onclick="switchTab('single-uc')" id="btn-single-uc" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">5. Single UC</button>
-      <button onclick="switchTab('consolidated-uc')" id="btn-consolidated-uc" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">6. Consolidated UC</button>
-      <button onclick="switchTab('receipts')" id="btn-receipts" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">7. Receipts</button>
-      <button onclick="switchTab('voucher')" id="btn-voucher" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">8. Voucher Slip</button>
-      <button onclick="switchTab('all')" id="btn-all" class="tab-btn bg-indigo-700 text-white px-4 py-2 rounded text-sm font-medium">📑 View All (Print Ready)</button>
+    <div class="flex flex-wrap gap-2 border-b border-gray-300 pb-3">
+      <button onclick="switchTab('form')" id="btn-form" class="tab-btn bg-blue-700 hover:bg-blue-800 text-white px-3 py-2 rounded text-xs font-bold shadow">
+        1. School Selection & Form
+      </button>
+      <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded text-xs font-bold shadow">
+        2. Proceedings
+      </button>
+      <button onclick="switchTab('resolution')" id="btn-resolution" class="tab-btn bg-violet-600 hover:bg-violet-700 text-white px-3 py-2 rounded text-xs font-bold shadow">
+        3. Resolution
+      </button>
+      <button onclick="switchTab('budget')" id="btn-budget" class="tab-btn bg-amber-600 hover:bg-amber-700 text-white px-3 py-2 rounded text-xs font-bold shadow">
+        4. Budget Register
+      </button>
+      <button onclick="switchTab('single-uc')" id="btn-single-uc" class="tab-btn bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded text-xs font-bold shadow">
+        5. Single UC
+      </button>
+      <button onclick="switchTab('consolidated-uc')" id="btn-consolidated-uc" class="tab-btn bg-cyan-700 hover:bg-cyan-800 text-white px-3 py-2 rounded text-xs font-bold shadow">
+        6. Consolidated UC
+      </button>
+      <button onclick="switchTab('receipts')" id="btn-receipts" class="tab-btn bg-pink-700 hover:bg-pink-800 text-white px-3 py-2 rounded text-xs font-bold shadow">
+        7. Receipts
+      </button>
+      <button onclick="switchTab('voucher')" id="btn-voucher" class="tab-btn bg-rose-700 hover:bg-rose-800 text-white px-3 py-2 rounded text-xs font-bold shadow">
+        8. Voucher Slip
+      </button>
+      <button onclick="switchTab('all')" id="btn-all" class="tab-btn bg-purple-900 hover:bg-black text-yellow-300 px-4 py-2 rounded text-xs font-black shadow border border-yellow-400">
+        📑 View All (Print Ready)
+      </button>
     </div>
   </nav>
 
@@ -147,7 +168,6 @@
         </select>
       </div>
 
-      <!-- COLOR LEGEND NOTICE -->
       <div class="mb-4 flex items-center gap-4 text-xs">
         <div class="flex items-center gap-1.5">
           <span class="inline-block w-4 h-4 rounded bg-amber-100 border border-amber-500"></span>
@@ -185,6 +205,10 @@
           <label class="block mb-1 text-gray-500">DDO Code (Locked)</label>
           <input type="text" id="inDdoCode" value="18050308008" readonly class="user-locked w-full p-2 rounded">
         </div>
+        <div>
+          <label class="block mb-1 text-gray-500">DDO School / Office (Locked)</label>
+          <input type="text" id="inDdoOffice" value="ZPHS HUSNABAD" readonly class="user-locked w-full p-2 rounded">
+        </div>
         
         <!-- EDITABLE 1: Proceedings No -->
         <div>
@@ -219,7 +243,6 @@
             </tr>
           </thead>
           <tbody>
-            <!-- GEN ROW -->
             <tr>
               <td class="border p-2 font-bold text-center bg-gray-50">GEN</td>
               <td class="border p-2"><input id="inGenHoa" value="2202-01-001-15-05-500-503" readonly class="user-locked w-full p-1 rounded"></td>
@@ -229,7 +252,6 @@
               <td class="border p-2"><input id="inGenAmt" type="number" value="18000" readonly class="user-locked w-full p-1 rounded"></td>
               <td class="border p-2"><input id="inGenUtil" type="number" value="18000" class="user-editable w-full p-1 rounded" oninput="renderAll()"></td>
             </tr>
-            <!-- SC ROW -->
             <tr>
               <td class="border p-2 font-bold text-center bg-gray-50">SC</td>
               <td class="border p-2"><input id="inScHoa" value="2202-01-789-15-05-500-503" readonly class="user-locked w-full p-1 rounded"></td>
@@ -239,7 +261,6 @@
               <td class="border p-2"><input id="inScAmt" type="number" value="4250" readonly class="user-locked w-full p-1 rounded"></td>
               <td class="border p-2"><input id="inScUtil" type="number" value="4250" class="user-editable w-full p-1 rounded" oninput="renderAll()"></td>
             </tr>
-            <!-- ST ROW -->
             <tr>
               <td class="border p-2 font-bold text-center bg-gray-50">ST</td>
               <td class="border p-2"><input id="inStHoa" value="2202-01-796-15-05-500-503" readonly class="user-locked w-full p-1 rounded"></td>
@@ -254,14 +275,14 @@
       </div>
     </section>
 
-    <!-- PRINTABLE TEMPLATES -->
+    <!-- PRINTABLE TEMPLATES (LOCKED / READONLY) -->
     <div id="print-area" class="space-y-6">
 
-      <!-- PROCEEDINGS -->
+      <!-- 2. PROCEEDINGS (LOCKED) -->
       <article id="tab-proceedings" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div contenteditable="true" class="editable p-2">
+        <div class="p-2 select-text">
           <div class="text-center font-bold">
-            <h2 class="text-base uppercase tracking-wide">PROCEEDINGS OF THE GAZETTED HEADMASTER, <span class="val-school">MPPS KUCHANAPALLY</span></h2>
+            <h2 class="text-base uppercase tracking-wide">PROCEEDINGS OF THE GAZETTED HEADMASTER, <span class="val-ddo-office text-blue-900">ZPHS HUSNABAD</span></h2>
             <p class="text-xs">Present: <span class="val-hm">K.Vasudeva Reddy, M.Sc.,B.Ed</span></p>
           </div>
           <div class="flex justify-between text-xs mt-3 border-b pb-1 font-semibold">
@@ -269,7 +290,7 @@
             <span>Date: <span class="val-date">31/Oct/2026</span></span>
           </div>
           <div class="text-xs mt-3 leading-relaxed">
-            <p><strong>Sub:</strong> SMC- SNA SPARSH- Samagra Shiksha Funds Sanction of expenditure in the Financial year (FY)-2026-27 towards <span class="val-grant">COMPOSITE SCHOOL GRANT</span> of <span class="val-school">MPPS KUCHANAPALLY</span> orders Issued - Reg.</p>
+            <p><strong>Sub:</strong> SMC- SNA SPARSH- Samagra Shiksha Funds Sanction of expenditure in the Financial year (FY)-2026-27 towards <span class="val-grant">COMPOSITE SCHOOL GRANT</span> of <span class="val-school font-bold">MPPS KUCHANAPALLY</span> orders Issued - Reg.</p>
             <p class="mt-2"><strong>Ref:</strong> 1. State project Director Circular Memo No.TF/619/FCI/SNA SPARSH-SS/2026. Dt. 03.07.2026<br>
             2. State project Director Prc.RCNo.2191/CSG/TSS/PLG/T7/2026-1, Date. 07/08/2026<br>
             3. School Resolution and Committee Recommendations Dated: <span class="val-date">31/Oct/2026</span><br>
@@ -319,15 +340,15 @@
             <div><p>Copy to:<br>1. DPO <span class="val-dist">SIDDIPET</span><br>2. STO Concerned<br>3. Office copy</p></div>
             <div class="text-right">
               <p>Gazetted Headmaster</p>
-              <p><span class="val-school">MPPS KUCHANAPALLY</span></p>
+              <p><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- 3. RESOLUTION WITH 10 STAFF SIGNATURES & COMMITTEE DETAILS -->
+      <!-- 3. RESOLUTION (LOCKED) -->
       <article id="tab-resolution" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div contenteditable="true" class="editable p-2">
+        <div class="p-2 select-text">
           <div class="text-center font-bold border-b pb-2">
             <p class="text-xs">Udise Code: <span class="val-udise">36180601001</span></p>
             <h2 class="text-base uppercase tracking-wide">RESOLUTION</h2>
@@ -406,9 +427,9 @@
         </div>
       </article>
 
-      <!-- BUDGET REGISTER -->
+      <!-- 4. BUDGET REGISTER (LOCKED) -->
       <article id="tab-budget" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div contenteditable="true" class="editable p-2">
+        <div class="p-2 select-text">
           <div class="text-center font-bold mb-4">
             <h2 class="text-base">SMC-BUDGET WATCH REGISTER - <span class="val-school">MPPS KUCHANAPALLY</span></h2>
             <p class="text-xs">UDISE: <span class="val-udise">36180601001</span></p>
@@ -438,9 +459,9 @@
         </div>
       </article>
 
-      <!-- SINGLE UC -->
+      <!-- 5. SINGLE UC (LOCKED) -->
       <article id="tab-single-uc" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div contenteditable="true" class="editable p-2">
+        <div class="p-2 select-text">
           <div class="text-center font-bold mb-3 border-b pb-2">
             <h2 class="text-base uppercase tracking-wide">UTILIZATION CERTIFICATE (FY 2026-27)</h2>
             <p class="text-xs"><span class="val-school">MPPS KUCHANAPALLY</span> (DDO CODE: <span class="val-ddo">18050308008</span>), MDL <span class="val-mandal">HUSNABAD</span>, DIST. <span class="val-dist">SIDDIPET</span></p>
@@ -476,9 +497,9 @@
         </div>
       </article>
 
-      <!-- CONSOLIDATED UC -->
+      <!-- 6. CONSOLIDATED UC (LOCKED) -->
       <article id="tab-consolidated-uc" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div contenteditable="true" class="editable p-2">
+        <div class="p-2 select-text">
           <div class="text-center font-bold mb-3 border-b pb-2">
             <h2 class="text-base uppercase">CONSOLIDATED UTILIZATION CERTIFICATE FOR FY 2026-27</h2>
             <p class="text-xs">Office Name: <span class="val-school">MPPS KUCHANAPALLY</span> | UDISE: <span class="val-udise">36180601001</span></p>
@@ -524,12 +545,12 @@
         </div>
       </article>
 
-      <!-- ADVANCE RECEIPTS -->
+      <!-- 7. ADVANCE RECEIPTS (LOCKED) -->
       <article id="tab-receipts" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div class="space-y-6">
+        <div class="space-y-6 select-text">
           <h2 class="font-bold text-center border-b pb-2 text-sm uppercase">ADVANCE STAMPED RECEIPTS</h2>
           
-          <div contenteditable="true" class="editable border border-gray-400 p-4 rounded text-xs leading-relaxed">
+          <div class="border border-gray-400 p-4 rounded text-xs leading-relaxed">
             <div class="flex justify-between font-bold">
               <span>Date: <span class="val-date">31/Oct/2026</span></span>
               <span>ADVANCE STAMPED RECEIPT (GEN COMPONENT)</span>
@@ -545,7 +566,7 @@
             </div>
           </div>
 
-          <div contenteditable="true" class="editable border border-gray-400 p-4 rounded text-xs leading-relaxed">
+          <div class="border border-gray-400 p-4 rounded text-xs leading-relaxed">
             <div class="flex justify-between font-bold">
               <span>Date: <span class="val-date">31/Oct/2026</span></span>
               <span>ADVANCE STAMPED RECEIPT (SC COMPONENT)</span>
@@ -561,7 +582,7 @@
             </div>
           </div>
 
-          <div contenteditable="true" class="editable border border-gray-400 p-4 rounded text-xs leading-relaxed">
+          <div class="border border-gray-400 p-4 rounded text-xs leading-relaxed">
             <div class="flex justify-between font-bold">
               <span>Date: <span class="val-date">31/Oct/2026</span></span>
               <span>ADVANCE STAMPED RECEIPT (ST COMPONENT)</span>
@@ -579,9 +600,9 @@
         </div>
       </article>
 
-      <!-- VOUCHER RECEIPT CERTIFICATION -->
+      <!-- 8. VOUCHER RECEIPT CERTIFICATION (LOCKED) -->
       <article id="tab-voucher" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div contenteditable="true" class="editable p-2">
+        <div class="p-2 select-text">
           <div class="text-center font-bold border-b pb-2">
             <h2 class="text-base uppercase">CERTIFICATION / VOUCHER RECEIPT</h2>
             <p class="text-xs">School: <span class="val-school">MPPS KUCHANAPALLY</span> | UDISE: <span class="val-udise">36180601001</span></p>
@@ -603,70 +624,70 @@
   </main>
 
   <script>
-    // EXACT 62 VERIFIED RECORDS DIRECTLY FROM SMC Grants hsb.csv
+    // EXACT 62 VERIFIED RECORDS INCLUDING DDO OFFICE NAME (do)
     const husnabadSchools = [
-      {"s":"MPPS  KUCHANAPALLY","u":"36180601001","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS  KUCHANAPALLY","u":"36180601001","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS  MADATHA","u":"36180600302","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPPS  MADATHA","u":"36180600302","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS (STAGE) PANDILLA ","u":"36180601102","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS (STAGE) PANDILLA ","u":"36180601102","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS ARAPELLY","u":"36180600204","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS ARAPELLY","u":"36180600204","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":2880,"sc":680,"st":440},
-      {"s":"MPPS BALLUNAYAK THANDA","u":"36180600702","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPPS BALLUNAYAK THANDA","u":"36180600702","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS BANJERUPALLY","u":"36180601103","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPPS BANJERUPALLY","u":"36180601103","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS HUSNABAD","u":"36180600202","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
-      {"s":"MPPS HUSNABAD","u":"36180600202","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS KASHI NAGAR","u":"36180600205","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPPS KASHI NAGAR","u":"36180600205","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS KASTOORBA COLONY","u":"36180600203","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS KASTOORBA COLONY","u":"36180600203","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS MALAPALLY","u":"36180601104","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPPS MALAPALLY","u":"36180601104","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS MIRZAPUR","u":"36180600703","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS MIRZAPUR","u":"36180600703","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS MOHAMMADAPUR","u":"36180600402","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS MOHAMMADAPUR","u":"36180600402","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":2880,"sc":680,"st":440},
-      {"s":"MPPS PANDILLA","u":"36180601101","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPPS PANDILLA","u":"36180601101","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS POOLNAYAK THANDA","u":"36180600701","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS POOLNAYAK THANDA","u":"36180600701","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS POTHARAM(S)","u":"36180600801","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
-      {"s":"MPPS POTHARAM(S)","u":"36180600801","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS POTLAPALLY","u":"36180600101","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS POTLAPALLY","u":"36180600101","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS THOTAPALLY","u":"36180600901","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS THOTAPALLY","u":"36180600901","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS UMMAPUR","u":"36180600601","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPPS UMMAPUR","u":"36180600601","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPPS YELLAMBAZAR","u":"36180600212","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPPS YELLAMBAZAR","u":"36180600212","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"s":"MPUPS GANDHINAGAR","u":"36180600234","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"MPUPS GANDHINAGAR","u":"36180600234","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPUPS JILLALLAGADDA","u":"36180600602","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPUPS JILLALLAGADDA","u":"36180600602","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPUPS NAGARAM","u":"36180600501","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"s":"MPUPS NAGARAM","u":"36180600501","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":5040,"sc":1190,"st":770},
-      {"s":"MRC HUSNABAD","u":"361806","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308002","g":"MRC GRANT","gen":64800,"sc":15300,"st":9900},
-      {"s":"ZPHS HUSNABAD","u":"36180600222","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":54000,"sc":12750,"st":8250},
-      {"s":"ZPHS HUSNABAD","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"CRC GRANT","gen":30960,"sc":7310,"st":4730},
-      {"s":"ZPHS HUSNABAD","u":"36180600222","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"ZPHS HUSNABAD","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
-      {"s":"ZPHS MIRZAPUR","u":"36180600704","d":"SIDDIPET","m":"HUSNABAD","hn":"A.Venukumar","hc":"18050308011","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"ZPHS MIRZAPUR","u":"36180600704","d":"SIDDIPET","m":"HUSNABAD","hn":"A.Venukumar","hc":"18050308011","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"ZPHS MIRZAPUR","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","hn":"A.Venukumar","hc":"18050308011","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
-      {"s":"ZPHS MOHAMMADAPUR","u":"36180600403","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"ZPHS MOHAMMADAPUR","u":"36180600403","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"ZPHS POTHARAM(S)","u":"36180600802","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
-      {"s":"ZPHS POTHARAM(S)","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
-      {"s":"ZPHS POTHARAM-S","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"CRC GRANT","gen":30960,"sc":7310,"st":4730},
-      {"s":"ZPHS POTHARAM-S","u":"36180600802","d":"SIDDIPET","m":"HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"ZPHS POTLAPALLY","u":"36180600102","d":"SIDDIPET","m":"HUSNABAD","hn":"N.Sandhya Sri","hc":"18050308013","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"ZPHS POTLAPALLY","u":"36180600102","d":"SIDDIPET","m":"HUSNABAD","hn":"N.Sandhya Sri","hc":"18050308013","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
-      {"s":"ZPHS POTLAPALLY","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","hn":"N.Sandhya Sri","hc":"18050308013","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
-      {"s":"ZPHS MOHAMMADAPUR","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0}
+      {"s":"MPPS  KUCHANAPALLY","u":"36180601001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS  KUCHANAPALLY","u":"36180601001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS  MADATHA","u":"36180600302","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS  MADATHA","u":"36180600302","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS (STAGE) PANDILLA ","u":"36180601102","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS (STAGE) PANDILLA ","u":"36180601102","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS ARAPELLY","u":"36180600204","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS ARAPELLY","u":"36180600204","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":2880,"sc":680,"st":440},
+      {"s":"MPPS BALLUNAYAK THANDA","u":"36180600702","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS BALLUNAYAK THANDA","u":"36180600702","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS BANJERUPALLY","u":"36180601103","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS BANJERUPALLY","u":"36180601103","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS HUSNABAD","u":"36180600202","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
+      {"s":"MPPS HUSNABAD","u":"36180600202","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS KASHI NAGAR","u":"36180600205","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS KASHI NAGAR","u":"36180600205","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS KASTOORBA COLONY","u":"36180600203","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS KASTOORBA COLONY","u":"36180600203","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS MALAPALLY","u":"36180601104","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS MALAPALLY","u":"36180601104","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS MIRZAPUR","u":"36180600703","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS MIRZAPUR","u":"36180600703","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS MOHAMMADAPUR","u":"36180600402","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS MOHAMMADAPUR","u":"36180600402","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":2880,"sc":680,"st":440},
+      {"s":"MPPS PANDILLA","u":"36180601101","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS PANDILLA","u":"36180601101","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS POOLNAYAK THANDA","u":"36180600701","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS POOLNAYAK THANDA","u":"36180600701","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS POTHARAM(S)","u":"36180600801","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
+      {"s":"MPPS POTHARAM(S)","u":"36180600801","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS POTLAPALLY","u":"36180600101","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS POTLAPALLY","u":"36180600101","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS THOTAPALLY","u":"36180600901","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS THOTAPALLY","u":"36180600901","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS UMMAPUR","u":"36180600601","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS UMMAPUR","u":"36180600601","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS YELLAMBAZAR","u":"36180600212","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS YELLAMBAZAR","u":"36180600212","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPUPS GANDHINAGAR","u":"36180600234","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPUPS GANDHINAGAR","u":"36180600234","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS JILLALLAGADDA","u":"36180600602","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS JILLALLAGADDA","u":"36180600602","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS NAGARAM","u":"36180600501","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS NAGARAM","u":"36180600501","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":5040,"sc":1190,"st":770},
+      {"s":"MRC HUSNABAD","u":"361806","d":"SIDDIPET","m":"HUSNABAD","do":"MRC HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308002","g":"MRC GRANT","gen":64800,"sc":15300,"st":9900},
+      {"s":"ZPHS HUSNABAD","u":"36180600222","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":54000,"sc":12750,"st":8250},
+      {"s":"ZPHS HUSNABAD","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"CRC GRANT","gen":30960,"sc":7310,"st":4730},
+      {"s":"ZPHS HUSNABAD","u":"36180600222","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS HUSNABAD","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS MIRZAPUR","u":"36180600704","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MIRZAPUR","hn":"A.Venukumar","hc":"18050308011","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS MIRZAPUR","u":"36180600704","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MIRZAPUR","hn":"A.Venukumar","hc":"18050308011","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS MIRZAPUR","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MIRZAPUR","hn":"A.Venukumar","hc":"18050308011","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS MOHAMMADAPUR","u":"36180600403","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MOHAMMADAPUR","hn":"P.Mahender Reddy","hc":"18050308034","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS MOHAMMADAPUR","u":"36180600403","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MOHAMMADAPUR","hn":"P.Mahender Reddy","hc":"18050308034","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTHARAM(S)","u":"36180600802","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
+      {"s":"ZPHS POTHARAM(S)","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS POTHARAM-S","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"CRC GRANT","gen":30960,"sc":7310,"st":4730},
+      {"s":"ZPHS POTHARAM-S","u":"36180600802","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTLAPALLY","u":"36180600102","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTLAPALLY","hn":"N.Sandhya Sri","hc":"18050308013","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTLAPALLY","u":"36180600102","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTLAPALLY","hn":"N.Sandhya Sri","hc":"18050308013","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTLAPALLY","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTLAPALLY","hn":"N.Sandhya Sri","hc":"18050308013","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS MOHAMMADAPUR","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MOHAMMADAPUR","hn":"P.Mahender Reddy","hc":"18050308034","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0}
     ];
 
     function pickSchool(index) {
@@ -677,6 +698,7 @@
       document.getElementById('inUdise').value = s.u;
       document.getElementById('inDistrict').value = s.d;
       document.getElementById('inMandal').value = s.m;
+      document.getElementById('inDdoOffice').value = s.do;
       document.getElementById('inHm').value = s.hn;
       document.getElementById('inDdoCode').value = s.hc;
       document.getElementById('inGrant').value = s.g;
@@ -702,6 +724,7 @@
       setEls('val-udise', getVal('inUdise'));
       setEls('val-mandal', getVal('inMandal'));
       setEls('val-dist', getVal('inDistrict'));
+      setEls('val-ddo-office', getVal('inDdoOffice'));
       setEls('val-hm', getVal('inHm'));
       setEls('val-ddo', getVal('inDdoCode'));
       setEls('val-proc', getVal('inProcNo'));
@@ -752,22 +775,12 @@
 
     function switchTab(tabKey) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'text-white');
-        btn.classList.add('bg-white');
-      });
-
+      
       if (tabKey === 'all') {
         document.querySelectorAll('.sheet').forEach(el => el.classList.remove('hidden'));
-        document.getElementById('btn-all').classList.add('bg-indigo-700', 'text-white');
       } else {
         const target = document.getElementById('tab-' + tabKey);
         if (target) target.classList.remove('hidden');
-        const activeBtn = document.getElementById('btn-' + tabKey);
-        if (activeBtn) {
-          activeBtn.classList.add('bg-blue-600', 'text-white');
-          activeBtn.classList.remove('bg-white');
-        }
       }
     }
 

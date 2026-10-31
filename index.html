@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SMC SNA SPARSH Management System</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <style>
     @media print {
       .no-print { display: none !important; }
@@ -31,7 +30,7 @@
       <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
         🖨️ Print / Save PDF
       </button>
-      <button onclick="alert('డేటా సేవ్ చేయబడింది!')" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
+      <button onclick="alert('డేటా సేవ్ అయింది!')" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
         💾 Save
       </button>
     </div>
@@ -58,17 +57,20 @@
     <section id="tab-form" class="tab-content bg-white p-6 rounded shadow border">
       
       <!-- CSV UPLOAD BOX -->
-      <div class="mb-6 p-4 bg-blue-50 border-2 border-dashed border-blue-400 rounded-lg flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          <h3 class="font-bold text-blue-900 text-sm">📂 Upload SMC Grants.csv File:</h3>
-          <p class="text-xs text-blue-700 mt-1">మీ దగ్గర ఉన్న CSV ఫైల్‌ను సెలెక్ట్ చేయగానే అందులోని అన్ని స్కూళ్ల జాబితా ఇక్కడి డ్రాప్‌డౌన్‌లో లోడ్ అవుతుంది.</p>
+      <div class="mb-6 p-4 bg-blue-50 border-2 border-dashed border-blue-400 rounded-lg">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 class="font-bold text-blue-900 text-sm">📂 Upload SMC Grants.csv File:</h3>
+            <p class="text-xs text-blue-700 mt-1">మీ దగ్గర ఉన్న CSV ఫైల్‌ను సెలెక్ట్ చేయండి, వెంటనే స్కూల్స్ లిస్ట్ ఇక్కడ కనిపిస్తుంది.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row items-center gap-3">
+            <input type="file" id="csvFileInput" accept=".csv" class="text-xs text-gray-700 file:mr-2 file:py-2 file:px-4 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer" onchange="parseCSVFile(event)">
+            <select id="schoolSelector" class="hidden text-xs border-2 border-green-600 p-2 rounded bg-white text-gray-900 font-bold shadow" onchange="applySchoolData(this.value)">
+              <option value="">-- స్కూల్‌ను ఎంచుకోండి --</option>
+            </select>
+          </div>
         </div>
-        <div class="flex flex-col sm:flex-row items-center gap-3">
-          <input type="file" id="csvFileInput" accept=".csv" class="text-xs text-gray-700 file:mr-2 file:py-2 file:px-4 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer" onchange="handleCSVUpload(event)">
-          <select id="schoolSelector" class="hidden text-xs border border-blue-400 p-2 rounded bg-white text-gray-800 font-medium" onchange="loadSelectedSchool(this.value)">
-            <option value="">-- స్కూల్‌ను ఎంచుకోండి --</option>
-          </select>
-        </div>
+        <div id="uploadStatus" class="mt-2 text-xs font-semibold hidden"></div>
       </div>
 
       <h2 class="text-base font-bold text-gray-800 border-b pb-2 mb-4">🏫 School & Grant Details</h2>
@@ -130,67 +132,4 @@
               <td class="border p-2 font-bold text-center">GEN</td>
               <td class="border p-2"><input id="inGenHoa" value="2202-01-001-15-05-500-503" class="w-full border p-1 rounded" oninput="renderAll()"></td>
               <td class="border p-2"><input id="inGenVendor" value="M/S GEN SUPPLIERS" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inGenAcc" value="456" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inGenIfsc" value="SBI, SBIN123" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inGenAmt" type="number" value="18000" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inGenUtil" type="number" value="18000" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-            </tr>
-            <tr>
-              <td class="border p-2 font-bold text-center">SC</td>
-              <td class="border p-2"><input id="inScHoa" value="2202-01-789-15-05-500-503" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inScVendor" value="M/S SC TRADERS" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inScAcc" value="789" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inScIfsc" value="SBI, SBIN456" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inScAmt" type="number" value="4250" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inScUtil" type="number" value="4250" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-            </tr>
-            <tr>
-              <td class="border p-2 font-bold text-center">ST</td>
-              <td class="border p-2"><input id="inStHoa" value="2202-01-796-15-05-500-503" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inStVendor" value="M/S ST ENTERPRISES" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inStAcc" value="123" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inStIfsc" value="SBI, SBINXYZ1" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inStAmt" type="number" value="2750" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inStUtil" type="number" value="2750" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- PRINTABLE DOCUMENTS WRAPPER -->
-    <div id="print-area" class="space-y-6">
-
-      <!-- PROCEEDINGS -->
-      <article id="tab-proceedings" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div contenteditable="true" class="editable p-2">
-          <div class="text-center font-bold">
-            <h2 class="text-base uppercase tracking-wide">PROCEEDINGS OF THE GAZETTED HEADMASTER, <span class="val-school">ZPHS AKKANNAPET</span></h2>
-            <p class="text-xs">Present: <span class="val-hm">K.Sandhya Rani, M.A.B.Ed</span></p>
-          </div>
-          <div class="flex justify-between text-xs mt-3 border-b pb-1 font-semibold">
-            <span>Proc. No. <span class="val-proc">01/PMSHRI/2026-27</span></span>
-            <span>Date: <span class="val-date">31/Oct/2026</span></span>
-          </div>
-          <div class="text-xs mt-3 leading-relaxed">
-            <p><strong>Sub:</strong> SMC- SNA SPARSH- Samagra Shiksha Funds Sanction of expenditure in the Financial year (FY)-2026-27 towards <span class="val-grant">COMPOSITE SCHOOL GRANT</span> of <span class="val-school">ZPHS AKKANNAPET</span> orders Issued - Reg.</p>
-            <p class="mt-2"><strong>Ref:</strong> 1. State project Director, SS, TG, Hyderabad Circular Memo No.TF/619/FCI/SNA SPARSH-SS/2026. Dt. 03.07.2026<br>
-            2. State project Director, SS, TG, Hyderabad. Prc.RCNo.2191/CSG/TSS/PLG/T7/2026-1, Date. 07/08/2026<br>
-            3. School Resolution and Committee Recommendations Dated: <span class="val-date">31/Oct/2026</span><br>
-            4. G.O. MS NO. 40 Edu-(ser. V) Dept., Dt. 07.05.2002.</p>
-            <p class="mt-2"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-total">25,000</span>/-</strong> towards implementation of programmes under <span class="val-grant">COMPOSITE SCHOOL GRANT</span>.</p>
-          </div>
-
-          <table class="w-full text-xs border border-gray-400 mt-4 border-collapse">
-            <thead class="bg-gray-100 font-bold">
-              <tr>
-                <th class="border border-gray-400 p-1 text-center">Sl.No</th>
-                <th class="border border-gray-400 p-1">Head of Account</th>
-                <th class="border border-gray-400 p-1 text-center">Category</th>
-                <th class="border border-gray-400 p-1 text-right">Sanctioned (₹)</th>
-                <th class="border border-gray-400 p-1 text-right">Utilised (₹)</th>
-                <th class="border border-gray-400 p-1 text-right">Balance (₹)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="border border-gray-400 p
+              <td class="border p-2"><input id="inGenAcc" value="456" class="w-full border p-1 rounded" oninput="renderAll

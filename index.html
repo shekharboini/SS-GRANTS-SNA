@@ -1,29 +1,117 @@
-Act as a Senior Frontend Web Developer. Build a complete, responsive, and editable Single Page Web Application (using HTML5, Tailwind CSS, and Vanilla JavaScript) for School Management Committee (SMC) SNA SPARSH Grant Management and Documentation System.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMC SNA SPARSH Grant Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      .page-break { page-break-after: always; break-after: page; }
+      body { background: white !important; font-size: 12pt; }
+      .doc-card { box-shadow: none !important; border: none !important; padding: 0 !important; margin-bottom: 2rem !important; }
+    }
+    .editable-box:hover {
+      outline: 2px dashed #3b82f6;
+      background-color: #f8fafc;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans min-h-screen">
 
-Requirements:
-1. Dynamic & Editable Form (Input Dashboard):
-   - School Details: School Name, UDISE Code, Mandal, District, DDO Code, Headmaster Name.
-   - Scheme & Financial Details: Scheme Name (e.g., COMPOSITE SCHOOL GRANT), Financial Year (2026-27), Proc No, Sanction Date, Spell, HOA details.
-   - Vendor & Expenditure Table: Provide an interactive table with fields: Category (GEN, SC, ST), Vendor Name, Bank Account No, Bank & IFSC Code, Sanctioned Amount, Already Utilized, Present Utilisation, Balance, GST Deduction, Net Amount, Remarks.
-   - Include buttons to Add New Row, Delete Row, and Auto-calculate Totals (Sanctioned, Utilized, Net Amount, and Balance).
+  <!-- TOP HEADER (No Print) -->
+  <header class="no-print bg-blue-800 text-white p-4 shadow-md sticky top-0 z-50 flex flex-wrap justify-between items-center gap-3">
+    <div>
+      <h1 class="text-xl font-bold">SMC SNA-SPARSH Grant Management System</h1>
+      <p class="text-xs text-blue-200">Editable Forms & Automated Register/UC/Proceedings Generator</p>
+    </div>
+    <div class="flex gap-2">
+      <button onclick="window.print()" class="bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
+        🖨️ Print / Save as PDF
+      </button>
+      <button onclick="saveData()" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
+        💾 Save Data
+      </button>
+    </div>
+  </header>
 
-2. Output Document Preview & Templates (Printable & Editable):
-   Create tabbed views or a continuous layout of well-formatted, official government-style printable documents pre-filled from the form data:
-   - Module 1: SMC-BUDGET WATCH REGISTER (with columns for Intervention, Head, HOA, Spell, Office Sanction, Date, Released, Utilized, Balance, Vendor Name).
-   - Module 2: PROCEEDINGS OF THE GAZETTED HEADMASTER (Official sanction order format with standard reference citations, component breakdown table, vendor annexure table, enclosures list, and signature blocks).
-   - Module 3: SMC COMMITTEE EXPENDITURE RESOLUTION (Formal resolution text, vendor payment annexure, and staff/HM signature lines).
-   - Module 4: CONSOLIDATED UTILIZATION CERTIFICATE (Receipts vs Payments matrix across GEN, SC, ST, and Total).
-   - Module 5: SINGLE UTILIZATION CERTIFICATE (Summary table of Sanctioned vs Utilized).
-   - Module 6: ADVANCE STAMPED RECEIPTS (Individual revenue stamp receipts for each category: GEN, SC, ST with vendor bank details and DDO countersignature).
-   - Module 7: VOUCHER CERTIFICATION SLIP (Stock register certificate and space for pasting original vouchers).
+  <!-- NAVIGATION TABS (No Print) -->
+  <div class="no-print max-w-7xl mx-auto mt-4 px-4">
+    <div class="flex flex-wrap gap-2 border-b border-gray-300 pb-2">
+      <button onclick="showTab('tab-input')" id="btn-input" class="tab-btn bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium">1. Data Entry Form</button>
+      <button onclick="showTab('tab-proceedings')" id="btn-proceedings" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">2. Proceedings</button>
+      <button onclick="showTab('tab-resolution')" id="btn-resolution" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">3. Resolution</button>
+      <button onclick="showTab('tab-budget')" id="btn-budget" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">4. Budget Register</button>
+      <button onclick="showTab('tab-uc')" id="btn-uc" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">5. UC (Single & Cons.)</button>
+      <button onclick="showTab('tab-receipts')" id="btn-receipts" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">6. Advance Receipts</button>
+      <button onclick="showTab('tab-all')" id="btn-all" class="tab-btn bg-purple-700 text-white px-4 py-2 rounded text-sm font-medium">📑 View & Print All</button>
+    </div>
+  </div>
 
-3. Features & UX:
-   - Contenteditable Mode: Allow clicking and editing text directly on the preview documents before printing.
-   - Storage & Export: Include "Save to LocalStorage", "Print / Save as PDF" (with clean @media print CSS hiding navigation and buttons), and "Export to CSV/JSON".
-   - Sample Pre-fill: Pre-load the application by default with sample data:
-     * School: ZPHS AKKANNAPET (UDISE: 36180700907), Mandal: AKKANNAPETA, Dist: SIDDIPET.
-     * HM / DDO: K.Sandhya Rani, M.A.B.Ed (DDO Code: 18050308005).
-     * Proc No: 01/PMSHRI/2026-27, Date: 31/Oct/2026.
-     * Grants: GEN (Rs. 18,000 - M/S GEN SUPPLIERS), SC (Rs. 4,250 - M/S SC TRADERS), ST (Rs. 2,750 - M/S ST ENTERPRISES). Total: Rs. 25,000.
+  <main class="max-w-7xl mx-auto p-4">
 
-Please provide the complete, production-ready code in a single standalone 'index.html' file so that it can be hosted directly on GitHub Pages without requiring any external build tools.
+    <!-- TAB 1: FORM INPUTS -->
+    <div id="tab-input" class="tab-content bg-white p-6 rounded-lg shadow mb-6">
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2 mb-4">🏫 School & Order Details</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+        <div>
+          <label class="block font-medium mb-1">School Name</label>
+          <input type="text" id="schoolName" value="ZPHS AKKANNAPET" class="w-full border p-2 rounded" oninput="updateAll()">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">UDISE Code</label>
+          <input type="text" id="udiseCode" value="36180700907" class="w-full border p-2 rounded" oninput="updateAll()">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Mandal</label>
+          <input type="text" id="mandal" value="AKKANNAPETA" class="w-full border p-2 rounded" oninput="updateAll()">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">District</label>
+          <input type="text" id="district" value="SIDDIPET" class="w-full border p-2 rounded" oninput="updateAll()">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Headmaster / DDO Name</label>
+          <input type="text" id="hmName" value="K.Sandhya Rani, M.A.B.Ed" class="w-full border p-2 rounded" oninput="updateAll()">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">DDO Code</label>
+          <input type="text" id="ddoCode" value="18050308005" class="w-full border p-2 rounded" oninput="updateAll()">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Proceedings No</label>
+          <input type="text" id="procNo" value="01/PMSHRI/2026-27" class="w-full border p-2 rounded" oninput="updateAll()">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Sanction Date</label>
+          <input type="text" id="procDate" value="31/Oct/2026" class="w-full border p-2 rounded" oninput="updateAll()">
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Grant / Scheme Name</label>
+          <input type="text" id="grantName" value="COMPOSITE SCHOOL GRANT" class="w-full border p-2 rounded" oninput="updateAll()">
+        </div>
+      </div>
+
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2 mt-6 mb-4">💰 Vendor & Head of Account (HOA) Details</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300 text-xs">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="border p-2">Category</th>
+              <th class="border p-2">Head of Account (HOA)</th>
+              <th class="border p-2">Vendor Name</th>
+              <th class="border p-2">Bank A/c No</th>
+              <th class="border p-2">Bank & IFSC</th>
+              <th class="border p-2">Sanctioned (₹)</th>
+              <th class="border p-2">Utilized (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border p-2 font-bold text-center">GEN</td>
+              <td class="border p-2"><input id="hoaGen" value="2202-01-001-15-05-500-503" class="w-full border p-1 rounded" oninput="updateAll()"></td>
+              <td class="border p-2"><input id="vGenName" value="M/S GEN SUPPLIERS" class="w-full border p-1 rounded" oninput="updateAll()"></td>
+              <td class="border p-2"><input id="vGenAcc" value="456" class="w-full border p-1 rounded" oninput="updateAll()"></td>
+              <td class="border p-2"><input id="vGenIfsc" value="SBI, SBIN123" class="w-full border p-1 rounded" oninput="updateAll()"></td>
+              <td class="border p-2"><input id="

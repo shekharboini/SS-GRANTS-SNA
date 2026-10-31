@@ -20,17 +20,17 @@
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans min-h-screen">
 
-  <!-- TOP BAR -->
-  <header class="no-print bg-slate-900 text-white p-4 shadow-md sticky top-0 z-50 flex flex-wrap justify-between items-center gap-3">
+  <!-- TOP HEADER -->
+  <header class="no-print bg-slate-900 text-white p-4 shadow sticky top-0 z-50 flex flex-wrap justify-between items-center gap-3">
     <div>
       <h1 class="text-xl font-bold tracking-tight">SMC SNA SPARSH — Grant Documentation System</h1>
-      <p class="text-xs text-slate-300">CSV Auto-Fill, Editable Forms & Print Suite</p>
+      <p class="text-xs text-slate-300">CSV Auto-Fill & Instant Printable Documentation</p>
     </div>
     <div class="flex gap-2">
       <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
         🖨️ Print / Save PDF
       </button>
-      <button onclick="alert('డేటా సేవ్ అయింది!')" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
+      <button onclick="alert('డేటా సేవ్ చేయబడింది!')" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
         💾 Save
       </button>
     </div>
@@ -39,7 +39,7 @@
   <!-- NAVIGATION TABS -->
   <nav class="no-print max-w-7xl mx-auto mt-4 px-4">
     <div class="flex flex-wrap gap-2 border-b border-gray-300 pb-2">
-      <button onclick="switchTab('form')" id="btn-form" class="tab-btn bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium">1. Input Form / CSV Upload</button>
+      <button onclick="switchTab('form')" id="btn-form" class="tab-btn bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium">1. Form & CSV Upload</button>
       <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">2. Proceedings</button>
       <button onclick="switchTab('resolution')" id="btn-resolution" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">3. Resolution</button>
       <button onclick="switchTab('budget')" id="btn-budget" class="tab-btn bg-white hover:bg-gray-200 px-4 py-2 rounded text-sm font-medium">4. Budget Register</button>
@@ -56,21 +56,21 @@
     <!-- TAB 1: FORM & CSV UPLOAD -->
     <section id="tab-form" class="tab-content bg-white p-6 rounded shadow border">
       
-      <!-- CSV UPLOAD BOX -->
-      <div class="mb-6 p-4 bg-blue-50 border-2 border-dashed border-blue-400 rounded-lg">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <!-- CSV BOX -->
+      <div class="mb-6 p-4 bg-emerald-50 border-2 border-dashed border-emerald-500 rounded-lg">
+        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div>
-            <h3 class="font-bold text-blue-900 text-sm">📂 Upload SMC Grants.csv File:</h3>
-            <p class="text-xs text-blue-700 mt-1">మీ దగ్గర ఉన్న CSV ఫైల్‌ను సెలెక్ట్ చేయండి, వెంటనే స్కూల్స్ లిస్ట్ ఇక్కడ కనిపిస్తుంది.</p>
+            <h3 class="font-bold text-emerald-900 text-sm">📂 Upload "SMC Grants.csv" File:</h3>
+            <p class="text-xs text-emerald-700 mt-1">ఫైల్‌ను ఎంచుకోగానే కుడివైపున మండలంలోని అన్ని స్కూళ్ల జాబితా వస్తుంది. కావలసిన స్కూల్‌ను సెలెక్ట్ చేయండి.</p>
           </div>
-          <div class="flex flex-col sm:flex-row items-center gap-3">
-            <input type="file" id="csvFileInput" accept=".csv" class="text-xs text-gray-700 file:mr-2 file:py-2 file:px-4 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer" onchange="parseCSVFile(event)">
-            <select id="schoolSelector" class="hidden text-xs border-2 border-green-600 p-2 rounded bg-white text-gray-900 font-bold shadow" onchange="applySchoolData(this.value)">
+          <div class="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+            <input type="file" id="csvFileInput" accept=".csv" class="text-xs text-gray-700 file:mr-2 file:py-2 file:px-4 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-emerald-600 file:text-white hover:file:bg-emerald-700 cursor-pointer" onchange="readGrantsCSV(event)">
+            <select id="schoolSelector" class="hidden text-xs border-2 border-emerald-600 p-2 rounded bg-white text-gray-900 font-bold shadow w-full sm:w-auto" onchange="selectSchoolRecord(this.value)">
               <option value="">-- స్కూల్‌ను ఎంచుకోండి --</option>
             </select>
           </div>
         </div>
-        <div id="uploadStatus" class="mt-2 text-xs font-semibold hidden"></div>
+        <div id="uploadStatus" class="mt-3 text-xs font-semibold hidden"></div>
       </div>
 
       <h2 class="text-base font-bold text-gray-800 border-b pb-2 mb-4">🏫 School & Grant Details</h2>
@@ -130,6 +130,4 @@
           <tbody>
             <tr>
               <td class="border p-2 font-bold text-center">GEN</td>
-              <td class="border p-2"><input id="inGenHoa" value="2202-01-001-15-05-500-503" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inGenVendor" value="M/S GEN SUPPLIERS" class="w-full border p-1 rounded" oninput="renderAll()"></td>
-              <td class="border p-2"><input id="inGenAcc" value="456" class="w-full border p-1 rounded" oninput="renderAll
+              <td class="border p-2"><input id="inGenHoa" value="2202-01-001

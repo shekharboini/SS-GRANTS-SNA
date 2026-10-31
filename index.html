@@ -6,11 +6,27 @@
   <title>SAMAGRA SHIKSHA – SNA SPARSH (HUSNABAD)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 15mm;
+    }
     @media print {
       .no-print { display: none !important; }
       .page-break { page-break-after: always; break-after: page; }
       body { background: white !important; font-size: 11pt; color: black; }
-      .sheet { box-shadow: none !important; border: 1px solid #000 !important; margin: 0 0 20px 0 !important; padding: 20px !important; }
+      .sheet { 
+        box-shadow: none !important; 
+        border: 1px solid #000 !important; 
+        margin: 0 0 20px 0 !important; 
+        padding: 24px !important;
+        min-height: 270mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .voucher-box {
+        height: 165mm !important;
+      }
     }
     .user-editable {
       background-color: #fffbeb !important;
@@ -29,6 +45,12 @@
       border: 1px solid #d1d5db !important;
       color: #4b5563 !important;
       cursor: not-allowed;
+    }
+    .sheet-inner {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   </style>
 </head>
@@ -280,342 +302,401 @@
 
       <!-- 2. PROCEEDINGS (LOCKED) -->
       <article id="tab-proceedings" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div class="p-2 select-text">
-          <div class="text-center font-bold">
-            <h2 class="text-base uppercase tracking-wide">PROCEEDINGS OF THE GAZETTED HEADMASTER, <span class="val-ddo-office text-blue-900">ZPHS HUSNABAD</span></h2>
-            <p class="text-xs">Present: <span class="val-hm">K.Vasudeva Reddy, M.Sc.,B.Ed</span></p>
-          </div>
-          <div class="flex justify-between text-xs mt-3 border-b pb-1 font-semibold">
-            <span>Proc. No. <span class="val-proc">01/PMSHRI/2026-27</span></span>
-            <span>Date: <span class="val-date">31/Oct/2026</span></span>
-          </div>
-          <div class="text-xs mt-3 leading-relaxed">
-            <p><strong>Sub:</strong> SMC- SNA SPARSH- Samagra Shiksha Funds Sanction of expenditure in the Financial year (FY)-2026-27 towards <span class="val-grant">COMPOSITE SCHOOL GRANT</span> of <span class="val-school font-bold">MPPS KUCHANAPALLY</span> orders Issued - Reg.</p>
-            <p class="mt-2"><strong>Ref:</strong> 1. State project Director Circular Memo No.TF/619/FCI/SNA SPARSH-SS/2026. Dt. 03.07.2026<br>
-            2. State project Director Prc.RCNo.2191/CSG/TSS/PLG/T7/2026-1, Date. 07/08/2026<br>
-            3. School Resolution and Committee Recommendations Dated: <span class="val-date">31/Oct/2026</span><br>
-            4. G.O. MS NO. 40 Edu-(ser. V) Dept., Dt. 07.05.2002.</p>
-            <p class="mt-2"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-total">25,000</span>/-</strong> towards implementation of programmes under <span class="val-grant">COMPOSITE SCHOOL GRANT</span>.</p>
-          </div>
-
-          <table class="w-full text-xs border border-gray-400 mt-4 border-collapse">
-            <thead class="bg-gray-100 font-bold">
-              <tr>
-                <th class="border border-gray-400 p-1 text-center">Sl.No</th>
-                <th class="border border-gray-400 p-1">Head of Account</th>
-                <th class="border border-gray-400 p-1 text-center">Category</th>
-                <th class="border border-gray-400 p-1 text-right">Sanctioned (₹)</th>
-                <th class="border border-gray-400 p-1 text-right">Utilised (₹)</th>
-                <th class="border border-gray-400 p-1 text-right">Balance (₹)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="border border-gray-400 p-1 text-center">1</td><td class="border border-gray-400 p-1 val-hoa-gen">2202-01-001-15-05-500-503</td><td class="border border-gray-400 p-1 text-center">GEN</td><td class="border border-gray-400 p-1 text-right val-amt-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-bal-gen">0</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center">2</td><td class="border border-gray-400 p-1 val-hoa-sc">2202-01-789-15-05-500-503</td><td class="border border-gray-400 p-1 text-center">SC</td><td class="border border-gray-400 p-1 text-right val-amt-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-bal-sc">0</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center">3</td><td class="border border-gray-400 p-1 val-hoa-st">2202-01-796-15-05-500-503</td><td class="border border-gray-400 p-1 text-center">ST</td><td class="border border-gray-400 p-1 text-right val-amt-st">2,750</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td><td class="border border-gray-400 p-1 text-right val-bal-st">0</td></tr>
-              <tr class="font-bold bg-gray-50"><td colspan="3" class="border border-gray-400 p-1 text-center">TOTAL</td><td class="border border-gray-400 p-1 text-right val-total">25,000</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td><td class="border border-gray-400 p-1 text-right val-total-bal">0</td></tr>
-            </tbody>
-          </table>
-
-          <h3 class="font-bold text-xs mt-3 uppercase">Annexure (Vendor Details):</h3>
-          <table class="w-full text-xs border border-gray-400 mt-1 border-collapse">
-            <thead class="bg-gray-100 font-bold">
-              <tr>
-                <th class="border border-gray-400 p-1">Category</th>
-                <th class="border border-gray-400 p-1">Vendor Name</th>
-                <th class="border border-gray-400 p-1">Account No</th>
-                <th class="border border-gray-400 p-1">Bank & IFSC</th>
-                <th class="border border-gray-400 p-1 text-right">Net Amount (₹)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="border border-gray-400 p-1 text-center">GEN</td><td class="border border-gray-400 p-1 val-v-gen-name">M/S GEN SUPPLIERS</td><td class="border border-gray-400 p-1 val-v-gen-acc">456</td><td class="border border-gray-400 p-1 val-v-gen-ifsc">SBI, SBIN123</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center">SC</td><td class="border border-gray-400 p-1 val-v-sc-name">M/S SC TRADERS</td><td class="border border-gray-400 p-1 val-v-sc-acc">789</td><td class="border border-gray-400 p-1 val-v-sc-ifsc">SBI, SBIN456</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center">ST</td><td class="border border-gray-400 p-1 val-v-st-name">M/S ST ENTERPRISES</td><td class="border border-gray-400 p-1 val-v-st-acc">123</td><td class="border border-gray-400 p-1 val-v-st-ifsc">SBI, SBINXYZ1</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td></tr>
-              <tr class="font-bold"><td colspan="4" class="border border-gray-400 p-1 text-center">TOTAL</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td></tr>
-            </tbody>
-          </table>
-
-          <div class="mt-8 flex justify-between text-xs pt-4 font-semibold">
-            <div><p>Copy to:<br>1. DPO <span class="val-dist">SIDDIPET</span><br>2. STO Concerned<br>3. Office copy</p></div>
-            <div class="text-right">
-              <p>Gazetted Headmaster</p>
-              <p><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
+        <div class="sheet-inner select-text">
+          <div>
+            <div class="text-center font-bold">
+              <h2 class="text-base uppercase tracking-wide">PROCEEDINGS OF THE GAZETTED HEADMASTER, <span class="val-ddo-office text-blue-900">ZPHS HUSNABAD</span></h2>
+              <p class="text-xs">Present: <span class="val-hm">K.Vasudeva Reddy, M.Sc.,B.Ed</span></p>
             </div>
+            <div class="flex justify-between text-xs mt-3 border-b pb-1 font-semibold">
+              <span>Proc. No. <span class="val-proc">01/PMSHRI/2026-27</span></span>
+              <span>Date: <span class="val-date">31/Oct/2026</span></span>
+            </div>
+            <div class="text-xs mt-3 leading-relaxed">
+              <p><strong>Sub:</strong> SMC- SNA SPARSH- Samagra Shiksha Funds Sanction of expenditure in the Financial year (FY)-2026-27 towards <span class="val-grant">COMPOSITE SCHOOL GRANT</span> of <span class="val-school font-bold">MPPS KUCHANAPALLY</span> orders Issued - Reg.</p>
+              <p class="mt-2"><strong>Ref:</strong> 1. State project Director Circular Memo No.TF/619/FCI/SNA SPARSH-SS/2026. Dt. 03.07.2026<br>
+              2. State project Director Prc.RCNo.2191/CSG/TSS/PLG/T7/2026-1, Date. 07/08/2026<br>
+              3. School Resolution and Committee Recommendations Dated: <span class="val-date">31/Oct/2026</span><br>
+              4. G.O. MS NO. 40 Edu-(ser. V) Dept., Dt. 07.05.2002.</p>
+              <p class="mt-2"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-total">25,000</span>/-</strong> towards implementation of programmes under <span class="val-grant">COMPOSITE SCHOOL GRANT</span>.</p>
+            </div>
+
+            <table class="w-full text-xs border border-gray-400 mt-4 border-collapse">
+              <thead class="bg-gray-100 font-bold">
+                <tr>
+                  <th class="border border-gray-400 p-1 text-center">Sl.No</th>
+                  <th class="border border-gray-400 p-1">Head of Account</th>
+                  <th class="border border-gray-400 p-1 text-center">Category</th>
+                  <th class="border border-gray-400 p-1 text-right">Sanctioned (₹)</th>
+                  <th class="border border-gray-400 p-1 text-right">Utilised (₹)</th>
+                  <th class="border border-gray-400 p-1 text-right">Balance (₹)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="border border-gray-400 p-1 text-center">1</td><td class="border border-gray-400 p-1 val-hoa-gen">2202-01-001-15-05-500-503</td><td class="border border-gray-400 p-1 text-center">GEN</td><td class="border border-gray-400 p-1 text-right val-amt-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-bal-gen">0</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center">2</td><td class="border border-gray-400 p-1 val-hoa-sc">2202-01-789-15-05-500-503</td><td class="border border-gray-400 p-1 text-center">SC</td><td class="border border-gray-400 p-1 text-right val-amt-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-bal-sc">0</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center">3</td><td class="border border-gray-400 p-1 val-hoa-st">2202-01-796-15-05-500-503</td><td class="border border-gray-400 p-1 text-center">ST</td><td class="border border-gray-400 p-1 text-right val-amt-st">2,750</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td><td class="border border-gray-400 p-1 text-right val-bal-st">0</td></tr>
+                <tr class="font-bold bg-gray-50"><td colspan="3" class="border border-gray-400 p-1 text-center">TOTAL</td><td class="border border-gray-400 p-1 text-right val-total">25,000</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td><td class="border border-gray-400 p-1 text-right val-total-bal">0</td></tr>
+              </tbody>
+            </table>
+
+            <h3 class="font-bold text-xs mt-3 uppercase">Annexure (Vendor Details):</h3>
+            <table class="w-full text-xs border border-gray-400 mt-1 border-collapse">
+              <thead class="bg-gray-100 font-bold">
+                <tr>
+                  <th class="border border-gray-400 p-1">Category</th>
+                  <th class="border border-gray-400 p-1">Vendor Name</th>
+                  <th class="border border-gray-400 p-1">Account No</th>
+                  <th class="border border-gray-400 p-1">Bank & IFSC</th>
+                  <th class="border border-gray-400 p-1 text-right">Net Amount (₹)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="border border-gray-400 p-1 text-center">GEN</td><td class="border border-gray-400 p-1 val-v-gen-name">M/S GEN SUPPLIERS</td><td class="border border-gray-400 p-1 val-v-gen-acc">456</td><td class="border border-gray-400 p-1 val-v-gen-ifsc">SBI, SBIN123</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center">SC</td><td class="border border-gray-400 p-1 val-v-sc-name">M/S SC TRADERS</td><td class="border border-gray-400 p-1 val-v-sc-acc">789</td><td class="border border-gray-400 p-1 val-v-sc-ifsc">SBI, SBIN456</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center">ST</td><td class="border border-gray-400 p-1 val-v-st-name">M/S ST ENTERPRISES</td><td class="border border-gray-400 p-1 val-v-st-acc">123</td><td class="border border-gray-400 p-1 val-v-st-ifsc">SBI, SBINXYZ1</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td></tr>
+                <tr class="font-bold"><td colspan="4" class="border border-gray-400 p-1 text-center">TOTAL</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td></tr>
+              </tbody>
+            </table>
+
+            <div class="mt-8 flex justify-between text-xs pt-4 font-semibold">
+              <div><p>Copy to:<br>1. DPO <span class="val-dist">SIDDIPET</span><br>2. STO Concerned<br>3. Office copy</p></div>
+              <div class="text-right">
+                <p>Gazetted Headmaster</p>
+                <p><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- FOOTER -->
+          <div class="border-t border-gray-300 pt-2 mt-4 text-[10px] text-gray-500 text-center font-medium">
+            Designed by Boini Rajashekhar-MIS Husnabad
           </div>
         </div>
       </article>
 
       <!-- 3. RESOLUTION (LOCKED) -->
       <article id="tab-resolution" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div class="p-2 select-text">
-          <div class="text-center font-bold border-b pb-2">
-            <p class="text-xs">Udise Code: <span class="val-udise">36180601001</span></p>
-            <h2 class="text-base uppercase tracking-wide">RESOLUTION</h2>
-            <h3 class="text-sm uppercase">SMC <span class="val-school">MPPS KUCHANAPALLY</span></h3>
-            <p class="text-xs">MANDAL: <span class="val-mandal">HUSNABAD</span>, DISTRICT: <span class="val-dist">SIDDIPET</span></p>
-            <p class="text-xs">Dated: <span class="val-date">31/Oct/2026</span></p>
-          </div>
-          
-          <div class="text-center font-bold text-xs mt-3 uppercase tracking-wide text-gray-800">
-            <u><span class="val-grant">COMPOSITE SCHOOL GRANT</span> EXPENDITURE RESOLUTION</u>
-          </div>
-
-          <p class="text-xs mt-3 leading-relaxed text-justify">
-            The Headmaster, SMC Chairman, Committee Members, and staff of <strong><span class="val-school">MPPS KUCHANAPALLY</span></strong>, Mandal <strong><span class="val-mandal">HUSNABAD</span></strong>, District <strong><span class="val-dist">SIDDIPET</span></strong> have unanimously resolved to utilize the Sanctioned <span class="val-grant">COMPOSITE SCHOOL GRANT</span> under the GEN/SC/ST head amounting to Rs. <strong><span class="val-total">25,000</span>/-</strong> received under SNA SPARSH account. These funds are resolved to be utilized strictly in accordance with Government guidelines.
-          </p>
-          <p class="text-xs mt-2 leading-relaxed text-justify">
-            Out of the sanctioned amount, a sum of Rs. <strong><span class="val-total-util">25,000</span>/-</strong> for the present spell shall be paid towards expenditures incurred by transferring the amount to the respective vendors' bank accounts through IFMIS portal as shown in the Annexure below:
-          </p>
-
-          <table class="w-full text-xs border border-gray-400 mt-4 border-collapse">
-            <thead class="bg-gray-100 font-bold">
-              <tr>
-                <th class="border border-gray-400 p-1">Category</th>
-                <th class="border border-gray-400 p-1">S.No</th>
-                <th class="border border-gray-400 p-1">Vendor Name</th>
-                <th class="border border-gray-400 p-1">Account No</th>
-                <th class="border border-gray-400 p-1">IFS Code</th>
-                <th class="border border-gray-400 p-1 text-right">Net Amount (₹)</th>
-                <th class="border border-gray-400 p-1">Remarks</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="border border-gray-400 p-1 text-center font-semibold">GEN</td><td class="border border-gray-400 p-1 text-center">1</td><td class="border border-gray-400 p-1 val-v-gen-name">M/S GEN SUPPLIERS</td><td class="border border-gray-400 p-1 val-v-gen-acc">456</td><td class="border border-gray-400 p-1 val-v-gen-ifsc">SBI, SBIN123</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td><td class="border border-gray-400 p-1">Paid</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center font-semibold">SC</td><td class="border border-gray-400 p-1 text-center">2</td><td class="border border-gray-400 p-1 val-v-sc-name">M/S SC TRADERS</td><td class="border border-gray-400 p-1 val-v-sc-acc">789</td><td class="border border-gray-400 p-1 val-v-sc-ifsc">SBI, SBIN456</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td><td class="border border-gray-400 p-1">Paid</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center font-semibold">ST</td><td class="border border-gray-400 p-1 text-center">3</td><td class="border border-gray-400 p-1 val-v-st-name">M/S ST ENTERPRISES</td><td class="border border-gray-400 p-1 val-v-st-acc">123</td><td class="border border-gray-400 p-1 val-v-st-ifsc">SBI, SBINXYZ1</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td><td class="border border-gray-400 p-1">Paid</td></tr>
-              <tr class="font-bold bg-gray-50"><td colspan="5" class="border border-gray-400 p-1 text-center">TOTAL:</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td><td></td></tr>
-            </tbody>
-          </table>
-
-          <p class="text-xs mt-3 leading-relaxed">
-            It is further resolved that all intervention grants shall be used solely for the purposes for which they have been sanctioned, in order to meet the identified needs of the school.
-          </p>
-
-          <!-- 10 STAFF SIGNATURES & OFFICIALS -->
-          <div class="mt-6 border-t pt-4 text-xs">
-            <p class="font-bold mb-3 text-gray-800">Signatures of the Participating Staff & Committee Members:</p>
-            <div class="grid grid-cols-2 gap-x-8 gap-y-3 font-medium">
-              <div>1. _______________________________</div>
-              <div>6. _______________________________</div>
-              <div>2. _______________________________</div>
-              <div>7. _______________________________</div>
-              <div>3. _______________________________</div>
-              <div>8. _______________________________</div>
-              <div>4. _______________________________</div>
-              <div>9. _______________________________</div>
-              <div>5. _______________________________</div>
-              <div>10. _______________________________</div>
+        <div class="sheet-inner select-text">
+          <div>
+            <div class="text-center font-bold border-b pb-2">
+              <p class="text-xs">Udise Code: <span class="val-udise">36180601001</span></p>
+              <h2 class="text-base uppercase tracking-wide">RESOLUTION</h2>
+              <h3 class="text-sm uppercase">SMC <span class="val-school">MPPS KUCHANAPALLY</span></h3>
+              <p class="text-xs">MANDAL: <span class="val-mandal">HUSNABAD</span>, DISTRICT: <span class="val-dist">SIDDIPET</span></p>
+              <p class="text-xs">Dated: <span class="val-date">31/Oct/2026</span></p>
+            </div>
+            
+            <div class="text-center font-bold text-xs mt-3 uppercase tracking-wide text-gray-800">
+              <u><span class="val-grant">COMPOSITE SCHOOL GRANT</span> EXPENDITURE RESOLUTION</u>
             </div>
 
-            <div class="mt-8 pt-4 flex justify-between items-end border-t border-dashed">
-              <div class="text-center">
-                <p class="font-bold">__________________________</p>
-                <p class="font-semibold mt-1">Signature of Senior Teacher</p>
+            <p class="text-xs mt-3 leading-relaxed text-justify">
+              The Headmaster, SMC Chairman, Committee Members, and staff of <strong><span class="val-school">MPPS KUCHANAPALLY</span></strong>, Mandal <strong><span class="val-mandal">HUSNABAD</span></strong>, District <strong><span class="val-dist">SIDDIPET</span></strong> have unanimously resolved to utilize the Sanctioned <span class="val-grant">COMPOSITE SCHOOL GRANT</span> under the GEN/SC/ST head amounting to Rs. <strong><span class="val-total">25,000</span>/-</strong> received under SNA SPARSH account. These funds are resolved to be utilized strictly in accordance with Government guidelines.
+            </p>
+            <p class="text-xs mt-2 leading-relaxed text-justify">
+              Out of the sanctioned amount, a sum of Rs. <strong><span class="val-total-util">25,000</span>/-</strong> for the present spell shall be paid towards expenditures incurred by transferring the amount to the respective vendors' bank accounts through IFMIS portal as shown in the Annexure below:
+            </p>
+
+            <table class="w-full text-xs border border-gray-400 mt-4 border-collapse">
+              <thead class="bg-gray-100 font-bold">
+                <tr>
+                  <th class="border border-gray-400 p-1">Category</th>
+                  <th class="border border-gray-400 p-1">S.No</th>
+                  <th class="border border-gray-400 p-1">Vendor Name</th>
+                  <th class="border border-gray-400 p-1">Account No</th>
+                  <th class="border border-gray-400 p-1">IFS Code</th>
+                  <th class="border border-gray-400 p-1 text-right">Net Amount (₹)</th>
+                  <th class="border border-gray-400 p-1">Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="border border-gray-400 p-1 text-center font-semibold">GEN</td><td class="border border-gray-400 p-1 text-center">1</td><td class="border border-gray-400 p-1 val-v-gen-name">M/S GEN SUPPLIERS</td><td class="border border-gray-400 p-1 val-v-gen-acc">456</td><td class="border border-gray-400 p-1 val-v-gen-ifsc">SBI, SBIN123</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td><td class="border border-gray-400 p-1">Paid</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center font-semibold">SC</td><td class="border border-gray-400 p-1 text-center">2</td><td class="border border-gray-400 p-1 val-v-sc-name">M/S SC TRADERS</td><td class="border border-gray-400 p-1 val-v-sc-acc">789</td><td class="border border-gray-400 p-1 val-v-sc-ifsc">SBI, SBIN456</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td><td class="border border-gray-400 p-1">Paid</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center font-semibold">ST</td><td class="border border-gray-400 p-1 text-center">3</td><td class="border border-gray-400 p-1 val-v-st-name">M/S ST ENTERPRISES</td><td class="border border-gray-400 p-1 val-v-st-acc">123</td><td class="border border-gray-400 p-1 val-v-st-ifsc">SBI, SBINXYZ1</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td><td class="border border-gray-400 p-1">Paid</td></tr>
+                <tr class="font-bold bg-gray-50"><td colspan="5" class="border border-gray-400 p-1 text-center">TOTAL:</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td><td></td></tr>
+              </tbody>
+            </table>
+
+            <p class="text-xs mt-3 leading-relaxed">
+              It is further resolved that all intervention grants shall be used solely for the purposes for which they have been sanctioned, in order to meet the identified needs of the school.
+            </p>
+
+            <!-- 10 STAFF SIGNATURES & OFFICIALS -->
+            <div class="mt-6 border-t pt-4 text-xs">
+              <p class="font-bold mb-3 text-gray-800">Signatures of the Participating Staff & Committee Members:</p>
+              <div class="grid grid-cols-2 gap-x-8 gap-y-3 font-medium">
+                <div>1. _______________________________</div>
+                <div>6. _______________________________</div>
+                <div>2. _______________________________</div>
+                <div>7. _______________________________</div>
+                <div>3. _______________________________</div>
+                <div>8. _______________________________</div>
+                <div>4. _______________________________</div>
+                <div>9. _______________________________</div>
+                <div>5. _______________________________</div>
+                <div>10. _______________________________</div>
               </div>
-              <div class="text-center">
-                <p class="font-bold">__________________________</p>
-                <p class="font-semibold mt-1">Signature of SMC Chairman</p>
-              </div>
-              <div class="text-center">
-                <p class="font-bold">__________________________</p>
-                <p class="font-bold mt-1">Signature of the Headmaster</p>
-                <p class="text-[11px]"><span class="val-school">MPPS KUCHANAPALLY</span></p>
+
+              <div class="mt-8 pt-4 flex justify-between items-end border-t border-dashed">
+                <div class="text-center">
+                  <p class="font-bold">__________________________</p>
+                  <p class="font-semibold mt-1">Signature of Senior Teacher</p>
+                </div>
+                <div class="text-center">
+                  <p class="font-bold">__________________________</p>
+                  <p class="font-semibold mt-1">Signature of SMC Chairman</p>
+                </div>
+                <div class="text-center">
+                  <p class="font-bold">__________________________</p>
+                  <p class="font-bold mt-1">Signature of the Headmaster</p>
+                  <p class="text-[11px]"><span class="val-school">MPPS KUCHANAPALLY</span></p>
+                </div>
               </div>
             </div>
+          </div>
+
+          <!-- FOOTER -->
+          <div class="border-t border-gray-300 pt-2 mt-4 text-[10px] text-gray-500 text-center font-medium">
+            Designed by Boini Rajashekhar-MIS Husnabad
           </div>
         </div>
       </article>
 
       <!-- 4. BUDGET REGISTER (LOCKED) -->
       <article id="tab-budget" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div class="p-2 select-text">
-          <div class="text-center font-bold mb-4">
-            <h2 class="text-base">SMC-BUDGET WATCH REGISTER - <span class="val-school">MPPS KUCHANAPALLY</span></h2>
-            <p class="text-xs">UDISE: <span class="val-udise">36180601001</span></p>
+        <div class="sheet-inner select-text">
+          <div>
+            <div class="text-center font-bold mb-4">
+              <h2 class="text-base">SMC-BUDGET WATCH REGISTER - <span class="val-school">MPPS KUCHANAPALLY</span></h2>
+              <p class="text-xs">UDISE: <span class="val-udise">36180601001</span></p>
+            </div>
+            <table class="w-full text-xs border border-gray-400 border-collapse">
+              <thead class="bg-gray-100 font-bold">
+                <tr>
+                  <th class="border border-gray-400 p-1">Sl</th>
+                  <th class="border border-gray-400 p-1">Intervention</th>
+                  <th class="border border-gray-400 p-1">Head</th>
+                  <th class="border border-gray-400 p-1">HOA</th>
+                  <th class="border border-gray-400 p-1">Spell</th>
+                  <th class="border border-gray-400 p-1">Sanction Date</th>
+                  <th class="border border-gray-400 p-1 text-right">Released (₹)</th>
+                  <th class="border border-gray-400 p-1 text-right">Utilized (₹)</th>
+                  <th class="border border-gray-400 p-1 text-right">Balance</th>
+                  <th class="border border-gray-400 p-1">Vendor Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="border border-gray-400 p-1 text-center">1</td><td class="border border-gray-400 p-1 val-grant">COMPOSITE SCHOOL GRANT</td><td class="border border-gray-400 p-1 text-center">GEN</td><td class="border border-gray-400 p-1 val-hoa-gen">2202-01-001</td><td class="border border-gray-400 p-1 text-center">Spell-1</td><td class="border border-gray-400 p-1 val-date">31/Oct/2026</td><td class="border border-gray-400 p-1 text-right val-amt-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-bal-gen">0</td><td class="border border-gray-400 p-1 val-v-gen-name">M/S GEN SUPPLIERS</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center">2</td><td class="border border-gray-400 p-1 val-grant">COMPOSITE SCHOOL GRANT</td><td class="border border-gray-400 p-1 text-center">SC</td><td class="border border-gray-400 p-1 val-hoa-sc">2202-01-789</td><td class="border border-gray-400 p-1 text-center">Spell-1</td><td class="border border-gray-400 p-1 val-date">31/Oct/2026</td><td class="border border-gray-400 p-1 text-right val-amt-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-bal-sc">0</td><td class="border border-gray-400 p-1 val-v-sc-name">M/S SC TRADERS</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center">3</td><td class="border border-gray-400 p-1 val-grant">COMPOSITE SCHOOL GRANT</td><td class="border border-gray-400 p-1 text-center">ST</td><td class="border border-gray-400 p-1 val-hoa-st">2202-01-796</td><td class="border border-gray-400 p-1 text-center">Spell-1</td><td class="border border-gray-400 p-1 val-date">31/Oct/2026</td><td class="border border-gray-400 p-1 text-right val-amt-st">2,750</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td><td class="border border-gray-400 p-1 text-right val-bal-st">0</td><td class="border border-gray-400 p-1 val-v-st-name">M/S ST ENTERPRISES</td></tr>
+                <tr class="font-bold bg-gray-50"><td colspan="6" class="border border-gray-400 p-1 text-center">Total:</td><td class="border border-gray-400 p-1 text-right val-total">25,000</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td><td class="border border-gray-400 p-1 text-right val-total-bal">0</td><td></td></tr>
+              </tbody>
+            </table>
           </div>
-          <table class="w-full text-xs border border-gray-400 border-collapse">
-            <thead class="bg-gray-100 font-bold">
-              <tr>
-                <th class="border border-gray-400 p-1">Sl</th>
-                <th class="border border-gray-400 p-1">Intervention</th>
-                <th class="border border-gray-400 p-1">Head</th>
-                <th class="border border-gray-400 p-1">HOA</th>
-                <th class="border border-gray-400 p-1">Spell</th>
-                <th class="border border-gray-400 p-1">Sanction Date</th>
-                <th class="border border-gray-400 p-1 text-right">Released (₹)</th>
-                <th class="border border-gray-400 p-1 text-right">Utilized (₹)</th>
-                <th class="border border-gray-400 p-1 text-right">Balance</th>
-                <th class="border border-gray-400 p-1">Vendor Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="border border-gray-400 p-1 text-center">1</td><td class="border border-gray-400 p-1 val-grant">COMPOSITE SCHOOL GRANT</td><td class="border border-gray-400 p-1 text-center">GEN</td><td class="border border-gray-400 p-1 val-hoa-gen">2202-01-001</td><td class="border border-gray-400 p-1 text-center">Spell-1</td><td class="border border-gray-400 p-1 val-date">31/Oct/2026</td><td class="border border-gray-400 p-1 text-right val-amt-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-bal-gen">0</td><td class="border border-gray-400 p-1 val-v-gen-name">M/S GEN SUPPLIERS</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center">2</td><td class="border border-gray-400 p-1 val-grant">COMPOSITE SCHOOL GRANT</td><td class="border border-gray-400 p-1 text-center">SC</td><td class="border border-gray-400 p-1 val-hoa-sc">2202-01-789</td><td class="border border-gray-400 p-1 text-center">Spell-1</td><td class="border border-gray-400 p-1 val-date">31/Oct/2026</td><td class="border border-gray-400 p-1 text-right val-amt-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-bal-sc">0</td><td class="border border-gray-400 p-1 val-v-sc-name">M/S SC TRADERS</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center">3</td><td class="border border-gray-400 p-1 val-grant">COMPOSITE SCHOOL GRANT</td><td class="border border-gray-400 p-1 text-center">ST</td><td class="border border-gray-400 p-1 val-hoa-st">2202-01-796</td><td class="border border-gray-400 p-1 text-center">Spell-1</td><td class="border border-gray-400 p-1 val-date">31/Oct/2026</td><td class="border border-gray-400 p-1 text-right val-amt-st">2,750</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td><td class="border border-gray-400 p-1 text-right val-bal-st">0</td><td class="border border-gray-400 p-1 val-v-st-name">M/S ST ENTERPRISES</td></tr>
-              <tr class="font-bold bg-gray-50"><td colspan="6" class="border border-gray-400 p-1 text-center">Total:</td><td class="border border-gray-400 p-1 text-right val-total">25,000</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td><td class="border border-gray-400 p-1 text-right val-total-bal">0</td><td></td></tr>
-            </tbody>
-          </table>
+
+          <!-- FOOTER -->
+          <div class="border-t border-gray-300 pt-2 mt-4 text-[10px] text-gray-500 text-center font-medium">
+            Designed by Boini Rajashekhar-MIS Husnabad
+          </div>
         </div>
       </article>
 
       <!-- 5. SINGLE UC (LOCKED) -->
       <article id="tab-single-uc" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div class="p-2 select-text">
-          <div class="text-center font-bold mb-3 border-b pb-2">
-            <h2 class="text-base uppercase tracking-wide">UTILIZATION CERTIFICATE (FY 2026-27)</h2>
-            <p class="text-xs"><span class="val-school">MPPS KUCHANAPALLY</span> (DDO CODE: <span class="val-ddo">18050308008</span>), MDL <span class="val-mandal">HUSNABAD</span>, DIST. <span class="val-dist">SIDDIPET</span></p>
-          </div>
-          <p class="text-xs leading-relaxed mt-4">
-            Certified that a sum of Rs. <strong><span class="val-total">25,000</span>/-</strong> was received under SNA Sparsh Account during FY 2026-27 towards <span class="val-grant">COMPOSITE SCHOOL GRANT</span>.
-          </p>
-          <table class="w-full text-xs border border-gray-400 mt-4 border-collapse">
-            <thead class="bg-gray-100 font-bold">
-              <tr>
-                <th class="border border-gray-400 p-1 text-center">S.No</th>
-                <th class="border border-gray-400 p-1 text-center">Category</th>
-                <th class="border border-gray-400 p-1 text-right">Amount Sanctioned (₹)</th>
-                <th class="border border-gray-400 p-1 text-right">Already Utilized (₹)</th>
-                <th class="border border-gray-400 p-1 text-right">Present Utilisation (₹)</th>
-                <th class="border border-gray-400 p-1 text-right">Balance (₹)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="border border-gray-400 p-1 text-center">1</td><td class="border border-gray-400 p-1 text-center">GEN</td><td class="border border-gray-400 p-1 text-right val-amt-gen">18,000</td><td class="border border-gray-400 p-1 text-right">0</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-bal-gen">0</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center">2</td><td class="border border-gray-400 p-1 text-center">SC</td><td class="border border-gray-400 p-1 text-right val-amt-sc">4,250</td><td class="border border-gray-400 p-1 text-right">0</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-bal-sc">0</td></tr>
-              <tr><td class="border border-gray-400 p-1 text-center">3</td><td class="border border-gray-400 p-1 text-center">ST</td><td class="border border-gray-400 p-1 text-right val-amt-st">2,750</td><td class="border border-gray-400 p-1 text-right">0</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td><td class="border border-gray-400 p-1 text-right val-bal-st">0</td></tr>
-              <tr class="font-bold bg-gray-50"><td colspan="2" class="border border-gray-400 p-1 text-center">Total</td><td class="border border-gray-400 p-1 text-right val-total">25,000</td><td class="border border-gray-400 p-1 text-right">0</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td><td class="border border-gray-400 p-1 text-right val-total-bal">0</td></tr>
-            </tbody>
-          </table>
-          <div class="mt-8 flex justify-between text-xs pt-4 font-semibold">
-            <div><p>Place: <span class="val-school">MPPS KUCHANAPALLY</span><br>Date: <span class="val-date">31/Oct/2026</span></p></div>
-            <div class="text-right">
-              <p>Signature of Head of Office / DDO</p>
-              <p>Name: <span class="val-hm">K.Vasudeva Reddy, M.Sc.,B.Ed</span></p>
+        <div class="sheet-inner select-text">
+          <div>
+            <div class="text-center font-bold mb-3 border-b pb-2">
+              <h2 class="text-base uppercase tracking-wide">UTILIZATION CERTIFICATE (FY 2026-27)</h2>
+              <p class="text-xs"><span class="val-school">MPPS KUCHANAPALLY</span> (DDO CODE: <span class="val-ddo">18050308008</span>), MDL <span class="val-mandal">HUSNABAD</span>, DIST. <span class="val-dist">SIDDIPET</span></p>
             </div>
+            <p class="text-xs leading-relaxed mt-4">
+              Certified that a sum of Rs. <strong><span class="val-total">25,000</span>/-</strong> was received under SNA Sparsh Account during FY 2026-27 towards <span class="val-grant">COMPOSITE SCHOOL GRANT</span>.
+            </p>
+            <table class="w-full text-xs border border-gray-400 mt-4 border-collapse">
+              <thead class="bg-gray-100 font-bold">
+                <tr>
+                  <th class="border border-gray-400 p-1 text-center">S.No</th>
+                  <th class="border border-gray-400 p-1 text-center">Category</th>
+                  <th class="border border-gray-400 p-1 text-right">Amount Sanctioned (₹)</th>
+                  <th class="border border-gray-400 p-1 text-right">Already Utilized (₹)</th>
+                  <th class="border border-gray-400 p-1 text-right">Present Utilisation (₹)</th>
+                  <th class="border border-gray-400 p-1 text-right">Balance (₹)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="border border-gray-400 p-1 text-center">1</td><td class="border border-gray-400 p-1 text-center">GEN</td><td class="border border-gray-400 p-1 text-right val-amt-gen">18,000</td><td class="border border-gray-400 p-1 text-right">0</td><td class="border border-gray-400 p-1 text-right val-util-gen">18,000</td><td class="border border-gray-400 p-1 text-right val-bal-gen">0</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center">2</td><td class="border border-gray-400 p-1 text-center">SC</td><td class="border border-gray-400 p-1 text-right val-amt-sc">4,250</td><td class="border border-gray-400 p-1 text-right">0</td><td class="border border-gray-400 p-1 text-right val-util-sc">4,250</td><td class="border border-gray-400 p-1 text-right val-bal-sc">0</td></tr>
+                <tr><td class="border border-gray-400 p-1 text-center">3</td><td class="border border-gray-400 p-1 text-center">ST</td><td class="border border-gray-400 p-1 text-right val-amt-st">2,750</td><td class="border border-gray-400 p-1 text-right">0</td><td class="border border-gray-400 p-1 text-right val-util-st">2,750</td><td class="border border-gray-400 p-1 text-right val-bal-st">0</td></tr>
+                <tr class="font-bold bg-gray-50"><td colspan="2" class="border border-gray-400 p-1 text-center">Total</td><td class="border border-gray-400 p-1 text-right val-total">25,000</td><td class="border border-gray-400 p-1 text-right">0</td><td class="border border-gray-400 p-1 text-right val-total-util">25,000</td><td class="border border-gray-400 p-1 text-right val-total-bal">0</td></tr>
+              </tbody>
+            </table>
+            <div class="mt-8 flex justify-between text-xs pt-4 font-semibold">
+              <div><p>Place: <span class="val-school">MPPS KUCHANAPALLY</span><br>Date: <span class="val-date">31/Oct/2026</span></p></div>
+              <div class="text-right">
+                <p>Signature of Head of Office / DDO</p>
+                <p>Name: <span class="val-hm">K.Vasudeva Reddy, M.Sc.,B.Ed</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FOOTER -->
+          <div class="border-t border-gray-300 pt-2 mt-4 text-[10px] text-gray-500 text-center font-medium">
+            Designed by Boini Rajashekhar-MIS Husnabad
           </div>
         </div>
       </article>
 
       <!-- 6. CONSOLIDATED UC (LOCKED) -->
       <article id="tab-consolidated-uc" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div class="p-2 select-text">
-          <div class="text-center font-bold mb-3 border-b pb-2">
-            <h2 class="text-base uppercase">CONSOLIDATED UTILIZATION CERTIFICATE FOR FY 2026-27</h2>
-            <p class="text-xs">Office Name: <span class="val-school">MPPS KUCHANAPALLY</span> | UDISE: <span class="val-udise">36180601001</span></p>
+        <div class="sheet-inner select-text">
+          <div>
+            <div class="text-center font-bold mb-3 border-b pb-2">
+              <h2 class="text-base uppercase">CONSOLIDATED UTILIZATION CERTIFICATE FOR FY 2026-27</h2>
+              <p class="text-xs">Office Name: <span class="val-school">MPPS KUCHANAPALLY</span> | UDISE: <span class="val-udise">36180601001</span></p>
+            </div>
+            <table class="w-full text-[11px] border border-gray-400 mt-4 border-collapse text-center">
+              <thead>
+                <tr class="bg-gray-100 font-bold">
+                  <th rowspan="2" class="border border-gray-400 p-1">S.NO</th>
+                  <th rowspan="2" class="border border-gray-400 p-1">Particulars</th>
+                  <th colspan="4" class="border border-gray-400 p-1">Receipts of Grants</th>
+                  <th colspan="4" class="border border-gray-400 p-1">Payments of Grants</th>
+                  <th colspan="4" class="border border-gray-400 p-1">Balance Amount</th>
+                </tr>
+                <tr class="bg-gray-50 font-bold">
+                  <th class="border border-gray-400 p-1">GEN</th><th class="border border-gray-400 p-1">SC</th><th class="border border-gray-400 p-1">ST</th><th class="border border-gray-400 p-1">Total</th>
+                  <th class="border border-gray-400 p-1">GEN</th><th class="border border-gray-400 p-1">SC</th><th class="border border-gray-400 p-1">ST</th><th class="border border-gray-400 p-1">Total</th>
+                  <th class="border border-gray-400 p-1">GEN</th><th class="border border-gray-400 p-1">SC</th><th class="border border-gray-400 p-1">ST</th><th class="border border-gray-400 p-1">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border border-gray-400 p-1">1</td>
+                  <td class="border border-gray-400 p-1 text-left">Opening Balance (01/Apr/2026)</td>
+                  <td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td>
+                  <td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td>
+                  <td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-400 p-1">2</td>
+                  <td class="border border-gray-400 p-1 text-left val-grant">COMPOSITE SCHOOL GRANT</td>
+                  <td class="border border-gray-400 p-1 val-amt-gen">18,000</td><td class="border border-gray-400 p-1 val-amt-sc">4,250</td><td class="border border-gray-400 p-1 val-amt-st">2,750</td><td class="border border-gray-400 p-1 val-total">25,000</td>
+                  <td class="border border-gray-400 p-1 val-util-gen">18,000</td><td class="border border-gray-400 p-1 val-util-sc">4,250</td><td class="border border-gray-400 p-1 val-util-st">2,750</td><td class="border border-gray-400 p-1 val-total-util">25,000</td>
+                  <td class="border border-gray-400 p-1 val-bal-gen">0</td><td class="border border-gray-400 p-1 val-bal-sc">0</td><td class="border border-gray-400 p-1 val-bal-st">0</td><td class="border border-gray-400 p-1 val-total-bal">0</td>
+                </tr>
+                <tr class="font-bold bg-gray-50">
+                  <td colspan="2" class="border border-gray-400 p-1">Total</td>
+                  <td class="border border-gray-400 p-1 val-amt-gen">18,000</td><td class="border border-gray-400 p-1 val-amt-sc">4,250</td><td class="border border-gray-400 p-1 val-amt-st">2,750</td><td class="border border-gray-400 p-1 val-total">25,000</td>
+                  <td class="border border-gray-400 p-1 val-util-gen">18,000</td><td class="border border-gray-400 p-1 val-util-sc">4,250</td><td class="border border-gray-400 p-1 val-util-st">2,750</td><td class="border border-gray-400 p-1 val-total-util">25,000</td>
+                  <td class="border border-gray-400 p-1 val-bal-gen">0</td><td class="border border-gray-400 p-1 val-bal-sc">0</td><td class="border border-gray-400 p-1 val-bal-st">0</td><td class="border border-gray-400 p-1 val-total-bal">0</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <table class="w-full text-[11px] border border-gray-400 mt-4 border-collapse text-center">
-            <thead>
-              <tr class="bg-gray-100 font-bold">
-                <th rowspan="2" class="border border-gray-400 p-1">S.NO</th>
-                <th rowspan="2" class="border border-gray-400 p-1">Particulars</th>
-                <th colspan="4" class="border border-gray-400 p-1">Receipts of Grants</th>
-                <th colspan="4" class="border border-gray-400 p-1">Payments of Grants</th>
-                <th colspan="4" class="border border-gray-400 p-1">Balance Amount</th>
-              </tr>
-              <tr class="bg-gray-50 font-bold">
-                <th class="border border-gray-400 p-1">GEN</th><th class="border border-gray-400 p-1">SC</th><th class="border border-gray-400 p-1">ST</th><th class="border border-gray-400 p-1">Total</th>
-                <th class="border border-gray-400 p-1">GEN</th><th class="border border-gray-400 p-1">SC</th><th class="border border-gray-400 p-1">ST</th><th class="border border-gray-400 p-1">Total</th>
-                <th class="border border-gray-400 p-1">GEN</th><th class="border border-gray-400 p-1">SC</th><th class="border border-gray-400 p-1">ST</th><th class="border border-gray-400 p-1">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="border border-gray-400 p-1">1</td>
-                <td class="border border-gray-400 p-1 text-left">Opening Balance (01/Apr/2026)</td>
-                <td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td>
-                <td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td>
-                <td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td><td class="border border-gray-400 p-1">0</td>
-              </tr>
-              <tr>
-                <td class="border border-gray-400 p-1">2</td>
-                <td class="border border-gray-400 p-1 text-left val-grant">COMPOSITE SCHOOL GRANT</td>
-                <td class="border border-gray-400 p-1 val-amt-gen">18,000</td><td class="border border-gray-400 p-1 val-amt-sc">4,250</td><td class="border border-gray-400 p-1 val-amt-st">2,750</td><td class="border border-gray-400 p-1 val-total">25,000</td>
-                <td class="border border-gray-400 p-1 val-util-gen">18,000</td><td class="border border-gray-400 p-1 val-util-sc">4,250</td><td class="border border-gray-400 p-1 val-util-st">2,750</td><td class="border border-gray-400 p-1 val-total-util">25,000</td>
-                <td class="border border-gray-400 p-1 val-bal-gen">0</td><td class="border border-gray-400 p-1 val-bal-sc">0</td><td class="border border-gray-400 p-1 val-bal-st">0</td><td class="border border-gray-400 p-1 val-total-bal">0</td>
-              </tr>
-              <tr class="font-bold bg-gray-50">
-                <td colspan="2" class="border border-gray-400 p-1">Total</td>
-                <td class="border border-gray-400 p-1 val-amt-gen">18,000</td><td class="border border-gray-400 p-1 val-amt-sc">4,250</td><td class="border border-gray-400 p-1 val-amt-st">2,750</td><td class="border border-gray-400 p-1 val-total">25,000</td>
-                <td class="border border-gray-400 p-1 val-util-gen">18,000</td><td class="border border-gray-400 p-1 val-util-sc">4,250</td><td class="border border-gray-400 p-1 val-util-st">2,750</td><td class="border border-gray-400 p-1 val-total-util">25,000</td>
-                <td class="border border-gray-400 p-1 val-bal-gen">0</td><td class="border border-gray-400 p-1 val-bal-sc">0</td><td class="border border-gray-400 p-1 val-bal-st">0</td><td class="border border-gray-400 p-1 val-total-bal">0</td>
-              </tr>
-            </tbody>
-          </table>
+
+          <!-- FOOTER -->
+          <div class="border-t border-gray-300 pt-2 mt-4 text-[10px] text-gray-500 text-center font-medium">
+            Designed by Boini Rajashekhar-MIS Husnabad
+          </div>
         </div>
       </article>
 
       <!-- 7. ADVANCE RECEIPTS (LOCKED) -->
       <article id="tab-receipts" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div class="space-y-6 select-text">
-          <h2 class="font-bold text-center border-b pb-2 text-sm uppercase">ADVANCE STAMPED RECEIPTS</h2>
-          
-          <div class="border border-gray-400 p-4 rounded text-xs leading-relaxed">
-            <div class="flex justify-between font-bold">
-              <span>Date: <span class="val-date">31/Oct/2026</span></span>
-              <span>ADVANCE STAMPED RECEIPT (GEN COMPONENT)</span>
+        <div class="sheet-inner select-text">
+          <div class="space-y-6">
+            <h2 class="font-bold text-center border-b pb-2 text-sm uppercase">ADVANCE STAMPED RECEIPTS</h2>
+            
+            <div class="border border-gray-400 p-4 rounded text-xs leading-relaxed">
+              <div class="flex justify-between font-bold">
+                <span>Date: <span class="val-date">31/Oct/2026</span></span>
+                <span>ADVANCE STAMPED RECEIPT (GEN COMPONENT)</span>
+              </div>
+              <p class="mt-2">Received with thanks from the Office of <span class="val-school">MPPS KUCHANAPALLY</span>, the sum of Rs. <strong class="val-util-gen">18,000</strong>/- towards GENERAL Component (<span class="val-hoa-gen">2202-01-001</span>).</p>
+              <p class="mt-1 font-semibold">1. Vendor: <span class="val-v-gen-name">M/S GEN SUPPLIERS</span> | 2. A/c: <span class="val-v-gen-acc">456</span> | 3. Bank & IFSC: <span class="val-v-gen-ifsc">SBI, SBIN123</span></p>
+              <div class="flex justify-between items-end mt-4 pt-2">
+                <div class="w-16 h-16 border-2 border-dashed border-gray-400 flex items-center justify-center text-[9px] text-gray-500 text-center">Affix ₹1/-<br>Stamp</div>
+                <div class="text-right font-semibold">
+                  <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
+                  <p>DDO Code: <span class="val-ddo">18050308008</span></p>
+                </div>
+              </div>
             </div>
-            <p class="mt-2">Received with thanks from the Office of <span class="val-school">MPPS KUCHANAPALLY</span>, the sum of Rs. <strong class="val-util-gen">18,000</strong>/- towards GENERAL Component (<span class="val-hoa-gen">2202-01-001</span>).</p>
-            <p class="mt-1 font-semibold">1. Vendor: <span class="val-v-gen-name">M/S GEN SUPPLIERS</span> | 2. A/c: <span class="val-v-gen-acc">456</span> | 3. Bank & IFSC: <span class="val-v-gen-ifsc">SBI, SBIN123</span></p>
-            <div class="flex justify-between items-end mt-4 pt-2">
-              <div class="w-16 h-16 border-2 border-dashed border-gray-400 flex items-center justify-center text-[9px] text-gray-500 text-center">Affix ₹1/-<br>Stamp</div>
-              <div class="text-right font-semibold">
-                <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
-                <p>DDO Code: <span class="val-ddo">18050308008</span></p>
+
+            <div class="border border-gray-400 p-4 rounded text-xs leading-relaxed">
+              <div class="flex justify-between font-bold">
+                <span>Date: <span class="val-date">31/Oct/2026</span></span>
+                <span>ADVANCE STAMPED RECEIPT (SC COMPONENT)</span>
+              </div>
+              <p class="mt-2">Received with thanks from the Office of <span class="val-school">MPPS KUCHANAPALLY</span>, the sum of Rs. <strong class="val-util-sc">4,250</strong>/- towards SC Component (<span class="val-hoa-sc">2202-01-789</span>).</p>
+              <p class="mt-1 font-semibold">1. Vendor: <span class="val-v-sc-name">M/S SC TRADERS</span> | 2. A/c: <span class="val-v-sc-acc">789</span> | 3. Bank & IFSC: <span class="val-v-sc-ifsc">SBI, SBIN456</span></p>
+              <div class="flex justify-between items-end mt-4 pt-2">
+                <div class="w-16 h-16 border-2 border-dashed border-gray-400 flex items-center justify-center text-[9px] text-gray-500 text-center">Affix ₹1/-<br>Stamp</div>
+                <div class="text-right font-semibold">
+                  <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
+                  <p>DDO Code: <span class="val-ddo">18050308008</span></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-gray-400 p-4 rounded text-xs leading-relaxed">
+              <div class="flex justify-between font-bold">
+                <span>Date: <span class="val-date">31/Oct/2026</span></span>
+                <span>ADVANCE STAMPED RECEIPT (ST COMPONENT)</span>
+              </div>
+              <p class="mt-2">Received with thanks from the Office of <span class="val-school">MPPS KUCHANAPALLY</span>, the sum of Rs. <strong class="val-util-st">2,750</strong>/- towards ST Component (<span class="val-hoa-st">2202-01-796</span>).</p>
+              <p class="mt-1 font-semibold">1. Vendor: <span class="val-v-st-name">M/S ST ENTERPRISES</span> | 2. A/c: <span class="val-v-st-acc">123</span> | 3. Bank & IFSC: <span class="val-v-st-ifsc">SBI, SBINXYZ1</span></p>
+              <div class="flex justify-between items-end mt-4 pt-2">
+                <div class="w-16 h-16 border-2 border-dashed border-gray-400 flex items-center justify-center text-[9px] text-gray-500 text-center">Affix ₹1/-<br>Stamp</div>
+                <div class="text-right font-semibold">
+                  <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
+                  <p>DDO Code: <span class="val-ddo">18050308008</span></p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="border border-gray-400 p-4 rounded text-xs leading-relaxed">
-            <div class="flex justify-between font-bold">
-              <span>Date: <span class="val-date">31/Oct/2026</span></span>
-              <span>ADVANCE STAMPED RECEIPT (SC COMPONENT)</span>
-            </div>
-            <p class="mt-2">Received with thanks from the Office of <span class="val-school">MPPS KUCHANAPALLY</span>, the sum of Rs. <strong class="val-util-sc">4,250</strong>/- towards SC Component (<span class="val-hoa-sc">2202-01-789</span>).</p>
-            <p class="mt-1 font-semibold">1. Vendor: <span class="val-v-sc-name">M/S SC TRADERS</span> | 2. A/c: <span class="val-v-sc-acc">789</span> | 3. Bank & IFSC: <span class="val-v-sc-ifsc">SBI, SBIN456</span></p>
-            <div class="flex justify-between items-end mt-4 pt-2">
-              <div class="w-16 h-16 border-2 border-dashed border-gray-400 flex items-center justify-center text-[9px] text-gray-500 text-center">Affix ₹1/-<br>Stamp</div>
-              <div class="text-right font-semibold">
-                <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
-                <p>DDO Code: <span class="val-ddo">18050308008</span></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="border border-gray-400 p-4 rounded text-xs leading-relaxed">
-            <div class="flex justify-between font-bold">
-              <span>Date: <span class="val-date">31/Oct/2026</span></span>
-              <span>ADVANCE STAMPED RECEIPT (ST COMPONENT)</span>
-            </div>
-            <p class="mt-2">Received with thanks from the Office of <span class="val-school">MPPS KUCHANAPALLY</span>, the sum of Rs. <strong class="val-util-st">2,750</strong>/- towards ST Component (<span class="val-hoa-st">2202-01-796</span>).</p>
-            <p class="mt-1 font-semibold">1. Vendor: <span class="val-v-st-name">M/S ST ENTERPRISES</span> | 2. A/c: <span class="val-v-st-acc">123</span> | 3. Bank & IFSC: <span class="val-v-st-ifsc">SBI, SBINXYZ1</span></p>
-            <div class="flex justify-between items-end mt-4 pt-2">
-              <div class="w-16 h-16 border-2 border-dashed border-gray-400 flex items-center justify-center text-[9px] text-gray-500 text-center">Affix ₹1/-<br>Stamp</div>
-              <div class="text-right font-semibold">
-                <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
-                <p>DDO Code: <span class="val-ddo">18050308008</span></p>
-              </div>
-            </div>
+          <!-- FOOTER -->
+          <div class="border-t border-gray-300 pt-2 mt-4 text-[10px] text-gray-500 text-center font-medium">
+            Designed by Boini Rajashekhar-MIS Husnabad
           </div>
         </div>
       </article>
 
-      <!-- 8. VOUCHER RECEIPT CERTIFICATION (LOCKED) -->
+      <!-- 8. VOUCHER RECEIPT CERTIFICATION (A4 PORTRAIT FIT & LOCKED) -->
       <article id="tab-voucher" class="sheet tab-content bg-white p-8 rounded shadow max-w-4xl mx-auto border page-break">
-        <div class="p-2 select-text">
-          <div class="text-center font-bold border-b pb-2">
-            <h2 class="text-base uppercase">CERTIFICATION / VOUCHER RECEIPT</h2>
-            <p class="text-xs">School: <span class="val-school">MPPS KUCHANAPALLY</span> | UDISE: <span class="val-udise">36180601001</span></p>
+        <div class="sheet-inner select-text">
+          <div>
+            <div class="text-center font-bold border-b pb-2">
+              <h2 class="text-base uppercase tracking-wider text-blue-900 font-black">CERTIFICATION / VOUCHER RECEIPT</h2>
+              <p class="text-xs mt-1 font-semibold text-gray-700">School: <span class="val-school text-black font-bold">MPPS KUCHANAPALLY</span> &nbsp;|&nbsp; UDISE: <span class="val-udise text-black font-bold">36180601001</span></p>
+            </div>
+
+            <!-- LARGE VOUCHER PASTE BOX (A4 PORTRAIT SPACIOUS) -->
+            <div class="voucher-box my-6 border-2 border-dashed border-gray-400 h-[155mm] rounded-lg flex flex-col items-center justify-center bg-gray-50 text-gray-400">
+              <svg class="w-16 h-16 mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <p class="font-bold text-sm tracking-widest uppercase text-gray-500">ORIGINAL VOUCHER PASTE HERE</p>
+              <p class="text-[11px] text-gray-400 mt-1">(Affix original bills / vouchers with proper seal and signature)</p>
+            </div>
+
+            <!-- STOCK REGISTER CERTIFICATION TEXT -->
+            <p class="text-xs leading-relaxed text-justify px-2 text-gray-800">
+              It is hereby certified that the items purchased as mentioned above have been received in good condition and in accordance with the prescribed standards, and have been recorded on page no. ____________ of the stock register.
+            </p>
+
+            <!-- SIGNATURE BLOCK -->
+            <div class="mt-12 text-right text-xs font-bold px-2">
+              <p>SIGNATURE OF THE HEADMASTER</p>
+              <p class="mt-1 text-gray-700"><span class="val-school">MPPS KUCHANAPALLY</span></p>
+            </div>
           </div>
-          <div class="my-8 border-2 border-dashed border-gray-400 h-64 flex flex-col items-center justify-center text-gray-500 text-xs">
-            <p class="font-bold text-sm tracking-wider">ORIGINAL VOUCHER PASTE HERE</p>
-          </div>
-          <p class="text-xs leading-relaxed">
-            It is hereby certified that the items purchased as mentioned above have been received in good condition and in accordance with the prescribed standards, and have been recorded on page no. _______ of the stock register.
-          </p>
-          <div class="mt-12 text-right text-xs font-semibold">
-            <p>SIGNATURE OF THE HEADMASTER</p>
-            <p><span class="val-school">MPPS KUCHANAPALLY</span></p>
+
+          <!-- FOOTER -->
+          <div class="border-t border-gray-300 pt-2 mt-4 text-[10px] text-gray-500 text-center font-medium">
+            Prepared by Boini Rajashekhar-MIS Husnabad
           </div>
         </div>
       </article>

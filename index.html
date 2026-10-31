@@ -24,7 +24,7 @@
   <header class="no-print bg-slate-900 text-white p-4 shadow sticky top-0 z-50 flex flex-wrap justify-between items-center gap-3">
     <div>
       <h1 class="text-xl font-bold tracking-tight">SMC SNA SPARSH — Grant Documentation System</h1>
-      <p class="text-xs text-slate-300">HUSNABAD Mandal - All Schools Pre-Loaded</p>
+      <p class="text-xs text-slate-300">HUSNABAD Mandal - 62 Records Pre-Loaded</p>
     </div>
     <div class="flex gap-2">
       <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded shadow transition">
@@ -56,74 +56,74 @@
     <!-- TAB 1: FORM -->
     <section id="tab-form" class="tab-content bg-white p-6 rounded shadow border">
       
-      <!-- HUSNABAD MANDAL DIRECT DROPDOWN -->
+      <!-- HUSNABAD MANDAL SELECTOR -->
       <div class="mb-6 p-4 bg-emerald-50 border-2 border-emerald-500 rounded-lg">
         <label class="block font-bold text-emerald-900 text-sm mb-2">
-          🏫 పాఠశాలను ఎంచుకోండి (Select School - Husnabad Mandal):
+          🏫 పాఠశాలను ఎంచుకోండి (Select School - Husnabad Mandal Only):
         </label>
         <select id="schoolSelector" class="w-full text-sm border-2 border-emerald-600 p-2.5 rounded bg-white text-gray-900 font-bold shadow focus:outline-none" onchange="pickSchool(this.value)">
-          <option value="0">MPPS  KUCHANAPALLY (36180601001) - COMPOSIT SCHOOL GRANT</option>
-          <option value="1">MPPS  KUCHANAPALLY (36180601001) - SPORTS GRANT</option>
-          <option value="2">MPPS  MADATHA (36180600302) - COMPOSIT SCHOOL GRANT</option>
-          <option value="3">MPPS  MADATHA (36180600302) - SPORTS GRANT</option>
-          <option value="4">MPPS (STAGE) PANDILLA (36180601102) - COMPOSIT SCHOOL GRANT</option>
-          <option value="5">MPPS (STAGE) PANDILLA (36180601102) - SPORTS GRANT</option>
-          <option value="6">MPPS AREPALLY (36180600902) - COMPOSIT SCHOOL GRANT</option>
-          <option value="7">MPPS AREPALLY (36180600902) - SPORTS GRANT</option>
-          <option value="8">MPPS CHINNUR (36180600401) - COMPOSIT SCHOOL GRANT</option>
-          <option value="9">MPPS CHINNUR (36180600401) - SPORTS GRANT</option>
-          <option value="10">MPPS GANDHI NAGAR (36180601306) - COMPOSIT SCHOOL GRANT</option>
-          <option value="11">MPPS GANDHI NAGAR (36180601306) - SPORTS GRANT</option>
-          <option value="12">MPPS GANGARAM (36180600701) - COMPOSIT SCHOOL GRANT</option>
-          <option value="13">MPPS GANGARAM (36180600701) - SPORTS GRANT</option>
-          <option value="14">MPPS KACHAPUR (36180600802) - COMPOSIT SCHOOL GRANT</option>
-          <option value="15">MPPS KACHAPUR (36180600802) - SPORTS GRANT</option>
-          <option value="16">MPPS KANAGARTHI (36180600602) - COMPOSIT SCHOOL GRANT</option>
-          <option value="17">MPPS KANAGARTHI (36180600602) - SPORTS GRANT</option>
-          <option value="18">MPPS KASIBUGGA (36180601305) - COMPOSIT SCHOOL GRANT</option>
-          <option value="19">MPPS KASIBUGGA (36180601305) - SPORTS GRANT</option>
-          <option value="20">MPPS KASULAPALLY (36180600201) - COMPOSIT SCHOOL GRANT</option>
-          <option value="21">MPPS KASULAPALLY (36180600201) - SPORTS GRANT</option>
-          <option value="22">MPPS KESHARAM (36180600903) - COMPOSIT SCHOOL GRANT</option>
-          <option value="23">MPPS KESHARAM (36180600903) - SPORTS GRANT</option>
-          <option value="24">MPPS KOTHAPALLY (36180600101) - COMPOSIT SCHOOL GRANT</option>
-          <option value="25">MPPS KOTHAPALLY (36180600101) - SPORTS GRANT</option>
-          <option value="26">MPPS KOYALAKUNTA (36180601002) - COMPOSIT SCHOOL GRANT</option>
-          <option value="27">MPPS KOYALAKUNTA (36180601002) - SPORTS GRANT</option>
-          <option value="28">MPPS MAHAMMADAPUR (36180600501) - COMPOSIT SCHOOL GRANT</option>
-          <option value="29">MPPS MAHAMMADAPUR (36180600501) - SPORTS GRANT</option>
-          <option value="30">MPPS MALLEPALLY (36180600603) - COMPOSIT SCHOOL GRANT</option>
-          <option value="31">MPPS MALLEPALLY (36180600603) - SPORTS GRANT</option>
-          <option value="32">MPPS MARRIPALLY (36180600905) - COMPOSIT SCHOOL GRANT</option>
-          <option value="33">MPPS MARRIPALLY (36180600905) - SPORTS GRANT</option>
-          <option value="34">MPPS MEERPALLY (36180601201) - COMPOSIT SCHOOL GRANT</option>
-          <option value="35">MPPS MEERPALLY (36180601201) - SPORTS GRANT</option>
-          <option value="36">MPPS NAGARAM (36180600801) - COMPOSIT SCHOOL GRANT</option>
-          <option value="37">MPPS NAGARAM (36180600801) - SPORTS GRANT</option>
-          <option value="38">MPPS PANDILLA (36180601101) - COMPOSIT SCHOOL GRANT</option>
-          <option value="39">MPPS PANDILLA (36180601101) - SPORTS GRANT</option>
-          <option value="40">MPPS POTHARAM (S) (36180600901) - COMPOSIT SCHOOL GRANT</option>
-          <option value="41">MPPS POTHARAM (S) (36180600901) - SPORTS GRANT</option>
-          <option value="42">MPPS RAMACHANDRAPUR (36180601304) - COMPOSIT SCHOOL GRANT</option>
-          <option value="43">MPPS RAMACHANDRAPUR (36180601304) - SPORTS GRANT</option>
-          <option value="44">MPPS RAMAVARAM (36180600301) - COMPOSIT SCHOOL GRANT</option>
-          <option value="45">MPPS RAMAVARAM (36180600301) - SPORTS GRANT</option>
-          <option value="46">MPPS THOTAPALLY (36180600601) - COMPOSIT SCHOOL GRANT</option>
-          <option value="47">MPPS THOTAPALLY (36180600601) - SPORTS GRANT</option>
-          <option value="48">MPPS VENKATRAOPALLY (36180600904) - COMPOSIT SCHOOL GRANT</option>
-          <option value="49">MPPS VENKATRAOPALLY (36180600904) - SPORTS GRANT</option>
-          <option value="50">MPUPS HUSNABAD (36180601307) - COMPOSIT SCHOOL GRANT</option>
-          <option value="51">MPUPS HUSNABAD (36180601307) - SPORTS GRANT</option>
-          <option value="52">ZPHS CHINNUR (36180600402) - COMPOSIT SCHOOL GRANT</option>
-          <option value="53">ZPHS CHINNUR (36180600402) - SPORTS GRANT</option>
-          <option value="54">ZPHS HUSNABAD (GIRLS) (36180601309) - COMPOSIT SCHOOL GRANT</option>
-          <option value="55">ZPHS HUSNABAD (GIRLS) (36180601309) - SPORTS GRANT</option>
-          <option value="56">ZPHS HUSNABAD (BOYS) (36180601308) - COMPOSIT SCHOOL GRANT</option>
-          <option value="57">ZPHS HUSNABAD (BOYS) (36180601308) - SPORTS GRANT</option>
-          <option value="58">ZPHS KACHAPUR (36180600803) - COMPOSIT SCHOOL GRANT</option>
-          <option value="59">ZPHS KACHAPUR (36180600803) - SPORTS GRANT</option>
-          <option value="60">ZPHS POTHARAM (S) (36180600906) - COMPOSIT SCHOOL GRANT</option>
-          <option value="61">ZPHS POTHARAM (S) (36180600906) - SPORTS GRANT</option>
+          <option value="0">MPPS  KUCHANAPALLY (36180601001) - Composit School Grant</option>
+          <option value="1">MPPS  KUCHANAPALLY (36180601001) - Sports Grant</option>
+          <option value="2">MPPS  MADATHA (36180600302) - Composit School Grant</option>
+          <option value="3">MPPS  MADATHA (36180600302) - Sports Grant</option>
+          <option value="4">MPPS (STAGE) PANDILLA (36180601102) - Composit School Grant</option>
+          <option value="5">MPPS (STAGE) PANDILLA (36180601102) - Sports Grant</option>
+          <option value="6">MPPS ARAPELLY (36180600204) - Composit School Grant</option>
+          <option value="7">MPPS ARAPELLY (36180600204) - Sports Grant</option>
+          <option value="8">MPPS BALLUNAYAK THANDA (36180600702) - Composit School Grant</option>
+          <option value="9">MPPS BALLUNAYAK THANDA (36180600702) - Sports Grant</option>
+          <option value="10">MPPS BANJERUPALLY (36180601103) - Composit School Grant</option>
+          <option value="11">MPPS BANJERUPALLY (36180601103) - Sports Grant</option>
+          <option value="12">MPPS HUSNABAD (36180600202) - Composit School Grant</option>
+          <option value="13">MPPS HUSNABAD (36180600202) - Sports Grant</option>
+          <option value="14">MPPS KASHI NAGAR (36180600205) - Composit School Grant</option>
+          <option value="15">MPPS KASHI NAGAR (36180600205) - Sports Grant</option>
+          <option value="16">MPPS KASTOORBA COLONY (36180600203) - Composit School Grant</option>
+          <option value="17">MPPS KASTOORBA COLONY (36180600203) - Sports Grant</option>
+          <option value="18">MPPS MALAPALLY (36180601104) - Composit School Grant</option>
+          <option value="19">MPPS MALAPALLY (36180601104) - Sports Grant</option>
+          <option value="20">MPPS MIRZAPUR (36180600703) - Composit School Grant</option>
+          <option value="21">MPPS MIRZAPUR (36180600703) - Sports Grant</option>
+          <option value="22">MPPS MOHAMMADAPUR (36180600402) - Composit School Grant</option>
+          <option value="23">MPPS MOHAMMADAPUR (36180600402) - Sports Grant</option>
+          <option value="24">MPPS PANDILLA (36180601101) - Composit School Grant</option>
+          <option value="25">MPPS PANDILLA (36180601101) - Sports Grant</option>
+          <option value="26">MPPS POOLNAYAK THANDA (36180600701) - Composit School Grant</option>
+          <option value="27">MPPS POOLNAYAK THANDA (36180600701) - Sports Grant</option>
+          <option value="28">MPPS POTHARAM(S) (36180600801) - Composit School Grant</option>
+          <option value="29">MPPS POTHARAM(S) (36180600801) - Sports Grant</option>
+          <option value="30">MPPS POTLAPALLY (36180600101) - Composit School Grant</option>
+          <option value="31">MPPS POTLAPALLY (36180600101) - Sports Grant</option>
+          <option value="32">MPPS THOTAPALLY (36180600901) - Composit School Grant</option>
+          <option value="33">MPPS THOTAPALLY (36180600901) - Sports Grant</option>
+          <option value="34">MPPS UMMAPUR (36180600601) - Composit School Grant</option>
+          <option value="35">MPPS UMMAPUR (36180600601) - Sports Grant</option>
+          <option value="36">MPPS YELLAMBAZAR (36180600212) - Composit School Grant</option>
+          <option value="37">MPPS YELLAMBAZAR (36180600212) - Sports Grant</option>
+          <option value="38">MPUPS GANDHINAGAR (36180600234) - Composit School Grant</option>
+          <option value="39">MPUPS GANDHINAGAR (36180600234) - Sports Grant</option>
+          <option value="40">MPUPS JILLALLAGADDA (36180600602) - Composit School Grant</option>
+          <option value="41">MPUPS JILLALLAGADDA (36180600602) - Sports Grant</option>
+          <option value="42">MPUPS NAGARAM (36180600501) - Composit School Grant</option>
+          <option value="43">MPUPS NAGARAM (36180600501) - Sports Grant</option>
+          <option value="44">MRC HUSNABAD (361806) - MRC Grant</option>
+          <option value="45">ZPHS HUSNABAD (36180600222) - Composit School Grant</option>
+          <option value="46">ZPHS HUSNABAD (3618060002) - CRC Grant</option>
+          <option value="47">ZPHS HUSNABAD (36180600222) - Sports Grant</option>
+          <option value="48">ZPHS HUSNABAD (3618060002) - Adolescent Safety Grant</option>
+          <option value="49">ZPHS MIRZAPUR (36180600704) - Composit School Grant</option>
+          <option value="50">ZPHS MIRZAPUR (36180600704) - Sports Grant</option>
+          <option value="51">ZPHS MIRZAPUR (3618060001) - Adolescent Safety Grant</option>
+          <option value="52">ZPHS MOHAMMADAPUR (36180600403) - Composit School Grant</option>
+          <option value="53">ZPHS MOHAMMADAPUR (36180600403) - Sports Grant</option>
+          <option value="54">ZPHS POTHARAM(S) (36180600802) - Composit School Grant</option>
+          <option value="55">ZPHS POTHARAM(S) (3618060001) - Adolescent Safety Grant</option>
+          <option value="56">ZPHS POTHARAM-S (3618060001) - CRC Grant</option>
+          <option value="57">ZPHS POTHARAM-S (36180600802) - Sports Grant</option>
+          <option value="58">ZPHS POTLAPALLY (36180600102) - Composit School Grant</option>
+          <option value="59">ZPHS POTLAPALLY (36180600102) - Sports Grant</option>
+          <option value="60">ZPHS POTLAPALLY (3618060002) - Adolescent Safety Grant</option>
+          <option value="61">ZPHS MOHAMMADAPUR (3618060002) - Adolescent Safety Grant</option>
         </select>
       </div>
 
@@ -232,8 +232,7 @@
             <p><strong>Sub:</strong> SMC- SNA SPARSH- Samagra Shiksha Funds Sanction of expenditure in the Financial year (FY)-2026-27 towards <span class="val-grant">COMPOSITE SCHOOL GRANT</span> of <span class="val-school">MPPS KUCHANAPALLY</span> orders Issued - Reg.</p>
             <p class="mt-2"><strong>Ref:</strong> 1. State project Director Circular Memo No.TF/619/FCI/SNA SPARSH-SS/2026. Dt. 03.07.2026<br>
             2. State project Director Prc.RCNo.2191/CSG/TSS/PLG/T7/2026-1, Date. 07/08/2026<br>
-            3. School Resolution and Committee Recommendations Dated: <span class="val-date">31/Oct/2026</span><br>
-            4. G.O. MS NO. 40 Edu-(ser. V) Dept., Dt. 07.05.2002.</p>
+            3. School Resolution and Committee Recommendations Dated: <span class="val-date">31/Oct/2026</span></p>
             <p class="mt-2"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-total">25,000</span>/-</strong> towards implementation of programmes under <span class="val-grant">COMPOSITE SCHOOL GRANT</span>.</p>
           </div>
 
@@ -524,83 +523,83 @@
   </main>
 
   <script>
-    // 62 RECORDS OF HUSNABAD MANDAL FROM "SMC Grants hsb.csv"
+    // EXACT 62 RECORDS OF HUSNABAD MANDAL
     const husnabadSchools = [
-      {"school":"MPPS  KUCHANAPALLY","udise":"36180601001","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS  KUCHANAPALLY","udise":"36180601001","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS  MADATHA","udise":"36180600302","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"school":"MPPS  MADATHA","udise":"36180600302","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS (STAGE) PANDILLA","udise":"36180601102","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS (STAGE) PANDILLA","udise":"36180601102","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS AREPALLY","udise":"36180600902","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS AREPALLY","udise":"36180600902","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS CHINNUR","udise":"36180600401","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"COMPOSITE SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"school":"MPPS CHINNUR","udise":"36180600401","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS GANDHI NAGAR","udise":"36180601306","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS GANDHI NAGAR","udise":"36180601306","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS GANGARAM","udise":"36180600701","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"school":"MPPS GANGARAM","udise":"36180600701","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS KACHAPUR","udise":"36180600802","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"B.Balreddy, M.Sc.,M.Ed","ddoCode":"18050308003","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS KACHAPUR","udise":"36180600802","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"B.Balreddy, M.Sc.,M.Ed","ddoCode":"18050308003","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS KANAGARTHI","udise":"36180600602","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS KANAGARTHI","udise":"36180600602","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS KASIBUGGA","udise":"36180601305","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS KASIBUGGA","udise":"36180601305","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS KASULAPALLY","udise":"36180600201","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS KASULAPALLY","udise":"36180600201","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS KESHARAM","udise":"36180600903","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"COMPOSITE SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"school":"MPPS KESHARAM","udise":"36180600903","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS KOTHAPALLY","udise":"36180600101","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS KOTHAPALLY","udise":"36180600101","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS KOYALAKUNTA","udise":"36180601002","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"school":"MPPS KOYALAKUNTA","udise":"36180601002","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS MAHAMMADAPUR","udise":"36180600501","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS MAHAMMADAPUR","udise":"36180600501","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS MALLEPALLY","udise":"36180600603","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS MALLEPALLY","udise":"36180600603","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS MARRIPALLY","udise":"36180600905","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"COMPOSITE SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"school":"MPPS MARRIPALLY","udise":"36180600905","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS MEERPALLY","udise":"36180601201","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"school":"MPPS MEERPALLY","udise":"36180601201","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS NAGARAM","udise":"36180600801","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"B.Balreddy, M.Sc.,M.Ed","ddoCode":"18050308003","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS NAGARAM","udise":"36180600801","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"B.Balreddy, M.Sc.,M.Ed","ddoCode":"18050308003","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS PANDILLA","udise":"36180601101","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS PANDILLA","udise":"36180601101","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS POTHARAM (S)","udise":"36180600901","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS POTHARAM (S)","udise":"36180600901","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS RAMACHANDRAPUR","udise":"36180601304","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS RAMACHANDRAPUR","udise":"36180601304","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS RAMAVARAM","udise":"36180600301","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS RAMAVARAM","udise":"36180600301","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS THOTAPALLY","udise":"36180600601","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPPS THOTAPALLY","udise":"36180600601","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPPS VENKATRAOPALLY","udise":"36180600904","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"COMPOSITE SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
-      {"school":"MPPS VENKATRAOPALLY","udise":"36180600904","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
-      {"school":"MPUPS HUSNABAD","udise":"36180601307","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"MPUPS HUSNABAD","udise":"36180601307","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":5000,"sc":0,"st":0},
-      {"school":"ZPHS CHINNUR","udise":"36180600402","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"COMPOSITE SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
-      {"school":"ZPHS CHINNUR","udise":"36180600402","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"M.Sudhakar, M.A.B.Ed","ddoCode":"18050308007","grant":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"ZPHS HUSNABAD (GIRLS)","udise":"36180601309","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":54000,"sc":12750,"st":8250},
-      {"school":"ZPHS HUSNABAD (GIRLS)","udise":"36180601309","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"ZPHS HUSNABAD (BOYS)","udise":"36180601308","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"COMPOSITE SCHOOL GRANT","gen":54000,"sc":12750,"st":8250},
-      {"school":"ZPHS HUSNABAD (BOYS)","udise":"36180601308","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"K.Vasudeva Reddy, M.Sc.,B.Ed","ddoCode":"18050308008","grant":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"ZPHS KACHAPUR","udise":"36180600803","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"B.Balreddy, M.Sc.,M.Ed","ddoCode":"18050308003","grant":"COMPOSITE SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
-      {"school":"ZPHS KACHAPUR","udise":"36180600803","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"B.Balreddy, M.Sc.,M.Ed","ddoCode":"18050308003","grant":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
-      {"school":"ZPHS POTHARAM (S)","udise":"36180600906","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"COMPOSITE SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
-      {"school":"ZPHS POTHARAM (S)","udise":"36180600906","dist":"SIDDIPET","mandal":"HUSNABAD","ddoName":"Smt.M.Vijaya Bharathi, M.A.B.Ed","ddoCode":"18050308009","grant":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750}
+      {"s":"MPPS  KUCHANAPALLY","u":"36180601001","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS  KUCHANAPALLY","u":"36180601001","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS  MADATHA","u":"36180600302","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS  MADATHA","u":"36180600302","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS (STAGE) PANDILLA ","u":"36180601102","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS (STAGE) PANDILLA ","u":"36180601102","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS ARAPELLY","u":"36180600204","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS ARAPELLY","u":"36180600204","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"SPORTS GRANT","gen":3600,"sc":400,"st":0},
+      {"s":"MPPS BALLUNAYAK THANDA","u":"36180600702","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS BALLUNAYAK THANDA","u":"36180600702","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS BANJERUPALLY","u":"36180601103","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS BANJERUPALLY","u":"36180601103","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS HUSNABAD","u":"36180600202","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
+      {"s":"MPPS HUSNABAD","u":"36180600202","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS KASHI NAGAR","u":"36180600205","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS KASHI NAGAR","u":"36180600205","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS KASTOORBA COLONY","u":"36180600203","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS KASTOORBA COLONY","u":"36180600203","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS MALAPALLY","u":"36180601104","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS MALAPALLY","u":"36180601104","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS MIRZAPUR","u":"36180600703","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS MIRZAPUR","u":"36180600703","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS MOHAMMADAPUR","u":"36180600402","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS MOHAMMADAPUR","u":"36180600402","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"SPORTS GRANT","gen":3600,"sc":400,"st":0},
+      {"s":"MPPS PANDILLA","u":"36180601101","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS PANDILLA","u":"36180601101","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS POOLNAYAK THANDA","u":"36180600701","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS POOLNAYAK THANDA","u":"36180600701","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS POTHARAM(S)","u":"36180600801","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
+      {"s":"MPPS POTHARAM(S)","u":"36180600801","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS POTLAPALLY","u":"36180600101","d":"SIDDIPET","m":"HUSNABAD","hn":"N.Sandhya Sri","hc":"18050308013","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS POTLAPALLY","u":"36180600101","d":"SIDDIPET","m":"HUSNABAD","hn":"N.Sandhya Sri","hc":"18050308013","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS THOTAPALLY","u":"36180600901","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS THOTAPALLY","u":"36180600901","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS UMMAPUR","u":"36180600601","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS UMMAPUR","u":"36180600601","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS YELLAMBAZAR","u":"36180600212","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS YELLAMBAZAR","u":"36180600212","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPUPS GANDHINAGAR","u":"36180600234","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPUPS GANDHINAGAR","u":"36180600234","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS JILLALLAGADDA","u":"36180600602","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS JILLALLAGADDA","u":"36180600602","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS NAGARAM","u":"36180600501","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS NAGARAM","u":"36180600501","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"SPORTS GRANT","gen":7000,"sc":0,"st":0},
+      {"s":"MRC HUSNABAD","u":"361806","d":"SIDDIPET","m":"HUSNABAD","hn":"B. Manila","hc":"18052202086","g":"MRC GRANT","gen":64800,"sc":15300,"st":9900},
+      {"s":"ZPHS HUSNABAD","u":"36180600222","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":54000,"sc":12750,"st":8250},
+      {"s":"ZPHS HUSNABAD","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"CRC GRANT","gen":30960,"sc":7310,"st":4730},
+      {"s":"ZPHS HUSNABAD","u":"36180600222","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS HUSNABAD","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS MIRZAPUR","u":"36180600704","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS MIRZAPUR","u":"36180600704","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS MIRZAPUR","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS MOHAMMADAPUR","u":"36180600403","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS MOHAMMADAPUR","u":"36180600403","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTHARAM(S)","u":"36180600802","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
+      {"s":"ZPHS POTHARAM(S)","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS POTHARAM-S","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"CRC GRANT","gen":30960,"sc":7310,"st":4730},
+      {"s":"ZPHS POTHARAM-S","u":"36180600802","d":"SIDDIPET","m":"HUSNABAD","hn":"Smt.M.Vijaya Bharathi, M.A.B.Ed","hc":"18050308009","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTLAPALLY","u":"36180600102","d":"SIDDIPET","m":"HUSNABAD","hn":"N.Sandhya Sri","hc":"18050308013","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTLAPALLY","u":"36180600102","d":"SIDDIPET","m":"HUSNABAD","hn":"N.Sandhya Sri","hc":"18050308013","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTLAPALLY","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","hn":"N.Sandhya Sri","hc":"18050308013","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS MOHAMMADAPUR","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","hn":"P.Mahender Reddy","hc":"18050308034","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0}
     ];
 
     function pickSchool(index) {
       const s = husnabadSchools[parseInt(index, 10)];
       if (!s) return;
 
-      document.getElementById('inSchool').value = s.school;
-      document.getElementById('inUdise').value = s.udise;
-      document.getElementById('inDistrict').value = s.dist;
-      document.getElementById('inMandal').value = s.mandal;
-      document.getElementById('inHm').value = s.ddoName;
-      document.getElementById('inDdoCode').value = s.ddoCode;
-      document.getElementById('inGrant').value = s.grant;
+      document.getElementById('inSchool').value = s.s;
+      document.getElementById('inUdise').value = s.u;
+      document.getElementById('inDistrict').value = s.d;
+      document.getElementById('inMandal').value = s.m;
+      document.getElementById('inHm').value = s.hn;
+      document.getElementById('inDdoCode').value = s.hc;
+      document.getElementById('inGrant').value = s.g;
 
       document.getElementById('inGenAmt').value = s.gen;
       document.getElementById('inGenUtil').value = s.gen;

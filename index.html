@@ -1,0 +1,29 @@
+Act as a Senior Frontend Web Developer. Build a complete, responsive, and editable Single Page Web Application (using HTML5, Tailwind CSS, and Vanilla JavaScript) for School Management Committee (SMC) SNA SPARSH Grant Management and Documentation System.
+
+Requirements:
+1. Dynamic & Editable Form (Input Dashboard):
+   - School Details: School Name, UDISE Code, Mandal, District, DDO Code, Headmaster Name.
+   - Scheme & Financial Details: Scheme Name (e.g., COMPOSITE SCHOOL GRANT), Financial Year (2026-27), Proc No, Sanction Date, Spell, HOA details.
+   - Vendor & Expenditure Table: Provide an interactive table with fields: Category (GEN, SC, ST), Vendor Name, Bank Account No, Bank & IFSC Code, Sanctioned Amount, Already Utilized, Present Utilisation, Balance, GST Deduction, Net Amount, Remarks.
+   - Include buttons to Add New Row, Delete Row, and Auto-calculate Totals (Sanctioned, Utilized, Net Amount, and Balance).
+
+2. Output Document Preview & Templates (Printable & Editable):
+   Create tabbed views or a continuous layout of well-formatted, official government-style printable documents pre-filled from the form data:
+   - Module 1: SMC-BUDGET WATCH REGISTER (with columns for Intervention, Head, HOA, Spell, Office Sanction, Date, Released, Utilized, Balance, Vendor Name).
+   - Module 2: PROCEEDINGS OF THE GAZETTED HEADMASTER (Official sanction order format with standard reference citations, component breakdown table, vendor annexure table, enclosures list, and signature blocks).
+   - Module 3: SMC COMMITTEE EXPENDITURE RESOLUTION (Formal resolution text, vendor payment annexure, and staff/HM signature lines).
+   - Module 4: CONSOLIDATED UTILIZATION CERTIFICATE (Receipts vs Payments matrix across GEN, SC, ST, and Total).
+   - Module 5: SINGLE UTILIZATION CERTIFICATE (Summary table of Sanctioned vs Utilized).
+   - Module 6: ADVANCE STAMPED RECEIPTS (Individual revenue stamp receipts for each category: GEN, SC, ST with vendor bank details and DDO countersignature).
+   - Module 7: VOUCHER CERTIFICATION SLIP (Stock register certificate and space for pasting original vouchers).
+
+3. Features & UX:
+   - Contenteditable Mode: Allow clicking and editing text directly on the preview documents before printing.
+   - Storage & Export: Include "Save to LocalStorage", "Print / Save as PDF" (with clean @media print CSS hiding navigation and buttons), and "Export to CSV/JSON".
+   - Sample Pre-fill: Pre-load the application by default with sample data:
+     * School: ZPHS AKKANNAPET (UDISE: 36180700907), Mandal: AKKANNAPETA, Dist: SIDDIPET.
+     * HM / DDO: K.Sandhya Rani, M.A.B.Ed (DDO Code: 18050308005).
+     * Proc No: 01/PMSHRI/2026-27, Date: 31/Oct/2026.
+     * Grants: GEN (Rs. 18,000 - M/S GEN SUPPLIERS), SC (Rs. 4,250 - M/S SC TRADERS), ST (Rs. 2,750 - M/S ST ENTERPRISES). Total: Rs. 25,000.
+
+Please provide the complete, production-ready code in a single standalone 'index.html' file so that it can be hosted directly on GitHub Pages without requiring any external build tools.

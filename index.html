@@ -90,7 +90,7 @@
       color: #ffffff;
       font-size: 12px;
       font-weight: 700;
-      padding: 8px 13px;
+      padding: 8px 14px;
       border-radius: 6px;
       border: none;
       cursor: pointer;
@@ -354,7 +354,7 @@
     </div>
   </header>
 
-  <!-- NAVIGATION BUTTONS -->
+  <!-- NAVIGATION BUTTONS (SINGLE "7. Receipts" BUTTON) -->
   <nav class="nav-tabs no-print">
     <button onclick="switchTab('form')" id="btn-form" class="tab-btn" style="background-color: #1d4ed8;">1. School Selection & Form</button>
     <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn" style="background-color: #4f46e5;">2. Proceedings</button>
@@ -362,9 +362,7 @@
     <button onclick="switchTab('budget')" id="btn-budget" class="tab-btn" style="background-color: #d97706;">4. Budget Register</button>
     <button onclick="switchTab('single-uc')" id="btn-single-uc" class="tab-btn" style="background-color: #059669;">5. Single UC</button>
     <button onclick="switchTab('consolidated-uc')" id="btn-consolidated-uc" class="tab-btn" style="background-color: #0e7490;">6. Consolidated UC</button>
-    <button onclick="switchTab('receipts-gen')" id="btn-receipts-gen" class="tab-btn" style="background-color: #be185d;">7A. Receipts (GEN)</button>
-    <button onclick="switchTab('receipts-sc')" id="btn-receipts-sc" class="tab-btn" style="background-color: #9d174d;">7B. Receipts (SC)</button>
-    <button onclick="switchTab('receipts-st')" id="btn-receipts-st" class="tab-btn" style="background-color: #831843;">7C. Receipts (ST)</button>
+    <button onclick="switchTab('receipts')" id="btn-receipts" class="tab-btn" style="background-color: #be185d;">7. Receipts (3 Pages: GEN, SC, ST)</button>
     <button onclick="switchTab('voucher')" id="btn-voucher" class="tab-btn" style="background-color: #e11d48;">8. Voucher Slip</button>
     <button onclick="switchTab('all')" id="btn-all" class="tab-btn" style="background-color: #3b0764; color: #fde047; border: 1px solid #fde047;">📑 View All (Print Ready)</button>
   </nav>
@@ -548,7 +546,7 @@
     <!-- PRINTABLE TEMPLATES -->
     <div id="print-area">
 
-      <!-- 2. PROCEEDINGS (SPACIOUS EXACT 1-PAGE FIT) -->
+      <!-- 2. PROCEEDINGS -->
       <article id="tab-proceedings" class="sheet tab-content page-break">
         <div class="sheet-inner">
           <div class="proc-body">
@@ -845,157 +843,162 @@
         </div>
       </article>
 
-      <!-- 7A. ADVANCE RECEIPTS (PAGE 1 - GEN COMPONENT ENLARGED) -->
-      <article id="tab-receipts-gen" class="sheet tab-content page-break">
-        <div class="sheet-inner">
-          <div>
-            <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px;">
-              <h2 style="font-size: 17px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
-              <p style="font-size: 13px; margin-top: 4px; font-weight: 700; color: #111827;">
-                School: <span class="val-school">MPPS  KUCHANAPALLY</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">36180601001</span>
-              </p>
-              <p style="font-size: 12px; font-weight: 600; color: #4b5563;">
-                Mandal: <span class="val-mandal">HUSNABAD</span> &nbsp;|&nbsp; District: <span class="val-dist">SIDDIPET</span>
-              </p>
-            </div>
-
-            <div class="enlarged-receipt-card">
-              <div>
-                <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 14px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 8px;">
-                  <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">31/Oct/2026</span></span>
-                  <span style="color: #1e3a8a;">GENERAL COMPONENT</span>
-                </div>
-                
-                <p style="margin-top: 24px; font-size: 14.5px; line-height: 1.8; text-align: justify;">
-                  Received with thanks from the Office of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, the sum of 
-                  <strong>Rs. <span class="val-util-gen">18,000</span>/-</strong> towards <strong>GENERAL Component</strong> 
-                  under Head of Account <strong>(<span class="val-hoa-gen">2202-01-001-15-05-500-503</span>)</strong>.
+      <!-- 7. ADVANCE RECEIPTS (ALL 3 PAGES UNDER SINGLE TAB) -->
+      <div id="tab-receipts" class="tab-content">
+        
+        <!-- PAGE 1: GEN COMPONENT -->
+        <article class="sheet page-break">
+          <div class="sheet-inner">
+            <div>
+              <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px;">
+                <h2 style="font-size: 17px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
+                <p style="font-size: 13.5px; margin-top: 5px; font-weight: 800; color: #111827;">
+                  School: <span class="val-school">MPPS  KUCHANAPALLY</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">36180601001</span>
                 </p>
-
-                <div style="margin-top: 24px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 16px; font-size: 13.5px; line-height: 1.8;">
-                  <p><strong>1. Vendor Name :</strong> <span class="val-v-gen-name">M/S GEN SUPPLIERS</span></p>
-                  <p><strong>2. Bank A/c No &nbsp;:</strong> <span class="val-v-gen-acc">456</span></p>
-                  <p><strong>3. Bank & IFSC &nbsp;:</strong> <span class="val-v-gen-ifsc">SBI, SBIN123</span></p>
-                </div>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px;">
-                <div style="width: 80px; height: 85px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
-                  Affix ₹1/-<br>Revenue<br>Stamp
-                </div>
-                <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
-                  <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
-                  <p>DDO Code: <span class="val-ddo">18050308008</span></p>
-                  <p><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
-        </div>
-      </article>
-
-      <!-- 7B. ADVANCE RECEIPTS (PAGE 2 - SC COMPONENT ENLARGED) -->
-      <article id="tab-receipts-sc" class="sheet tab-content page-break">
-        <div class="sheet-inner">
-          <div>
-            <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px;">
-              <h2 style="font-size: 17px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
-              <p style="font-size: 13px; margin-top: 4px; font-weight: 700; color: #111827;">
-                School: <span class="val-school">MPPS  KUCHANAPALLY</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">36180601001</span>
-              </p>
-              <p style="font-size: 12px; font-weight: 600; color: #4b5563;">
-                Mandal: <span class="val-mandal">HUSNABAD</span> &nbsp;|&nbsp; District: <span class="val-dist">SIDDIPET</span>
-              </p>
-            </div>
-
-            <div class="enlarged-receipt-card">
-              <div>
-                <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 14px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 8px;">
-                  <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">31/Oct/2026</span></span>
-                  <span style="color: #1e3a8a;">SC COMPONENT</span>
-                </div>
-                
-                <p style="margin-top: 24px; font-size: 14.5px; line-height: 1.8; text-align: justify;">
-                  Received with thanks from the Office of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, the sum of 
-                  <strong>Rs. <span class="val-util-sc">4,250</span>/-</strong> towards <strong>SC Component</strong> 
-                  under Head of Account <strong>(<span class="val-hoa-sc">2202-01-789-15-05-500-503</span>)</strong>.
+                <p style="font-size: 12.5px; font-weight: 600; color: #374151; margin-top: 2px;">
+                  Mandal: <span class="val-mandal">HUSNABAD</span> &nbsp;|&nbsp; District: <span class="val-dist">SIDDIPET</span>
                 </p>
-
-                <div style="margin-top: 24px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 16px; font-size: 13.5px; line-height: 1.8;">
-                  <p><strong>1. Vendor Name :</strong> <span class="val-v-sc-name">M/S SC TRADERS</span></p>
-                  <p><strong>2. Bank A/c No &nbsp;:</strong> <span class="val-v-sc-acc">789</span></p>
-                  <p><strong>3. Bank & IFSC &nbsp;:</strong> <span class="val-v-sc-ifsc">SBI, SBIN456</span></p>
-                </div>
               </div>
 
-              <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px;">
-                <div style="width: 80px; height: 85px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
-                  Affix ₹1/-<br>Revenue<br>Stamp
+              <div class="enlarged-receipt-card">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 14.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 8px;">
+                    <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">31/Oct/2026</span></span>
+                    <span style="color: #1e3a8a; text-transform: uppercase;">GENERAL COMPONENT (1/3)</span>
+                  </div>
+                  
+                  <p style="margin-top: 26px; font-size: 15px; line-height: 1.85; text-align: justify;">
+                    Received with thanks from the Office of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, the sum of 
+                    <strong>Rs. <span class="val-util-gen">18,000</span>/-</strong> towards <strong>GENERAL Component</strong> 
+                    under Head of Account <strong>(<span class="val-hoa-gen">2202-01-001-15-05-500-503</span>)</strong>.
+                  </p>
+
+                  <div style="margin-top: 26px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 18px; font-size: 14px; line-height: 1.85;">
+                    <p><strong>1. Vendor Name :</strong> <span class="val-v-gen-name">M/S GEN SUPPLIERS</span></p>
+                    <p><strong>2. Bank A/c No &nbsp;:</strong> <span class="val-v-gen-acc">456</span></p>
+                    <p><strong>3. Bank & IFSC &nbsp;:</strong> <span class="val-v-gen-ifsc">SBI, SBIN123</span></p>
+                  </div>
                 </div>
-                <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
-                  <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
-                  <p>DDO Code: <span class="val-ddo">18050308008</span></p>
-                  <p><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
+
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
+                  <div style="width: 85px; height: 90px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
+                    Affix ₹1/-<br>Revenue<br>Stamp
+                  </div>
+                  <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
+                    <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
+                    <p>DDO Code: <span class="val-ddo">18050308008</span></p>
+                    <p><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
           </div>
-          <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
-        </div>
-      </article>
+        </article>
 
-      <!-- 7C. ADVANCE RECEIPTS (PAGE 3 - ST COMPONENT ENLARGED) -->
-      <article id="tab-receipts-st" class="sheet tab-content page-break">
-        <div class="sheet-inner">
-          <div>
-            <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px;">
-              <h2 style="font-size: 17px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
-              <p style="font-size: 13px; margin-top: 4px; font-weight: 700; color: #111827;">
-                School: <span class="val-school">MPPS  KUCHANAPALLY</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">36180601001</span>
-              </p>
-              <p style="font-size: 12px; font-weight: 600; color: #4b5563;">
-                Mandal: <span class="val-mandal">HUSNABAD</span> &nbsp;|&nbsp; District: <span class="val-dist">SIDDIPET</span>
-              </p>
-            </div>
-
-            <div class="enlarged-receipt-card">
-              <div>
-                <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 14px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 8px;">
-                  <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">31/Oct/2026</span></span>
-                  <span style="color: #1e3a8a;">ST COMPONENT</span>
-                </div>
-                
-                <p style="margin-top: 24px; font-size: 14.5px; line-height: 1.8; text-align: justify;">
-                  Received with thanks from the Office of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, the sum of 
-                  <strong>Rs. <span class="val-util-st">2,750</span>/-</strong> towards <strong>ST Component</strong> 
-                  under Head of Account <strong>(<span class="val-hoa-st">2202-01-796-15-05-500-503</span>)</strong>.
+        <!-- PAGE 2: SC COMPONENT -->
+        <article class="sheet page-break">
+          <div class="sheet-inner">
+            <div>
+              <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px;">
+                <h2 style="font-size: 17px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
+                <p style="font-size: 13.5px; margin-top: 5px; font-weight: 800; color: #111827;">
+                  School: <span class="val-school">MPPS  KUCHANAPALLY</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">36180601001</span>
                 </p>
-
-                <div style="margin-top: 24px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 16px; font-size: 13.5px; line-height: 1.8;">
-                  <p><strong>1. Vendor Name :</strong> <span class="val-v-st-name">M/S ST ENTERPRISES</span></p>
-                  <p><strong>2. Bank A/c No &nbsp;:</strong> <span class="val-v-st-acc">123</span></p>
-                  <p><strong>3. Bank & IFSC &nbsp;:</strong> <span class="val-v-st-ifsc">SBI, SBINXYZ1</span></p>
-                </div>
+                <p style="font-size: 12.5px; font-weight: 600; color: #374151; margin-top: 2px;">
+                  Mandal: <span class="val-mandal">HUSNABAD</span> &nbsp;|&nbsp; District: <span class="val-dist">SIDDIPET</span>
+                </p>
               </div>
 
-              <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px;">
-                <div style="width: 80px; height: 85px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
-                  Affix ₹1/-<br>Revenue<br>Stamp
+              <div class="enlarged-receipt-card">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 14.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 8px;">
+                    <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">31/Oct/2026</span></span>
+                    <span style="color: #1e3a8a; text-transform: uppercase;">SC COMPONENT (2/3)</span>
+                  </div>
+                  
+                  <p style="margin-top: 26px; font-size: 15px; line-height: 1.85; text-align: justify;">
+                    Received with thanks from the Office of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, the sum of 
+                    <strong>Rs. <span class="val-util-sc">4,250</span>/-</strong> towards <strong>SC Component</strong> 
+                    under Head of Account <strong>(<span class="val-hoa-sc">2202-01-789-15-05-500-503</span>)</strong>.
+                  </p>
+
+                  <div style="margin-top: 26px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 18px; font-size: 14px; line-height: 1.85;">
+                    <p><strong>1. Vendor Name :</strong> <span class="val-v-sc-name">M/S SC TRADERS</span></p>
+                    <p><strong>2. Bank A/c No &nbsp;:</strong> <span class="val-v-sc-acc">789</span></p>
+                    <p><strong>3. Bank & IFSC &nbsp;:</strong> <span class="val-v-sc-ifsc">SBI, SBIN456</span></p>
+                  </div>
                 </div>
-                <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
-                  <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
-                  <p>DDO Code: <span class="val-ddo">18050308008</span></p>
-                  <p><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
+
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
+                  <div style="width: 85px; height: 90px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
+                    Affix ₹1/-<br>Revenue<br>Stamp
+                  </div>
+                  <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
+                    <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
+                    <p>DDO Code: <span class="val-ddo">18050308008</span></p>
+                    <p><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
           </div>
-          <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
-        </div>
-      </article>
+        </article>
 
-      <!-- 8. VOUCHER RECEIPT CERTIFICATION (A4 PORTRAIT BALANCED) -->
+        <!-- PAGE 3: ST COMPONENT -->
+        <article class="sheet page-break">
+          <div class="sheet-inner">
+            <div>
+              <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px;">
+                <h2 style="font-size: 17px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
+                <p style="font-size: 13.5px; margin-top: 5px; font-weight: 800; color: #111827;">
+                  School: <span class="val-school">MPPS  KUCHANAPALLY</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">36180601001</span>
+                </p>
+                <p style="font-size: 12.5px; font-weight: 600; color: #374151; margin-top: 2px;">
+                  Mandal: <span class="val-mandal">HUSNABAD</span> &nbsp;|&nbsp; District: <span class="val-dist">SIDDIPET</span>
+                </p>
+              </div>
+
+              <div class="enlarged-receipt-card">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 14.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 8px;">
+                    <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">31/Oct/2026</span></span>
+                    <span style="color: #1e3a8a; text-transform: uppercase;">ST COMPONENT (3/3)</span>
+                  </div>
+                  
+                  <p style="margin-top: 26px; font-size: 15px; line-height: 1.85; text-align: justify;">
+                    Received with thanks from the Office of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, the sum of 
+                    <strong>Rs. <span class="val-util-st">2,750</span>/-</strong> towards <strong>ST Component</strong> 
+                    under Head of Account <strong>(<span class="val-hoa-st">2202-01-796-15-05-500-503</span>)</strong>.
+                  </p>
+
+                  <div style="margin-top: 26px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 18px; font-size: 14px; line-height: 1.85;">
+                    <p><strong>1. Vendor Name :</strong> <span class="val-v-st-name">M/S ST ENTERPRISES</span></p>
+                    <p><strong>2. Bank A/c No &nbsp;:</strong> <span class="val-v-st-acc">123</span></p>
+                    <p><strong>3. Bank & IFSC &nbsp;:</strong> <span class="val-v-st-ifsc">SBI, SBINXYZ1</span></p>
+                  </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
+                  <div style="width: 85px; height: 90px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
+                    Affix ₹1/-<br>Revenue<br>Stamp
+                  </div>
+                  <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
+                    <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
+                    <p>DDO Code: <span class="val-ddo">18050308008</span></p>
+                    <p><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- 8. VOUCHER RECEIPT CERTIFICATION -->
       <article id="tab-voucher" class="sheet tab-content page-break">
         <div class="sheet-inner">
           <div>
@@ -1004,7 +1007,6 @@
               <p style="font-size: 12px; margin-top: 4px; font-weight: 600; color: #374151;">School: <span class="val-school" style="color: #000; font-weight: 700;">MPPS  KUCHANAPALLY</span> &nbsp;|&nbsp; UDISE: <span class="val-udise" style="color: #000; font-weight: 700;">36180601001</span></p>
             </div>
 
-            <!-- BALANCED VOUCHER BOX -->
             <div class="voucher-box" style="margin: 20px 0; border: 2px dashed #4b5563; height: 140mm; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #f9fafb; color: #4b5563;">
               <p style="font-weight: 800; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;">ORIGINAL VOUCHER PASTE HERE</p>
               <p style="font-size: 11px; color: #6b7280; margin-top: 6px;">(Affix original bills / vouchers with proper seal and signature)</p>

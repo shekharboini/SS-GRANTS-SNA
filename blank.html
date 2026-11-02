@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAMAGRA SHIKSHA - SNA SPARSH REPORTS SOFTWARE (BLANK MODEL)</title>
+  <title>SAMAGRA SHIKSHA - SNA SPARSH REPORTS SOFTWARE</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
     body { background-color: #f3f4f6; color: #111827; }
@@ -175,6 +175,38 @@
       border: 1px solid #d1d5db;
     }
 
+    /* COMPONENT FILTER BAR IN PROCEEDINGS */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 8px 14px;
+      margin-bottom: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1e3a8a;
+    }
+    .filter-btn {
+      padding: 5px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn.active {
+      background-color: #1e3a8a;
+      color: #ffffff;
+      border-color: #1e3a8a;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
     /* SHEET PRINT STYLES - A4 SINGLE PAGE FIT */
     .sheet {
       background-color: #ffffff;
@@ -323,7 +355,7 @@
     </div>
   </header>
 
-  <!-- NAVIGATION BUTTONS (SINGLE "7. Receipts" BUTTON) -->
+  <!-- NAVIGATION BUTTONS -->
   <nav class="nav-tabs no-print">
     <button onclick="switchTab('form')" id="btn-form" class="tab-btn" style="background-color: #1d4ed8;">1. Data Entry Form</button>
     <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn" style="background-color: #4f46e5;">2. Proceedings</button>
@@ -438,8 +470,18 @@
     <!-- PRINTABLE TEMPLATES -->
     <div id="print-area">
 
-      <!-- 2. PROCEEDINGS -->
+      <!-- 2. PROCEEDINGS (WITH COMPONENT FILTER) -->
       <article id="tab-proceedings" class="sheet tab-content page-break">
+        
+        <!-- COMPONENT FILTER BAR (NO-PRINT) -->
+        <div class="filter-bar no-print">
+          <span>🔍 Filter Component:</span>
+          <button type="button" class="filter-btn active" id="flt-all" onclick="setComponentFilter('ALL')">All Components</button>
+          <button type="button" class="filter-btn" id="flt-gen" onclick="setComponentFilter('GEN')">GEN Only</button>
+          <button type="button" class="filter-btn" id="flt-sc" onclick="setComponentFilter('SC')">SC Only</button>
+          <button type="button" class="filter-btn" id="flt-st" onclick="setComponentFilter('ST')">ST Only</button>
+        </div>
+
         <div class="sheet-inner">
           <div class="proc-body">
             <div style="text-align: center; font-weight: 700;">
@@ -462,7 +504,7 @@
                 <p style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. G.O. MS NO. 40 Edu-(ser. V) Dept., Dt. 07.05.2002.</p>
               </div>
 
-              <p style="font-size: 11.5px;"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-total">0</span>/-</strong> towards implementation of programmes under <strong><span class="val-grant">____________________</span></strong>.</p>
+              <p style="font-size: 11.5px;"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-proc-total">0</span>/-</strong> towards implementation of programmes under <strong><span class="val-grant">____________________</span></strong> <span id="procComponentText"></span>.</p>
             </div>
 
             <div>
@@ -477,11 +519,8 @@
                     <th style="text-align: right; width: 105px;">Balance (₹)</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr><td style="text-align: center;">1</td><td class="val-hoa-gen">2202-01-001-15-05-500-503</td><td style="text-align: center; font-weight: 600;">GEN</td><td style="text-align: right;" class="val-amt-gen">0</td><td style="text-align: right;" class="val-util-gen">0</td><td style="text-align: right;" class="val-bal-gen">0</td></tr>
-                  <tr><td style="text-align: center;">2</td><td class="val-hoa-sc">2202-01-789-15-05-500-503</td><td style="text-align: center; font-weight: 600;">SC</td><td style="text-align: right;" class="val-amt-sc">0</td><td style="text-align: right;" class="val-util-sc">0</td><td style="text-align: right;" class="val-bal-sc">0</td></tr>
-                  <tr><td style="text-align: center;">3</td><td class="val-hoa-st">2202-01-796-15-05-500-503</td><td style="text-align: center; font-weight: 600;">ST</td><td style="text-align: right;" class="val-amt-st">0</td><td style="text-align: right;" class="val-util-st">0</td><td style="text-align: right;" class="val-bal-st">0</td></tr>
-                  <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="3" style="text-align: center;">TOTAL</td><td style="text-align: right;" class="val-total">0</td><td style="text-align: right;" class="val-total-util">0</td><td style="text-align: right;" class="val-total-bal">0</td></tr>
+                <tbody id="procTableBody">
+                  <!-- Auto Rendered based on Filter -->
                 </tbody>
               </table>
             </div>
@@ -498,11 +537,8 @@
                     <th style="text-align: right; width: 125px;">Net Amount (₹)</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr><td style="text-align: center; font-weight: 600;">GEN</td><td class="val-v-gen-name">-</td><td class="val-v-gen-acc">-</td><td class="val-v-gen-ifsc">-</td><td style="text-align: right;" class="val-util-gen">0</td></tr>
-                  <tr><td style="text-align: center; font-weight: 600;">SC</td><td class="val-v-sc-name">-</td><td class="val-v-sc-acc">-</td><td class="val-v-sc-ifsc">-</td><td style="text-align: right;" class="val-util-sc">0</td></tr>
-                  <tr><td style="text-align: center; font-weight: 600;">ST</td><td class="val-v-st-name">-</td><td class="val-v-st-acc">-</td><td class="val-v-st-ifsc">-</td><td style="text-align: right;" class="val-util-st">0</td></tr>
-                  <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="4" style="text-align: center;">TOTAL</td><td style="text-align: right;" class="val-total-util">0</td></tr>
+                <tbody id="procVendorBody">
+                  <!-- Auto Rendered based on Filter -->
                 </tbody>
               </table>
             </div>
@@ -921,6 +957,99 @@
   </main>
 
   <script>
+    let currentFilter = 'ALL';
+
+    function setComponentFilter(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('flt-' + filter.toLowerCase());
+      if (activeBtn) activeBtn.classList.add('active');
+      renderProceedingsTables();
+    }
+
+    function renderProceedingsTables() {
+      const getVal = (id, def = '') => {
+        const v = document.getElementById(id).value.trim();
+        return v ? v : def;
+      };
+
+      const genAmt = Number(document.getElementById('inGenAmt').value || 0);
+      const genUtil = Number(document.getElementById('inGenUtil').value || 0);
+      const scAmt = Number(document.getElementById('inScAmt').value || 0);
+      const scUtil = Number(document.getElementById('inScUtil').value || 0);
+      const stAmt = Number(document.getElementById('inStAmt').value || 0);
+      const stUtil = Number(document.getElementById('inStUtil').value || 0);
+
+      const items = [
+        { cat: 'GEN', hoa: getVal('inGenHoa', '2202-01-001-15-05-500-503'), vendor: getVal('inGenVendor', '-'), acc: getVal('inGenAcc', '-'), ifsc: getVal('inGenIfsc', '-'), sAmt: genAmt, uAmt: genUtil },
+        { cat: 'SC',  hoa: getVal('inScHoa', '2202-01-789-15-05-500-503'),  vendor: getVal('inScVendor', '-'),  acc: getVal('inScAcc', '-'),  ifsc: getVal('inScIfsc', '-'),  sAmt: scAmt,  uAmt: scUtil },
+        { cat: 'ST',  hoa: getVal('inStHoa', '2202-01-796-15-05-500-503'),  vendor: getVal('inStVendor', '-'),  acc: getVal('inStAcc', '-'),  ifsc: getVal('inStIfsc', '-'),  sAmt: stAmt,  uAmt: stUtil }
+      ];
+
+      // Filter rows
+      let visibleItems = items.filter(it => {
+        if (currentFilter !== 'ALL' && it.cat !== currentFilter) return false;
+        // Hide row if zero when All is selected and amount is strictly 0
+        if (currentFilter === 'ALL' && it.sAmt === 0 && it.uAmt === 0) return false;
+        return true;
+      });
+
+      // If all are zero and empty, show default
+      if (visibleItems.length === 0) {
+        visibleItems = items.filter(it => currentFilter === 'ALL' || it.cat === currentFilter);
+      }
+
+      let procTbody = '';
+      let vendorTbody = '';
+      let totSanctioned = 0;
+      let totUtilized = 0;
+
+      visibleItems.forEach((it, idx) => {
+        const bal = Math.max(0, it.sAmt - it.uAmt);
+        totSanctioned += it.sAmt;
+        totUtilized += it.uAmt;
+
+        procTbody += `<tr>
+          <td style="text-align: center;">${idx + 1}</td>
+          <td>${it.hoa}</td>
+          <td style="text-align: center; font-weight: 600;">${it.cat}</td>
+          <td style="text-align: right;">${it.sAmt.toLocaleString('en-IN')}</td>
+          <td style="text-align: right;">${it.uAmt.toLocaleString('en-IN')}</td>
+          <td style="text-align: right;">${bal.toLocaleString('en-IN')}</td>
+        </tr>`;
+
+        vendorTbody += `<tr>
+          <td style="text-align: center; font-weight: 600;">${it.cat}</td>
+          <td>${it.vendor}</td>
+          <td>${it.acc}</td>
+          <td>${it.ifsc}</td>
+          <td style="text-align: right;">${it.uAmt.toLocaleString('en-IN')}</td>
+        </tr>`;
+      });
+
+      const totBal = Math.max(0, totSanctioned - totUtilized);
+      procTbody += `<tr style="font-weight: 800; background-color: #f9fafb;">
+        <td colspan="3" style="text-align: center;">TOTAL</td>
+        <td style="text-align: right;">${totSanctioned.toLocaleString('en-IN')}</td>
+        <td style="text-align: right;">${totUtilized.toLocaleString('en-IN')}</td>
+        <td style="text-align: right;">${totBal.toLocaleString('en-IN')}</td>
+      </tr>`;
+
+      vendorTbody += `<tr style="font-weight: 800; background-color: #f9fafb;">
+        <td colspan="4" style="text-align: center;">TOTAL</td>
+        <td style="text-align: right;">${totUtilized.toLocaleString('en-IN')}</td>
+      </tr>`;
+
+      document.getElementById('procTableBody').innerHTML = procTbody;
+      document.getElementById('procVendorBody').innerHTML = vendorTbody;
+      document.querySelectorAll('.val-proc-total').forEach(el => el.innerText = totSanctioned.toLocaleString('en-IN'));
+
+      const compTextEl = document.getElementById('procComponentText');
+      if (compTextEl) {
+        compTextEl.innerText = currentFilter === 'ALL' ? '' : `(${currentFilter} COMPONENT)`;
+      }
+    }
+
     function renderAll() {
       const getVal = (id, def = '') => {
         const v = document.getElementById(id).value.trim();
@@ -979,6 +1108,8 @@
       setEls('val-total', total.toLocaleString('en-IN'));
       setEls('val-total-util', totalUtil.toLocaleString('en-IN'));
       setEls('val-total-bal', totalBal.toLocaleString('en-IN'));
+
+      renderProceedingsTables();
     }
 
     function switchTab(tabKey) {

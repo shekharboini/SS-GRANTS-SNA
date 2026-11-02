@@ -175,7 +175,7 @@
       border: 1px solid #d1d5db;
     }
 
-    /* COMPONENT FILTER BAR IN PROCEEDINGS */
+    /* COMPONENT FILTER BAR */
     .filter-bar {
       display: flex;
       align-items: center;
@@ -190,8 +190,8 @@
       color: #1e3a8a;
     }
     .filter-btn {
-      padding: 5px 12px;
-      font-size: 11.5px;
+      padding: 6px 14px;
+      font-size: 12px;
       font-weight: 700;
       border-radius: 4px;
       border: 1px solid #cbd5e1;
@@ -204,7 +204,7 @@
       background-color: #1e3a8a;
       color: #ffffff;
       border-color: #1e3a8a;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
     }
 
     /* SHEET PRINT STYLES - A4 SINGLE PAGE FIT */
@@ -421,6 +421,16 @@
       </div>
 
       <div class="section-title">💳 Vendor & Component Details</div>
+
+      <!-- FILTER BUTTONS IN DATA ENTRY FORM -->
+      <div class="filter-bar">
+        <span>🔍 Component Filter:</span>
+        <button type="button" class="filter-btn active" id="form-flt-all" onclick="setComponentFilter('ALL')">All Components</button>
+        <button type="button" class="filter-btn" id="form-flt-gen" onclick="setComponentFilter('GEN')">GEN Only</button>
+        <button type="button" class="filter-btn" id="form-flt-sc" onclick="setComponentFilter('SC')">SC Only</button>
+        <button type="button" class="filter-btn" id="form-flt-st" onclick="setComponentFilter('ST')">ST Only</button>
+      </div>
+
       <div class="table-responsive">
         <table class="styled-table">
           <thead>
@@ -435,7 +445,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr id="row-gen">
               <td style="font-weight: 700; text-align: center; background: #f9fafb;">GEN</td>
               <td><input id="inGenHoa" value="2202-01-001-15-05-500-503" class="user-editable" oninput="renderAll()"></td>
               <td><input id="inGenVendor" placeholder="Vendor Name" class="user-editable" oninput="renderAll()"></td>
@@ -444,7 +454,7 @@
               <td><input id="inGenAmt" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
               <td><input id="inGenUtil" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
             </tr>
-            <tr>
+            <tr id="row-sc">
               <td style="font-weight: 700; text-align: center; background: #f9fafb;">SC</td>
               <td><input id="inScHoa" value="2202-01-789-15-05-500-503" class="user-editable" oninput="renderAll()"></td>
               <td><input id="inScVendor" placeholder="Vendor Name" class="user-editable" oninput="renderAll()"></td>
@@ -453,7 +463,7 @@
               <td><input id="inScAmt" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
               <td><input id="inScUtil" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
             </tr>
-            <tr>
+            <tr id="row-st">
               <td style="font-weight: 700; text-align: center; background: #f9fafb;">ST</td>
               <td><input id="inStHoa" value="2202-01-796-15-05-500-503" class="user-editable" oninput="renderAll()"></td>
               <td><input id="inStVendor" placeholder="Vendor Name" class="user-editable" oninput="renderAll()"></td>
@@ -470,16 +480,16 @@
     <!-- PRINTABLE TEMPLATES -->
     <div id="print-area">
 
-      <!-- 2. PROCEEDINGS (WITH COMPONENT FILTER) -->
+      <!-- 2. PROCEEDINGS -->
       <article id="tab-proceedings" class="sheet tab-content page-break">
         
-        <!-- COMPONENT FILTER BAR (NO-PRINT) -->
+        <!-- PROCEEDINGS FILTER BAR (NO-PRINT) -->
         <div class="filter-bar no-print">
           <span>🔍 Filter Component:</span>
-          <button type="button" class="filter-btn active" id="flt-all" onclick="setComponentFilter('ALL')">All Components</button>
-          <button type="button" class="filter-btn" id="flt-gen" onclick="setComponentFilter('GEN')">GEN Only</button>
-          <button type="button" class="filter-btn" id="flt-sc" onclick="setComponentFilter('SC')">SC Only</button>
-          <button type="button" class="filter-btn" id="flt-st" onclick="setComponentFilter('ST')">ST Only</button>
+          <button type="button" class="filter-btn active" id="proc-flt-all" onclick="setComponentFilter('ALL')">All Components</button>
+          <button type="button" class="filter-btn" id="proc-flt-gen" onclick="setComponentFilter('GEN')">GEN Only</button>
+          <button type="button" class="filter-btn" id="proc-flt-sc" onclick="setComponentFilter('SC')">SC Only</button>
+          <button type="button" class="filter-btn" id="proc-flt-st" onclick="setComponentFilter('ST')">ST Only</button>
         </div>
 
         <div class="sheet-inner">
@@ -520,7 +530,7 @@
                   </tr>
                 </thead>
                 <tbody id="procTableBody">
-                  <!-- Auto Rendered based on Filter -->
+                  <!-- Rendered dynamically -->
                 </tbody>
               </table>
             </div>
@@ -538,7 +548,7 @@
                   </tr>
                 </thead>
                 <tbody id="procVendorBody">
-                  <!-- Auto Rendered based on Filter -->
+                  <!-- Rendered dynamically -->
                 </tbody>
               </table>
             </div>
@@ -961,9 +971,29 @@
 
     function setComponentFilter(filter) {
       currentFilter = filter;
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      const activeBtn = document.getElementById('flt-' + filter.toLowerCase());
-      if (activeBtn) activeBtn.classList.add('active');
+      
+      // Update form filter buttons
+      ['all', 'gen', 'sc', 'st'].forEach(k => {
+        const fBtn = document.getElementById('form-flt-' + k);
+        const pBtn = document.getElementById('proc-flt-' + k);
+        if (fBtn) fBtn.classList.remove('active');
+        if (pBtn) pBtn.classList.remove('active');
+      });
+
+      const actFBtn = document.getElementById('form-flt-' + filter.toLowerCase());
+      const actPBtn = document.getElementById('proc-flt-' + filter.toLowerCase());
+      if (actFBtn) actFBtn.classList.add('active');
+      if (actPBtn) actPBtn.classList.add('active');
+
+      // Filter rows in Data Entry Form table
+      const rowGen = document.getElementById('row-gen');
+      const rowSc = document.getElementById('row-sc');
+      const rowSt = document.getElementById('row-st');
+
+      if (rowGen) rowGen.style.display = (filter === 'ALL' || filter === 'GEN') ? '' : 'none';
+      if (rowSc) rowSc.style.display = (filter === 'ALL' || filter === 'SC') ? '' : 'none';
+      if (rowSt) rowSt.style.display = (filter === 'ALL' || filter === 'ST') ? '' : 'none';
+
       renderProceedingsTables();
     }
 
@@ -989,12 +1019,10 @@
       // Filter rows
       let visibleItems = items.filter(it => {
         if (currentFilter !== 'ALL' && it.cat !== currentFilter) return false;
-        // Hide row if zero when All is selected and amount is strictly 0
         if (currentFilter === 'ALL' && it.sAmt === 0 && it.uAmt === 0) return false;
         return true;
       });
 
-      // If all are zero and empty, show default
       if (visibleItems.length === 0) {
         visibleItems = items.filter(it => currentFilter === 'ALL' || it.cat === currentFilter);
       }
@@ -1135,6 +1163,7 @@
             inp.value = '';
           }
         });
+        setComponentFilter('ALL');
         renderAll();
       }
     }

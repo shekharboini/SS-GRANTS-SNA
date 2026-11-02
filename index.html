@@ -211,6 +211,38 @@
       border: 1px solid #d1d5db;
     }
 
+    /* COMPONENT FILTER BAR IN DATA ENTRY FORM ONLY */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 8px 14px;
+      margin-bottom: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1e3a8a;
+    }
+    .filter-btn {
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn.active {
+      background-color: #1e3a8a;
+      color: #ffffff;
+      border-color: #1e3a8a;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
     /* SHEET PRINT STYLES - A4 SINGLE PAGE FIT */
     .sheet {
       background-color: #ffffff;
@@ -253,10 +285,10 @@
       border-top: 1px solid #d1d5db;
       padding-top: 8px;
       margin-top: 16px;
-      font-size: 10px;
-      color: #6b7280;
+      font-size: 10.5px;
+      color: #4b5563;
       text-align: center;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* ENLARGED SINGLE RECEIPT CARD */
@@ -329,6 +361,11 @@
         min-height: 195mm !important;
         padding: 26px 24px !important;
       }
+      .footer-line {
+        border-top: 1px solid #9ca3af !important;
+        color: #000 !important;
+        font-size: 10px !important;
+      }
     }
   </style>
 </head>
@@ -354,7 +391,7 @@
     </div>
   </header>
 
-  <!-- NAVIGATION BUTTONS (SINGLE "7. Receipts" BUTTON) -->
+  <!-- NAVIGATION BUTTONS -->
   <nav class="nav-tabs no-print">
     <button onclick="switchTab('form')" id="btn-form" class="tab-btn" style="background-color: #1d4ed8;">1. School Selection & Form</button>
     <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn" style="background-color: #4f46e5;">2. Proceedings</button>
@@ -497,6 +534,16 @@
       </div>
 
       <div class="section-title">💳 Vendor & Component Details</div>
+
+      <!-- FILTER BUTTONS IN DATA ENTRY FORM ONLY -->
+      <div class="filter-bar">
+        <span>🔍 Component Filter:</span>
+        <button type="button" class="filter-btn active" id="form-flt-all" onclick="setComponentFilter('ALL')">All Components</button>
+        <button type="button" class="filter-btn" id="form-flt-gen" onclick="setComponentFilter('GEN')">GEN Only</button>
+        <button type="button" class="filter-btn" id="form-flt-sc" onclick="setComponentFilter('SC')">SC Only</button>
+        <button type="button" class="filter-btn" id="form-flt-st" onclick="setComponentFilter('ST')">ST Only</button>
+      </div>
+
       <div class="table-responsive">
         <table class="styled-table">
           <thead>
@@ -511,7 +558,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr id="row-gen">
               <td style="font-weight: 700; text-align: center; background: #f9fafb;">GEN</td>
               <td><input id="inGenHoa" value="2202-01-001-15-05-500-503" readonly class="user-locked"></td>
               <td><input id="inGenVendor" value="M/S GEN SUPPLIERS" class="user-editable" oninput="renderAll()"></td>
@@ -520,7 +567,7 @@
               <td><input id="inGenAmt" type="number" value="18000" readonly class="user-locked"></td>
               <td><input id="inGenUtil" type="number" value="18000" class="user-editable" oninput="renderAll()"></td>
             </tr>
-            <tr>
+            <tr id="row-sc">
               <td style="font-weight: 700; text-align: center; background: #f9fafb;">SC</td>
               <td><input id="inScHoa" value="2202-01-789-15-05-500-503" readonly class="user-locked"></td>
               <td><input id="inScVendor" value="M/S SC TRADERS" class="user-editable" oninput="renderAll()"></td>
@@ -529,7 +576,7 @@
               <td><input id="inScAmt" type="number" value="4250" readonly class="user-locked"></td>
               <td><input id="inScUtil" type="number" value="4250" class="user-editable" oninput="renderAll()"></td>
             </tr>
-            <tr>
+            <tr id="row-st">
               <td style="font-weight: 700; text-align: center; background: #f9fafb;">ST</td>
               <td><input id="inStHoa" value="2202-01-796-15-05-500-503" readonly class="user-locked"></td>
               <td><input id="inStVendor" value="M/S ST ENTERPRISES" class="user-editable" oninput="renderAll()"></td>
@@ -570,7 +617,7 @@
                 <p style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. G.O. MS NO. 40 Edu-(ser. V) Dept., Dt. 07.05.2002.</p>
               </div>
 
-              <p style="font-size: 11.5px;"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-total">25,000</span>/-</strong> towards implementation of programmes under <strong><span class="val-grant">COMPOSITE SCHOOL GRANT</span></strong>.</p>
+              <p style="font-size: 11.5px;"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-proc-total">25,000</span>/-</strong> towards implementation of programmes under <strong><span class="val-grant">COMPOSITE SCHOOL GRANT</span></strong> <span id="procComponentText"></span>.</p>
             </div>
 
             <div>
@@ -585,11 +632,8 @@
                     <th style="text-align: right; width: 105px;">Balance (₹)</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr><td style="text-align: center;">1</td><td class="val-hoa-gen">2202-01-001-15-05-500-503</td><td style="text-align: center; font-weight: 600;">GEN</td><td style="text-align: right;" class="val-amt-gen">18,000</td><td style="text-align: right;" class="val-util-gen">18,000</td><td style="text-align: right;" class="val-bal-gen">0</td></tr>
-                  <tr><td style="text-align: center;">2</td><td class="val-hoa-sc">2202-01-789-15-05-500-503</td><td style="text-align: center; font-weight: 600;">SC</td><td style="text-align: right;" class="val-amt-sc">4,250</td><td style="text-align: right;" class="val-util-sc">4,250</td><td style="text-align: right;" class="val-bal-sc">0</td></tr>
-                  <tr><td style="text-align: center;">3</td><td class="val-hoa-st">2202-01-796-15-05-500-503</td><td style="text-align: center; font-weight: 600;">ST</td><td style="text-align: right;" class="val-amt-st">2,750</td><td style="text-align: right;" class="val-util-st">2,750</td><td style="text-align: right;" class="val-bal-st">0</td></tr>
-                  <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="3" style="text-align: center;">TOTAL</td><td style="text-align: right;" class="val-total">25,000</td><td style="text-align: right;" class="val-total-util">25,000</td><td style="text-align: right;" class="val-total-bal">0</td></tr>
+                <tbody id="procTableBody">
+                  <!-- Auto generated -->
                 </tbody>
               </table>
             </div>
@@ -606,11 +650,8 @@
                     <th style="text-align: right; width: 125px;">Net Amount (₹)</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr><td style="text-align: center; font-weight: 600;">GEN</td><td class="val-v-gen-name">M/S GEN SUPPLIERS</td><td class="val-v-gen-acc">456</td><td class="val-v-gen-ifsc">SBI, SBIN123</td><td style="text-align: right;" class="val-util-gen">18,000</td></tr>
-                  <tr><td style="text-align: center; font-weight: 600;">SC</td><td class="val-v-sc-name">M/S SC TRADERS</td><td class="val-v-sc-acc">789</td><td class="val-v-sc-ifsc">SBI, SBIN456</td><td style="text-align: right;" class="val-util-sc">4,250</td></tr>
-                  <tr><td style="text-align: center; font-weight: 600;">ST</td><td class="val-v-st-name">M/S ST ENTERPRISES</td><td class="val-v-st-acc">123</td><td class="val-v-st-ifsc">SBI, SBINXYZ1</td><td style="text-align: right;" class="val-util-st">2,750</td></tr>
-                  <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="4" style="text-align: center;">TOTAL</td><td style="text-align: right;" class="val-total-util">25,000</td></tr>
+                <tbody id="procVendorBody">
+                  <!-- Auto generated -->
                 </tbody>
               </table>
             </div>
@@ -629,7 +670,7 @@
             </div>
           </div>
 
-          <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+          <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
         </div>
       </article>
 
@@ -712,7 +753,7 @@
               </div>
             </div>
           </div>
-          <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+          <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
         </div>
       </article>
 
@@ -747,7 +788,7 @@
               </tbody>
             </table>
           </div>
-          <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+          <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
         </div>
       </article>
 
@@ -788,7 +829,7 @@
               </div>
             </div>
           </div>
-          <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+          <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
         </div>
       </article>
 
@@ -839,7 +880,7 @@
               </tbody>
             </table>
           </div>
-          <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+          <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
         </div>
       </article>
 
@@ -892,7 +933,7 @@
                 </div>
               </div>
             </div>
-            <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+            <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
           </div>
         </article>
 
@@ -942,7 +983,7 @@
                 </div>
               </div>
             </div>
-            <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+            <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
           </div>
         </article>
 
@@ -992,7 +1033,7 @@
                 </div>
               </div>
             </div>
-            <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+            <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
           </div>
         </article>
 
@@ -1021,7 +1062,7 @@
               <p style="margin-top: 3px; color: #1f2937;"><span class="val-school">MPPS  KUCHANAPALLY</span></p>
             </div>
           </div>
-          <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
+          <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
         </div>
       </article>
 
@@ -1095,6 +1136,31 @@
       {"s":"ZPHS MOHAMMADAPUR","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MOHAMMADAPUR","hn":"P.Mahender Reddy","hc":"18050308034","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0}
     ];
 
+    let currentFilter = 'ALL';
+
+    function setComponentFilter(filter) {
+      currentFilter = filter;
+      
+      // Update filter buttons in form only
+      ['all', 'gen', 'sc', 'st'].forEach(k => {
+        const btn = document.getElementById('form-flt-' + k);
+        if (btn) btn.classList.remove('active');
+      });
+      const actBtn = document.getElementById('form-flt-' + filter.toLowerCase());
+      if (actBtn) actBtn.classList.add('active');
+
+      // Filter rows in Data Entry Form table
+      const rowGen = document.getElementById('row-gen');
+      const rowSc = document.getElementById('row-sc');
+      const rowSt = document.getElementById('row-st');
+
+      if (rowGen) rowGen.style.display = (filter === 'ALL' || filter === 'GEN') ? '' : 'none';
+      if (rowSc) rowSc.style.display = (filter === 'ALL' || filter === 'SC') ? '' : 'none';
+      if (rowSt) rowSt.style.display = (filter === 'ALL' || filter === 'ST') ? '' : 'none';
+
+      renderProceedingsTables();
+    }
+
     function pickSchool(index) {
       const s = husnabadSchools[parseInt(index, 10)];
       if (!s) return;
@@ -1118,11 +1184,96 @@
       document.getElementById('inScUtil').value = s.sc;
       document.getElementById('inStUtil').value = s.st;
 
+      setComponentFilter('ALL');
       renderAll();
     }
 
+    function renderProceedingsTables() {
+      const getVal = (id, def = '') => {
+        const v = document.getElementById(id).value.trim();
+        return v ? v : def;
+      };
+
+      const genAmt = Number(document.getElementById('inGenAmt').value || 0);
+      const genUtil = Number(document.getElementById('inGenUtil').value || 0);
+      const scAmt = Number(document.getElementById('inScAmt').value || 0);
+      const scUtil = Number(document.getElementById('inScUtil').value || 0);
+      const stAmt = Number(document.getElementById('inStAmt').value || 0);
+      const stUtil = Number(document.getElementById('inStUtil').value || 0);
+
+      const items = [
+        { cat: 'GEN', hoa: getVal('inGenHoa', '2202-01-001-15-05-500-503'), vendor: getVal('inGenVendor', '-'), acc: getVal('inGenAcc', '-'), ifsc: getVal('inGenIfsc', '-'), sAmt: genAmt, uAmt: genUtil },
+        { cat: 'SC',  hoa: getVal('inScHoa', '2202-01-789-15-05-500-503'),  vendor: getVal('inScVendor', '-'),  acc: getVal('inScAcc', '-'),  ifsc: getVal('inScIfsc', '-'),  sAmt: scAmt,  uAmt: scUtil },
+        { cat: 'ST',  hoa: getVal('inStHoa', '2202-01-796-15-05-500-503'),  vendor: getVal('inStVendor', '-'),  acc: getVal('inStAcc', '-'),  ifsc: getVal('inStIfsc', '-'),  sAmt: stAmt,  uAmt: stUtil }
+      ];
+
+      // Filter rows: only selected component OR non-zero rows when ALL
+      let visibleItems = items.filter(it => {
+        if (currentFilter !== 'ALL' && it.cat !== currentFilter) return false;
+        if (currentFilter === 'ALL' && it.sAmt === 0 && it.uAmt === 0) return false;
+        return true;
+      });
+
+      if (visibleItems.length === 0) {
+        visibleItems = items.filter(it => currentFilter === 'ALL' || it.cat === currentFilter);
+      }
+
+      let procTbody = '';
+      let vendorTbody = '';
+      let totSanctioned = 0;
+      let totUtilized = 0;
+
+      visibleItems.forEach((it, idx) => {
+        const bal = Math.max(0, it.sAmt - it.uAmt);
+        totSanctioned += it.sAmt;
+        totUtilized += it.uAmt;
+
+        procTbody += `<tr>
+          <td style="text-align: center;">${idx + 1}</td>
+          <td>${it.hoa}</td>
+          <td style="text-align: center; font-weight: 600;">${it.cat}</td>
+          <td style="text-align: right;">${it.sAmt.toLocaleString('en-IN')}</td>
+          <td style="text-align: right;">${it.uAmt.toLocaleString('en-IN')}</td>
+          <td style="text-align: right;">${bal.toLocaleString('en-IN')}</td>
+        </tr>`;
+
+        vendorTbody += `<tr>
+          <td style="text-align: center; font-weight: 600;">${it.cat}</td>
+          <td>${it.vendor}</td>
+          <td>${it.acc}</td>
+          <td>${it.ifsc}</td>
+          <td style="text-align: right;">${it.uAmt.toLocaleString('en-IN')}</td>
+        </tr>`;
+      });
+
+      const totBal = Math.max(0, totSanctioned - totUtilized);
+      procTbody += `<tr style="font-weight: 800; background-color: #f9fafb;">
+        <td colspan="3" style="text-align: center;">TOTAL</td>
+        <td style="text-align: right;">${totSanctioned.toLocaleString('en-IN')}</td>
+        <td style="text-align: right;">${totUtilized.toLocaleString('en-IN')}</td>
+        <td style="text-align: right;">${totBal.toLocaleString('en-IN')}</td>
+      </tr>`;
+
+      vendorTbody += `<tr style="font-weight: 800; background-color: #f9fafb;">
+        <td colspan="4" style="text-align: center;">TOTAL</td>
+        <td style="text-align: right;">${totUtilized.toLocaleString('en-IN')}</td>
+      </tr>`;
+
+      document.getElementById('procTableBody').innerHTML = procTbody;
+      document.getElementById('procVendorBody').innerHTML = vendorTbody;
+      document.querySelectorAll('.val-proc-total').forEach(el => el.innerText = totSanctioned.toLocaleString('en-IN'));
+
+      const compTextEl = document.getElementById('procComponentText');
+      if (compTextEl) {
+        compTextEl.innerText = currentFilter === 'ALL' ? '' : `(${currentFilter} COMPONENT)`;
+      }
+    }
+
     function renderAll() {
-      const getVal = (id) => document.getElementById(id).value;
+      const getVal = (id, def = '') => {
+        const v = document.getElementById(id).value.trim();
+        return v ? v : def;
+      };
       const setEls = (cls, text) => document.querySelectorAll('.' + cls).forEach(el => el.innerText = text);
 
       setEls('val-school', getVal('inSchool'));
@@ -1141,8 +1292,8 @@
       setEls('val-v-gen-acc', getVal('inGenAcc'));
       setEls('val-v-gen-ifsc', getVal('inGenIfsc'));
       
-      const genAmt = Number(getVal('inGenAmt') || 0);
-      const genUtil = Number(getVal('inGenUtil') || 0);
+      const genAmt = Number(document.getElementById('inGenAmt').value || 0);
+      const genUtil = Number(document.getElementById('inGenUtil').value || 0);
       setEls('val-amt-gen', genAmt.toLocaleString('en-IN'));
       setEls('val-util-gen', genUtil.toLocaleString('en-IN'));
       setEls('val-bal-gen', Math.max(0, genAmt - genUtil).toLocaleString('en-IN'));
@@ -1152,8 +1303,8 @@
       setEls('val-v-sc-acc', getVal('inScAcc'));
       setEls('val-v-sc-ifsc', getVal('inScIfsc'));
       
-      const scAmt = Number(getVal('inScAmt') || 0);
-      const scUtil = Number(getVal('inScUtil') || 0);
+      const scAmt = Number(document.getElementById('inScAmt').value || 0);
+      const scUtil = Number(document.getElementById('inScUtil').value || 0);
       setEls('val-amt-sc', scAmt.toLocaleString('en-IN'));
       setEls('val-util-sc', scUtil.toLocaleString('en-IN'));
       setEls('val-bal-sc', Math.max(0, scAmt - scUtil).toLocaleString('en-IN'));
@@ -1163,57 +1314,7 @@
       setEls('val-v-st-acc', getVal('inStAcc'));
       setEls('val-v-st-ifsc', getVal('inStIfsc'));
       
-      const stAmt = Number(getVal('inStAmt') || 0);
-      const stUtil = Number(getVal('inStUtil') || 0);
+      const stAmt = Number(document.getElementById('inStAmt').value || 0);
+      const stUtil = Number(document.getElementById('inStUtil').value || 0);
       setEls('val-amt-st', stAmt.toLocaleString('en-IN'));
-      setEls('val-util-st', stUtil.toLocaleString('en-IN'));
-      setEls('val-bal-st', Math.max(0, stAmt - stUtil).toLocaleString('en-IN'));
-
-      const total = genAmt + scAmt + stAmt;
-      const totalUtil = genUtil + scUtil + stUtil;
-      const totalBal = Math.max(0, total - totalUtil);
-
-      setEls('val-total', total.toLocaleString('en-IN'));
-      setEls('val-total-util', totalUtil.toLocaleString('en-IN'));
-      setEls('val-total-bal', totalBal.toLocaleString('en-IN'));
-    }
-
-    function switchTab(tabKey) {
-      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
-      
-      if (tabKey === 'all') {
-        document.querySelectorAll('.sheet').forEach(el => el.style.display = 'block');
-      } else {
-        const target = document.getElementById('tab-' + tabKey);
-        if (target) target.style.display = 'block';
-      }
-    }
-
-    // DYNAMIC VISITOR COUNTER
-    async function initLivePageViews() {
-      const viewsEl = document.getElementById('pageViewsCount');
-      if (!viewsEl) return;
-
-      try {
-        const res = await fetch('https://api.counterapi.dev/v1/rajashekhar-husnabad-grants/visits/up');
-        const data = await res.json();
-        if (data && data.count) {
-          viewsEl.innerText = data.count;
-        } else {
-          viewsEl.innerText = '18';
-        }
-      } catch (err) {
-        let localCount = Number(localStorage.getItem('hsb_page_views') || 15) + 1;
-        localStorage.setItem('hsb_page_views', localCount);
-        viewsEl.innerText = localCount;
-      }
-    }
-
-    window.onload = () => {
-      pickSchool(0);
-      switchTab('form');
-      initLivePageViews();
-    };
-  </script>
-</body>
-</html>
+      setEls('val-util-st', stUtil.toLocaleString('en-

@@ -3,75 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAMAGRA SHIKSHA – SNA SPARSH (EMPTY MODEL)</title>
+  <title>SAMAGRA SHIKSHA - SNA SPARSH REPORTS SOFTWARE</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
     body { background-color: #f3f4f6; color: #111827; }
 
-    /* Header */
+    /* TOP HEADER */
     .top-header {
-      background: linear-gradient(135deg, #1e3a8a 0%, #312e81 50%, #581c87 100%);
+      background-color: #1e3a8a;
       color: #ffffff;
-      padding: 16px 24px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      padding: 16px 20px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.15);
       position: sticky;
       top: 0;
       z-index: 50;
     }
     .header-container {
-      max-width: 1200px;
+      max-width: 1250px;
       margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      justify-content: space-between;
+      gap: 15px;
     }
-    .header-left { display: flex; align-items: center; gap: 12px; }
-    .header-logo {
-      width: 48px;
-      height: 48px;
+    .header-logo-box {
+      width: 68px;
+      height: 68px;
       background: #ffffff;
       border-radius: 50%;
+      padding: 3px;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      flex-shrink: 0;
     }
-    .header-title { font-size: 22px; font-weight: 900; color: #fde047; letter-spacing: 0.5px; }
-    .header-sub { font-size: 13px; color: #dbeafe; font-weight: 500; }
-    .header-actions { display: flex; gap: 10px; }
+    .header-center { text-align: center; flex: 1; }
+    .header-title {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .header-sub {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #dbeafe;
+      margin-top: 3px;
+      margin-bottom: 6px;
+    }
+    .creator-badge {
+      display: inline-block;
+      background-color: rgba(15, 23, 42, 0.7);
+      border: 1.5px solid #d97706;
+      padding: 3px 16px;
+      border-radius: 9999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #fde047;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+    }
+    .views-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      padding: 3px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #cbd5e1;
+      margin-top: 6px;
+    }
+    .header-actions { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
     .btn-print {
       background-color: #059669;
       color: #fff;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      padding: 8px 16px;
+      padding: 7px 14px;
       border-radius: 6px;
       border: none;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
-    .btn-print:hover { background-color: #047857; }
     .btn-reset {
       background-color: #dc2626;
       color: #fff;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      padding: 8px 16px;
+      padding: 7px 14px;
       border-radius: 6px;
       border: none;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
-    .btn-reset:hover { background-color: #b91c1c; }
 
-    /* Tabs */
+    /* NAVIGATION BUTTONS */
     .nav-tabs {
-      max-width: 1200px;
+      max-width: 1250px;
       margin: 16px auto 0 auto;
       padding: 0 16px 12px 16px;
       display: flex;
@@ -83,15 +113,14 @@
       color: #ffffff;
       font-size: 12px;
       font-weight: 700;
-      padding: 8px 14px;
+      padding: 8px 13px;
       border-radius: 6px;
       border: none;
       cursor: pointer;
-      box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
     }
 
-    /* Container */
-    .main-container { max-width: 1200px; margin: 16px auto; padding: 0 16px; }
+    /* MAIN CONTAINER & FORM */
+    .main-container { max-width: 1250px; margin: 16px auto; padding: 0 16px; }
     .form-card {
       background-color: #ffffff;
       border-radius: 8px;
@@ -118,8 +147,6 @@
       border-bottom: 2px solid #f3f4f6;
       margin-bottom: 16px;
     }
-
-    /* Form Layout */
     .form-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -152,8 +179,6 @@
       border-color: #d97706;
       box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
     }
-
-    /* Table */
     .table-responsive { width: 100%; overflow-x: auto; }
     .styled-table {
       width: 100%;
@@ -173,7 +198,7 @@
       border: 1px solid #d1d5db;
     }
 
-    /* Sheet Printable Styling */
+    /* SHEET PRINT STYLES */
     .sheet {
       background-color: #ffffff;
       padding: 32px;
@@ -210,10 +235,7 @@
       font-weight: 500;
     }
 
-    @page {
-      size: A4 portrait;
-      margin: 12mm 15mm;
-    }
+    @page { size: A4 portrait; margin: 12mm 15mm; }
     @media print {
       .no-print { display: none !important; }
       .page-break { page-break-after: always; break-after: page; }
@@ -231,28 +253,38 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- TOP HEADER WITH LOGOS & VIEWS COUNTER -->
   <header class="top-header no-print">
     <div class="header-container">
-      <div class="header-left">
-        <div class="header-logo">
-          <svg style="width: 28px; height: 28px; fill: #1e3a8a;" viewBox="0 0 24 24">
-            <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
-          </svg>
+      <div class="header-logo-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Seal_of_Telangana.svg" alt="Telangana Logo" style="width: 100%; height: 100%; object-fit: contain;">
+      </div>
+
+      <div class="header-center">
+        <h1 class="header-title">SAMAGRA SHIKSHA - SNA SPARSH REPORTS SOFTWARE</h1>
+        <p class="header-sub">FY 2026–27 | Complete Proceedings, Annexures & UCs |</p>
+        <div>
+          <div class="creator-badge">Created by Boini Rajashekhar (MIS Coordinator) - Husnabad</div>
         </div>
         <div>
-          <div class="header-title">SAMAGRA SHIKSHA – SNA SPARSH</div>
-          <div class="header-sub">Custom Entry Template FY 2026–27</div>
+          <span class="views-badge">
+            <span>👁️</span> Page Views: <span id="pageViewsCount" style="color: #fde047; font-size: 13.5px; font-weight: 900;">18</span>
+          </span>
         </div>
       </div>
+
+      <div class="header-logo-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Seal_of_Telangana.svg" alt="Telangana Logo" style="width: 100%; height: 100%; object-fit: contain;">
+      </div>
+
       <div class="header-actions">
-        <button onclick="window.print()" class="btn-print">🖨️ Print / Save PDF</button>
-        <button onclick="clearForm()" class="btn-reset">🔄 Reset Form</button>
+        <button onclick="window.print()" class="btn-print">🖨️ Print / PDF</button>
+        <button onclick="clearForm()" class="btn-reset">🔄 Reset</button>
       </div>
     </div>
   </header>
 
-  <!-- NAVIGATION TABS -->
+  <!-- COLORFUL NAVIGATION BUTTONS -->
   <nav class="nav-tabs no-print">
     <button onclick="switchTab('form')" id="btn-form" class="tab-btn" style="background-color: #1d4ed8;">1. Data Entry Form</button>
     <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn" style="background-color: #4f46e5;">2. Proceedings</button>
@@ -820,9 +852,30 @@
       }
     }
 
+    // DYNAMIC VISITOR COUNTER
+    async function initLivePageViews() {
+      const viewsEl = document.getElementById('pageViewsCount');
+      if (!viewsEl) return;
+
+      try {
+        const res = await fetch('https://api.counterapi.dev/v1/rajashekhar-husnabad-grants/visits/up');
+        const data = await res.json();
+        if (data && data.count) {
+          viewsEl.innerText = data.count;
+        } else {
+          viewsEl.innerText = '18';
+        }
+      } catch (err) {
+        let localCount = Number(localStorage.getItem('hsb_page_views') || 15) + 1;
+        localStorage.setItem('hsb_page_views', localCount);
+        viewsEl.innerText = localCount;
+      }
+    }
+
     window.onload = () => {
       renderAll();
       switchTab('form');
+      initLivePageViews();
     };
   </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAMAGRA SHIKSHA - SNA SPARSH REPORTS SOFTWARE</title>
+  <title>SAMAGRA SHIKSHA - SNA SPARSH REPORTS SOFTWARE (HUSNABAD)</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
     body { background-color: #f3f4f6; color: #111827; }
@@ -66,7 +66,7 @@
       cursor: pointer;
     }
     .btn-reset {
-      background-color: #dc2626;
+      background-color: #2563eb;
       color: #fff;
       font-size: 12px;
       font-weight: 700;
@@ -106,16 +106,41 @@
       border: 1px solid #e5e7eb;
       margin-bottom: 24px;
     }
-    .notice-box {
-      background-color: #fffbeb;
-      border: 1px solid #fcd34d;
-      border-radius: 6px;
-      padding: 12px 16px;
-      font-size: 13px;
-      color: #92400e;
-      font-weight: 600;
+    .school-picker-box {
+      background-color: #ecfdf5;
+      border: 2px solid #10b981;
+      border-radius: 8px;
+      padding: 16px;
       margin-bottom: 20px;
     }
+    .school-picker-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #065f46;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .school-dropdown {
+      width: 100%;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 10px 12px;
+      border: 2px solid #059669;
+      border-radius: 6px;
+      background-color: #ffffff;
+      color: #111827;
+      outline: none;
+    }
+    .legend-box {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-color-editable { width: 16px; height: 16px; border-radius: 4px; background-color: #fffbeb; border: 1.5px solid #f59e0b; }
+    .legend-color-locked { width: 16px; height: 16px; border-radius: 4px; background-color: #f3f4f6; border: 1px solid #d1d5db; }
+
     .section-title {
       font-size: 15px;
       font-weight: 700;
@@ -142,9 +167,9 @@
     }
     .user-editable {
       width: 100%;
-      background-color: #fffbeb;
-      border: 1.5px solid #f59e0b;
-      color: #78350f;
+      background-color: #fffbeb !important;
+      border: 1.5px solid #f59e0b !important;
+      color: #78350f !important;
       font-weight: 600;
       font-size: 13px;
       padding: 8px 12px;
@@ -152,10 +177,21 @@
       outline: none;
     }
     .user-editable:focus {
-      background-color: #ffffff;
-      border-color: #d97706;
+      background-color: #ffffff !important;
+      border-color: #d97706 !important;
       box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
     }
+    .user-locked {
+      width: 100%;
+      background-color: #f3f4f6 !important;
+      border: 1px solid #d1d5db !important;
+      color: #4b5563 !important;
+      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: not-allowed;
+    }
+
     .table-responsive { width: 100%; overflow-x: auto; }
     .styled-table {
       width: 100%;
@@ -175,7 +211,7 @@
       border: 1px solid #d1d5db;
     }
 
-    /* SHEET ON SCREEN */
+    /* SHEET PRINT STYLES - A4 SINGLE PAGE FIT */
     .sheet {
       background-color: #ffffff;
       padding: 30px 34px;
@@ -294,14 +330,14 @@
 
       <div class="header-actions">
         <button onclick="window.print()" class="btn-print">🖨️ Print / PDF</button>
-        <button onclick="clearForm()" class="btn-reset">🔄 Reset</button>
+        <button onclick="pickSchool(document.getElementById('schoolSelector').value)" class="btn-reset">🔄 Reset</button>
       </div>
     </div>
   </header>
 
   <!-- NAVIGATION BUTTONS -->
   <nav class="nav-tabs no-print">
-    <button onclick="switchTab('form')" id="btn-form" class="tab-btn" style="background-color: #1d4ed8;">1. Data Entry Form</button>
+    <button onclick="switchTab('form')" id="btn-form" class="tab-btn" style="background-color: #1d4ed8;">1. School Selection & Form</button>
     <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn" style="background-color: #4f46e5;">2. Proceedings</button>
     <button onclick="switchTab('resolution')" id="btn-resolution" class="tab-btn" style="background-color: #7c3aed;">3. Resolution</button>
     <button onclick="switchTab('budget')" id="btn-budget" class="tab-btn" style="background-color: #d97706;">4. Budget Register</button>
@@ -316,51 +352,128 @@
 
     <!-- TAB 1: FORM -->
     <section id="tab-form" class="tab-content form-card">
-      <div class="notice-box">
-        ✏️ Please enter your school particulars and expenditure details in the fields below. The details will automatically update across all documents.
+      
+      <!-- HUSNABAD 62 SCHOOLS SELECTOR -->
+      <div class="school-picker-box">
+        <label class="school-picker-label">🏫 పాఠశాలను ఎంచుకోండి (Select School - Husnabad Mandal 62 Records):</label>
+        <select id="schoolSelector" class="school-dropdown" onchange="pickSchool(this.value)">
+          <option value="0">MPPS  KUCHANAPALLY (36180601001) - Composit School Grant</option>
+          <option value="1">MPPS  KUCHANAPALLY (36180601001) - Sports Grant</option>
+          <option value="2">MPPS  MADATHA (36180600302) - Composit School Grant</option>
+          <option value="3">MPPS  MADATHA (36180600302) - Sports Grant</option>
+          <option value="4">MPPS (STAGE) PANDILLA (36180601102) - Composit School Grant</option>
+          <option value="5">MPPS (STAGE) PANDILLA (36180601102) - Sports Grant</option>
+          <option value="6">MPPS ARAPELLY (36180600204) - Composit School Grant</option>
+          <option value="7">MPPS ARAPELLY (36180600204) - Sports Grant</option>
+          <option value="8">MPPS BALLUNAYAK THANDA (36180600702) - Composit School Grant</option>
+          <option value="9">MPPS BALLUNAYAK THANDA (36180600702) - Sports Grant</option>
+          <option value="10">MPPS BANJERUPALLY (36180601103) - Composit School Grant</option>
+          <option value="11">MPPS BANJERUPALLY (36180601103) - Sports Grant</option>
+          <option value="12">MPPS HUSNABAD (36180600202) - Composit School Grant</option>
+          <option value="13">MPPS HUSNABAD (36180600202) - Sports Grant</option>
+          <option value="14">MPPS KASHI NAGAR (36180600205) - Composit School Grant</option>
+          <option value="15">MPPS KASHI NAGAR (36180600205) - Sports Grant</option>
+          <option value="16">MPPS KASTOORBA COLONY (36180600203) - Composit School Grant</option>
+          <option value="17">MPPS KASTOORBA COLONY (36180600203) - Sports Grant</option>
+          <option value="18">MPPS MALAPALLY (36180601104) - Composit School Grant</option>
+          <option value="19">MPPS MALAPALLY (36180601104) - Sports Grant</option>
+          <option value="20">MPPS MIRZAPUR (36180600703) - Composit School Grant</option>
+          <option value="21">MPPS MIRZAPUR (36180600703) - Sports Grant</option>
+          <option value="22">MPPS MOHAMMADAPUR (36180600402) - Composit School Grant</option>
+          <option value="23">MPPS MOHAMMADAPUR (36180600402) - Sports Grant</option>
+          <option value="24">MPPS PANDILLA (36180601101) - Composit School Grant</option>
+          <option value="25">MPPS PANDILLA (36180601101) - Sports Grant</option>
+          <option value="26">MPPS POOLNAYAK THANDA (36180600701) - Composit School Grant</option>
+          <option value="27">MPPS POOLNAYAK THANDA (36180600701) - Sports Grant</option>
+          <option value="28">MPPS POTHARAM(S) (36180600801) - Composit School Grant</option>
+          <option value="29">MPPS POTHARAM(S) (36180600801) - Sports Grant</option>
+          <option value="30">MPPS POTLAPALLY (36180600101) - Composit School Grant</option>
+          <option value="31">MPPS POTLAPALLY (36180600101) - Sports Grant</option>
+          <option value="32">MPPS THOTAPALLY (36180600901) - Composit School Grant</option>
+          <option value="33">MPPS THOTAPALLY (36180600901) - Sports Grant</option>
+          <option value="34">MPPS UMMAPUR (36180600601) - Composit School Grant</option>
+          <option value="35">MPPS UMMAPUR (36180600601) - Sports Grant</option>
+          <option value="36">MPPS YELLAMBAZAR (36180600212) - Composit School Grant</option>
+          <option value="37">MPPS YELLAMBAZAR (36180600212) - Sports Grant</option>
+          <option value="38">MPUPS GANDHINAGAR (36180600234) - Composit School Grant</option>
+          <option value="39">MPUPS GANDHINAGAR (36180600234) - Sports Grant</option>
+          <option value="40">MPUPS JILLALLAGADDA (36180600602) - Composit School Grant</option>
+          <option value="41">MPUPS JILLALLAGADDA (36180600602) - Sports Grant</option>
+          <option value="42">MPUPS NAGARAM (36180600501) - Composit School Grant</option>
+          <option value="43">MPUPS NAGARAM (36180600501) - Sports Grant</option>
+          <option value="44">MRC HUSNABAD (361806) - MRC Grant</option>
+          <option value="45">ZPHS HUSNABAD (36180600222) - Composit School Grant</option>
+          <option value="46">ZPHS HUSNABAD (3618060002) - CRC Grant</option>
+          <option value="47">ZPHS HUSNABAD (36180600222) - Sports Grant</option>
+          <option value="48">ZPHS HUSNABAD (3618060002) - Adolescent Safety (GCEASCS) Grant</option>
+          <option value="49">ZPHS MIRZAPUR (36180600704) - Composit School Grant</option>
+          <option value="50">ZPHS MIRZAPUR (36180600704) - Sports Grant</option>
+          <option value="51">ZPHS MIRZAPUR (3618060001) - Adolescent Safety (GCEASCS) Grant</option>
+          <option value="52">ZPHS MOHAMMADAPUR (36180600403) - Composit School Grant</option>
+          <option value="53">ZPHS MOHAMMADAPUR (36180600403) - Sports Grant</option>
+          <option value="54">ZPHS POTHARAM(S) (36180600802) - Composit School Grant</option>
+          <option value="55">ZPHS POTHARAM(S) (3618060001) - Adolescent Safety (GCEASCS) Grant</option>
+          <option value="56">ZPHS POTHARAM-S (3618060001) - CRC Grant</option>
+          <option value="57">ZPHS POTHARAM-S (36180600802) - Sports Grant</option>
+          <option value="58">ZPHS POTLAPALLY (36180600102) - Composit School Grant</option>
+          <option value="59">ZPHS POTLAPALLY (36180600102) - Sports Grant</option>
+          <option value="60">ZPHS POTLAPALLY (3618060002) - Adolescent Safety (GCEASCS) Grant</option>
+          <option value="61">ZPHS MOHAMMADAPUR (3618060002) - Adolescent Safety (GCEASCS) Grant</option>
+        </select>
+      </div>
+
+      <div class="legend-box">
+        <div class="legend-item">
+          <span class="legend-color-editable"></span>
+          <span style="font-weight: 700; color: #92400e;">Yellow Color = Editable</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color-locked"></span>
+          <span style="color: #4b5563;">Grey Color = Locked (From CSV)</span>
+        </div>
       </div>
 
       <div class="section-title">🏫 School & Grant Details</div>
       <div class="form-grid">
         <div class="field-group">
-          <label>School Name</label>
-          <input type="text" id="inSchool" placeholder="e.g., MPPS KUCHANAPALLY" class="user-editable" oninput="renderAll()">
+          <label>School Name (Locked)</label>
+          <input type="text" id="inSchool" value="MPPS  KUCHANAPALLY" readonly class="user-locked">
         </div>
         <div class="field-group">
-          <label>UDISE Code</label>
-          <input type="text" id="inUdise" placeholder="e.g., 36180601001" class="user-editable" oninput="renderAll()">
+          <label>UDISE Code (Locked)</label>
+          <input type="text" id="inUdise" value="36180601001" readonly class="user-locked">
         </div>
         <div class="field-group">
-          <label>Mandal</label>
-          <input type="text" id="inMandal" placeholder="e.g., HUSNABAD" class="user-editable" oninput="renderAll()">
+          <label>Mandal (Locked)</label>
+          <input type="text" id="inMandal" value="HUSNABAD" readonly class="user-locked">
         </div>
         <div class="field-group">
-          <label>District</label>
-          <input type="text" id="inDistrict" placeholder="e.g., SIDDIPET" class="user-editable" oninput="renderAll()">
+          <label>District (Locked)</label>
+          <input type="text" id="inDistrict" value="SIDDIPET" readonly class="user-locked">
         </div>
         <div class="field-group">
-          <label>Headmaster / DDO Name</label>
-          <input type="text" id="inHm" placeholder="e.g., K.Vasudeva Reddy, M.Sc.,B.Ed" class="user-editable" oninput="renderAll()">
+          <label>Headmaster / DDO Name (Locked)</label>
+          <input type="text" id="inHm" value="K.Vasudeva Reddy, M.Sc.,B.Ed" readonly class="user-locked">
         </div>
         <div class="field-group">
-          <label>DDO Code</label>
-          <input type="text" id="inDdoCode" placeholder="e.g., 18050308008" class="user-editable" oninput="renderAll()">
+          <label>DDO Code (Locked)</label>
+          <input type="text" id="inDdoCode" value="18050308008" readonly class="user-locked">
         </div>
         <div class="field-group">
-          <label>DDO School / Office Name</label>
-          <input type="text" id="inDdoOffice" placeholder="e.g., ZPHS HUSNABAD" class="user-editable" oninput="renderAll()">
+          <label>DDO School / Office Name (Locked)</label>
+          <input type="text" id="inDdoOffice" value="ZPHS HUSNABAD" readonly class="user-locked">
         </div>
         <div class="field-group">
-          <label>Proceedings No</label>
-          <input type="text" id="inProcNo" placeholder="e.g., 01/PMSHRI/2026-27" class="user-editable" oninput="renderAll()">
+          <label style="color: #92400e;">✏️ Proceedings No (Editable)</label>
+          <input type="text" id="inProcNo" value="01/PMSHRI/2026-27" class="user-editable" oninput="renderAll()">
         </div>
         <div class="field-group">
-          <label>Order Date</label>
-          <input type="text" id="inProcDate" placeholder="e.g., 31/Oct/2026" class="user-editable" oninput="renderAll()">
+          <label style="color: #92400e;">✏️ Order Date (Editable)</label>
+          <input type="text" id="inProcDate" value="31/Oct/2026" class="user-editable" oninput="renderAll()">
         </div>
         <div class="field-group">
-          <label>Grant Name</label>
-          <input type="text" id="inGrant" placeholder="e.g., COMPOSITE SCHOOL GRANT" class="user-editable" oninput="renderAll()">
+          <label>Grant Name (Locked)</label>
+          <input type="text" id="inGrant" value="COMPOSITE SCHOOL GRANT" readonly class="user-locked">
         </div>
       </div>
 
@@ -371,40 +484,40 @@
             <tr>
               <th style="width: 80px; text-align: center;">Category</th>
               <th style="width: 220px;">Head of Account (HOA)</th>
-              <th>Vendor Name</th>
-              <th>Bank A/c</th>
-              <th>Bank & IFSC</th>
+              <th style="background-color: #fffbeb; color: #92400e;">✏️ Vendor Name</th>
+              <th style="background-color: #fffbeb; color: #92400e;">✏️ Bank A/c</th>
+              <th style="background-color: #fffbeb; color: #92400e;">✏️ Bank & IFSC</th>
               <th style="width: 130px;">Sanctioned (₹)</th>
-              <th style="width: 130px;">Utilized (₹)</th>
+              <th style="width: 130px; background-color: #fffbeb; color: #92400e;">✏️ Utilized (₹)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td style="font-weight: 700; text-align: center; background: #f9fafb;">GEN</td>
-              <td><input id="inGenHoa" value="2202-01-001-15-05-500-503" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inGenVendor" placeholder="Vendor Name" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inGenAcc" placeholder="Account No" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inGenIfsc" placeholder="e.g., SBI, SBIN000123" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inGenAmt" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inGenUtil" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inGenHoa" value="2202-01-001-15-05-500-503" readonly class="user-locked"></td>
+              <td><input id="inGenVendor" value="M/S GEN SUPPLIERS" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inGenAcc" value="456" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inGenIfsc" value="SBI, SBIN123" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inGenAmt" type="number" value="18000" readonly class="user-locked"></td>
+              <td><input id="inGenUtil" type="number" value="18000" class="user-editable" oninput="renderAll()"></td>
             </tr>
             <tr>
               <td style="font-weight: 700; text-align: center; background: #f9fafb;">SC</td>
-              <td><input id="inScHoa" value="2202-01-789-15-05-500-503" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inScVendor" placeholder="Vendor Name" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inScAcc" placeholder="Account No" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inScIfsc" placeholder="e.g., SBI, SBIN000123" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inScAmt" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inScUtil" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inScHoa" value="2202-01-789-15-05-500-503" readonly class="user-locked"></td>
+              <td><input id="inScVendor" value="M/S SC TRADERS" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inScAcc" value="789" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inScIfsc" value="SBI, SBIN456" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inScAmt" type="number" value="4250" readonly class="user-locked"></td>
+              <td><input id="inScUtil" type="number" value="4250" class="user-editable" oninput="renderAll()"></td>
             </tr>
             <tr>
               <td style="font-weight: 700; text-align: center; background: #f9fafb;">ST</td>
-              <td><input id="inStHoa" value="2202-01-796-15-05-500-503" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inStVendor" placeholder="Vendor Name" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inStAcc" placeholder="Account No" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inStIfsc" placeholder="e.g., SBI, SBIN000123" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inStAmt" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inStUtil" type="number" placeholder="0" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inStHoa" value="2202-01-796-15-05-500-503" readonly class="user-locked"></td>
+              <td><input id="inStVendor" value="M/S ST ENTERPRISES" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inStAcc" value="123" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inStIfsc" value="SBI, SBINXYZ1" class="user-editable" oninput="renderAll()"></td>
+              <td><input id="inStAmt" type="number" value="2750" readonly class="user-locked"></td>
+              <td><input id="inStUtil" type="number" value="2750" class="user-editable" oninput="renderAll()"></td>
             </tr>
           </tbody>
         </table>
@@ -419,26 +532,26 @@
         <div class="sheet-inner">
           <div class="proc-body">
             <div style="text-align: center; font-weight: 700;">
-              <h2 style="font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">PROCEEDINGS OF THE GAZETTED HEADMASTER, <span class="val-ddo-office" style="color: #1e3a8a;">____________________</span></h2>
-              <p style="font-size: 12px; margin-top: 3px;">Present: <span class="val-hm" style="border-bottom: 1px dotted #374151;">____________________</span></p>
+              <h2 style="font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">PROCEEDINGS OF THE GAZETTED HEADMASTER, <span class="val-ddo-office" style="color: #1e3a8a;">ZPHS HUSNABAD</span></h2>
+              <p style="font-size: 12px; margin-top: 3px;">Present: <span class="val-hm" style="border-bottom: 1px dotted #374151;">K.Vasudeva Reddy, M.Sc.,B.Ed</span></p>
             </div>
 
             <div style="display: flex; justify-content: space-between; font-size: 12px; border-bottom: 1.5px solid #4b5563; padding-bottom: 4px; font-weight: 700;">
-              <span>Proc. No. <span class="val-proc">____________________</span></span>
-              <span>Date: <span class="val-date">__________</span></span>
+              <span>Proc. No. <span class="val-proc">01/PMSHRI/2026-27</span></span>
+              <span>Date: <span class="val-date">31/Oct/2026</span></span>
             </div>
 
             <div style="font-size: 11.5px; line-height: 1.55; text-align: justify;">
-              <p style="margin-bottom: 6px;"><strong>Sub:</strong> SMC- SNA SPARSH- Samagra Shiksha Funds Sanction of expenditure in the Financial year (FY)-2026-27 towards <strong><span class="val-grant">____________________</span></strong> of <strong><span class="val-school">____________________</span></strong> orders Issued - Reg.</p>
+              <p style="margin-bottom: 6px;"><strong>Sub:</strong> SMC- SNA SPARSH- Samagra Shiksha Funds Sanction of expenditure in the Financial year (FY)-2026-27 towards <strong><span class="val-grant">COMPOSITE SCHOOL GRANT</span></strong> of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong> orders Issued - Reg.</p>
               
               <div style="margin-bottom: 6px; padding-left: 6px; border-left: 2px solid #cbd5e1; font-size: 11px;">
                 <p><strong>Ref:</strong> 1. State project Director Circular Memo No.TF/619/FCI/SNA SPARSH-SS/2026. Dt. 03.07.2026</p>
                 <p style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. State project Director Prc.RCNo.2191/CSG/TSS/PLG/T7/2026-1, Date. 07/08/2026</p>
-                <p style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. School Resolution and Committee Recommendations Dated: <span class="val-date">__________</span></p>
+                <p style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. School Resolution and Committee Recommendations Dated: <span class="val-date">31/Oct/2026</span></p>
                 <p style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. G.O. MS NO. 40 Edu-(ser. V) Dept., Dt. 07.05.2002.</p>
               </div>
 
-              <p style="font-size: 11.5px;"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-total">0</span>/-</strong> towards implementation of programmes under <strong><span class="val-grant">____________________</span></strong>.</p>
+              <p style="font-size: 11.5px;"><strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-total">25,000</span>/-</strong> towards implementation of programmes under <strong><span class="val-grant">COMPOSITE SCHOOL GRANT</span></strong>.</p>
             </div>
 
             <div>
@@ -454,10 +567,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td style="text-align: center;">1</td><td class="val-hoa-gen">2202-01-001-15-05-500-503</td><td style="text-align: center; font-weight: 600;">GEN</td><td style="text-align: right;" class="val-amt-gen">0</td><td style="text-align: right;" class="val-util-gen">0</td><td style="text-align: right;" class="val-bal-gen">0</td></tr>
-                  <tr><td style="text-align: center;">2</td><td class="val-hoa-sc">2202-01-789-15-05-500-503</td><td style="text-align: center; font-weight: 600;">SC</td><td style="text-align: right;" class="val-amt-sc">0</td><td style="text-align: right;" class="val-util-sc">0</td><td style="text-align: right;" class="val-bal-sc">0</td></tr>
-                  <tr><td style="text-align: center;">3</td><td class="val-hoa-st">2202-01-796-15-05-500-503</td><td style="text-align: center; font-weight: 600;">ST</td><td style="text-align: right;" class="val-amt-st">0</td><td style="text-align: right;" class="val-util-st">0</td><td style="text-align: right;" class="val-bal-st">0</td></tr>
-                  <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="3" style="text-align: center;">TOTAL</td><td style="text-align: right;" class="val-total">0</td><td style="text-align: right;" class="val-total-util">0</td><td style="text-align: right;" class="val-total-bal">0</td></tr>
+                  <tr><td style="text-align: center;">1</td><td class="val-hoa-gen">2202-01-001-15-05-500-503</td><td style="text-align: center; font-weight: 600;">GEN</td><td style="text-align: right;" class="val-amt-gen">18,000</td><td style="text-align: right;" class="val-util-gen">18,000</td><td style="text-align: right;" class="val-bal-gen">0</td></tr>
+                  <tr><td style="text-align: center;">2</td><td class="val-hoa-sc">2202-01-789-15-05-500-503</td><td style="text-align: center; font-weight: 600;">SC</td><td style="text-align: right;" class="val-amt-sc">4,250</td><td style="text-align: right;" class="val-util-sc">4,250</td><td style="text-align: right;" class="val-bal-sc">0</td></tr>
+                  <tr><td style="text-align: center;">3</td><td class="val-hoa-st">2202-01-796-15-05-500-503</td><td style="text-align: center; font-weight: 600;">ST</td><td style="text-align: right;" class="val-amt-st">2,750</td><td style="text-align: right;" class="val-util-st">2,750</td><td style="text-align: right;" class="val-bal-st">0</td></tr>
+                  <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="3" style="text-align: center;">TOTAL</td><td style="text-align: right;" class="val-total">25,000</td><td style="text-align: right;" class="val-total-util">25,000</td><td style="text-align: right;" class="val-total-bal">0</td></tr>
                 </tbody>
               </table>
             </div>
@@ -475,10 +588,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td style="text-align: center; font-weight: 600;">GEN</td><td class="val-v-gen-name">-</td><td class="val-v-gen-acc">-</td><td class="val-v-gen-ifsc">-</td><td style="text-align: right;" class="val-util-gen">0</td></tr>
-                  <tr><td style="text-align: center; font-weight: 600;">SC</td><td class="val-v-sc-name">-</td><td class="val-v-sc-acc">-</td><td class="val-v-sc-ifsc">-</td><td style="text-align: right;" class="val-util-sc">0</td></tr>
-                  <tr><td style="text-align: center; font-weight: 600;">ST</td><td class="val-v-st-name">-</td><td class="val-v-st-acc">-</td><td class="val-v-st-ifsc">-</td><td style="text-align: right;" class="val-util-st">0</td></tr>
-                  <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="4" style="text-align: center;">TOTAL</td><td style="text-align: right;" class="val-total-util">0</td></tr>
+                  <tr><td style="text-align: center; font-weight: 600;">GEN</td><td class="val-v-gen-name">M/S GEN SUPPLIERS</td><td class="val-v-gen-acc">456</td><td class="val-v-gen-ifsc">SBI, SBIN123</td><td style="text-align: right;" class="val-util-gen">18,000</td></tr>
+                  <tr><td style="text-align: center; font-weight: 600;">SC</td><td class="val-v-sc-name">M/S SC TRADERS</td><td class="val-v-sc-acc">789</td><td class="val-v-sc-ifsc">SBI, SBIN456</td><td style="text-align: right;" class="val-util-sc">4,250</td></tr>
+                  <tr><td style="text-align: center; font-weight: 600;">ST</td><td class="val-v-st-name">M/S ST ENTERPRISES</td><td class="val-v-st-acc">123</td><td class="val-v-st-ifsc">SBI, SBINXYZ1</td><td style="text-align: right;" class="val-util-st">2,750</td></tr>
+                  <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="4" style="text-align: center;">TOTAL</td><td style="text-align: right;" class="val-total-util">25,000</td></tr>
                 </tbody>
               </table>
             </div>
@@ -486,13 +599,13 @@
             <div style="margin-top: 24px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 600;">
               <div style="line-height: 1.5;">
                 <p><strong>Copy to:</strong></p>
-                <p>1. DPO <span class="val-dist">__________</span></p>
+                <p>1. DPO <span class="val-dist">SIDDIPET</span></p>
                 <p>2. STO Concerned</p>
                 <p>3. Office copy</p>
               </div>
               <div style="text-align: right; margin-top: 15px;">
                 <p style="font-weight: 800; font-size: 12.5px;">Gazetted Headmaster</p>
-                <p style="margin-top: 2px;"><span class="val-ddo-office">____________________</span></p>
+                <p style="margin-top: 2px;"><span class="val-ddo-office">ZPHS HUSNABAD</span></p>
               </div>
             </div>
           </div>
@@ -506,22 +619,22 @@
         <div class="sheet-inner">
           <div>
             <div style="text-align: center; font-weight: 700; border-bottom: 1.5px solid #4b5563; padding-bottom: 6px;">
-              <p style="font-size: 11px;">Udise Code: <span class="val-udise">__________</span></p>
+              <p style="font-size: 11px;">Udise Code: <span class="val-udise">36180601001</span></p>
               <h2 style="font-size: 15px; text-transform: uppercase;">RESOLUTION</h2>
-              <h3 style="font-size: 12px; text-transform: uppercase;">SMC <span class="val-school">____________________</span></h3>
-              <p style="font-size: 11px;">MANDAL: <span class="val-mandal">__________</span>, DISTRICT: <span class="val-dist">__________</span></p>
-              <p style="font-size: 11px;">Dated: <span class="val-date">__________</span></p>
+              <h3 style="font-size: 12px; text-transform: uppercase;">SMC <span class="val-school">MPPS  KUCHANAPALLY</span></h3>
+              <p style="font-size: 11px;">MANDAL: <span class="val-mandal">HUSNABAD</span>, DISTRICT: <span class="val-dist">SIDDIPET</span></p>
+              <p style="font-size: 11px;">Dated: <span class="val-date">31/Oct/2026</span></p>
             </div>
             
             <div style="text-align: center; font-weight: 700; font-size: 11.5px; margin-top: 8px; text-transform: uppercase;">
-              <u><span class="val-grant">GRANT</span> EXPENDITURE RESOLUTION</u>
+              <u><span class="val-grant">COMPOSITE SCHOOL GRANT</span> EXPENDITURE RESOLUTION</u>
             </div>
 
             <p style="font-size: 11px; margin-top: 8px; line-height: 1.5; text-align: justify;">
-              The Headmaster, SMC Chairman, Committee Members, and staff of <strong><span class="val-school">____________________</span></strong>, Mandal <strong><span class="val-mandal">__________</span></strong>, District <strong><span class="val-dist">__________</span></strong> have unanimously resolved to utilize the Sanctioned <span class="val-grant">GRANT</span> under the GEN/SC/ST head amounting to Rs. <strong><span class="val-total">0</span>/-</strong> received under SNA SPARSH account.
+              The Headmaster, SMC Chairman, Committee Members, and staff of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, Mandal <strong><span class="val-mandal">HUSNABAD</span></strong>, District <strong><span class="val-dist">SIDDIPET</span></strong> have unanimously resolved to utilize the Sanctioned <span class="val-grant">COMPOSITE SCHOOL GRANT</span> under the GEN/SC/ST head amounting to Rs. <strong><span class="val-total">25,000</span>/-</strong> received under SNA SPARSH account.
             </p>
             <p style="font-size: 11px; margin-top: 5px; line-height: 1.5; text-align: justify;">
-              Out of the sanctioned amount, a sum of Rs. <strong><span class="val-total-util">0</span>/-</strong> for the present spell shall be paid towards expenditures incurred by transferring the amount to the respective vendors' bank accounts through IFMIS portal as shown in the Annexure below:
+              Out of the sanctioned amount, a sum of Rs. <strong><span class="val-total-util">25,000</span>/-</strong> for the present spell shall be paid towards expenditures incurred by transferring the amount to the respective vendors' bank accounts through IFMIS portal as shown in the Annexure below:
             </p>
 
             <table class="print-table" style="margin-top: 8px;">
@@ -537,10 +650,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td style="text-align: center; font-weight: 600;">GEN</td><td style="text-align: center;">1</td><td class="val-v-gen-name">-</td><td class="val-v-gen-acc">-</td><td class="val-v-gen-ifsc">-</td><td style="text-align: right;" class="val-util-gen">0</td><td style="text-align: center;">Paid</td></tr>
-                <tr><td style="text-align: center; font-weight: 600;">SC</td><td style="text-align: center;">2</td><td class="val-v-sc-name">-</td><td class="val-v-sc-acc">-</td><td class="val-v-sc-ifsc">-</td><td style="text-align: right;" class="val-util-sc">0</td><td style="text-align: center;">Paid</td></tr>
-                <tr><td style="text-align: center; font-weight: 600;">ST</td><td style="text-align: center;">3</td><td class="val-v-st-name">-</td><td class="val-v-st-acc">-</td><td class="val-v-st-ifsc">-</td><td style="text-align: right;" class="val-util-st">0</td><td style="text-align: center;">Paid</td></tr>
-                <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="5" style="text-align: center;">TOTAL:</td><td style="text-align: right;" class="val-total-util">0</td><td></td></tr>
+                <tr><td style="text-align: center; font-weight: 600;">GEN</td><td style="text-align: center;">1</td><td class="val-v-gen-name">M/S GEN SUPPLIERS</td><td class="val-v-gen-acc">456</td><td class="val-v-gen-ifsc">SBI, SBIN123</td><td style="text-align: right;" class="val-util-gen">18,000</td><td style="text-align: center;">Paid</td></tr>
+                <tr><td style="text-align: center; font-weight: 600;">SC</td><td style="text-align: center;">2</td><td class="val-v-sc-name">M/S SC TRADERS</td><td class="val-v-sc-acc">789</td><td class="val-v-sc-ifsc">SBI, SBIN456</td><td style="text-align: right;" class="val-util-sc">4,250</td><td style="text-align: center;">Paid</td></tr>
+                <tr><td style="text-align: center; font-weight: 600;">ST</td><td style="text-align: center;">3</td><td class="val-v-st-name">M/S ST ENTERPRISES</td><td class="val-v-st-acc">123</td><td class="val-v-st-ifsc">SBI, SBINXYZ1</td><td style="text-align: right;" class="val-util-st">2,750</td><td style="text-align: center;">Paid</td></tr>
+                <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="5" style="text-align: center;">TOTAL:</td><td style="text-align: right;" class="val-total-util">25,000</td><td></td></tr>
               </tbody>
             </table>
 
@@ -575,7 +688,7 @@
                 <div style="text-align: center;">
                   <p style="font-weight: 700;">__________________________</p>
                   <p style="font-weight: 700; margin-top: 2px;">Signature of the Headmaster</p>
-                  <p style="font-size: 10px;"><span class="val-school">____________________</span></p>
+                  <p style="font-size: 10px;"><span class="val-school">MPPS  KUCHANAPALLY</span></p>
                 </div>
               </div>
             </div>
@@ -589,8 +702,8 @@
         <div class="sheet-inner">
           <div>
             <div style="text-align: center; font-weight: 700; margin-bottom: 14px;">
-              <h2 style="font-size: 15px;">SMC-BUDGET WATCH REGISTER - <span class="val-school">____________________</span></h2>
-              <p style="font-size: 12px;">UDISE: <span class="val-udise">__________</span></p>
+              <h2 style="font-size: 15px;">SMC-BUDGET WATCH REGISTER - <span class="val-school">MPPS  KUCHANAPALLY</span></h2>
+              <p style="font-size: 12px;">UDISE: <span class="val-udise">36180601001</span></p>
             </div>
             <table class="print-table">
               <thead>
@@ -608,10 +721,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td style="text-align: center;">1</td><td class="val-grant">-</td><td style="text-align: center;">GEN</td><td class="val-hoa-gen">2202-01-001</td><td style="text-align: center;">Spell-1</td><td class="val-date">-</td><td style="text-align: right;" class="val-amt-gen">0</td><td style="text-align: right;" class="val-util-gen">0</td><td style="text-align: right;" class="val-bal-gen">0</td><td class="val-v-gen-name">-</td></tr>
-                <tr><td style="text-align: center;">2</td><td class="val-grant">-</td><td style="text-align: center;">SC</td><td class="val-hoa-sc">2202-01-789</td><td style="text-align: center;">Spell-1</td><td class="val-date">-</td><td style="text-align: right;" class="val-amt-sc">0</td><td style="text-align: right;" class="val-util-sc">0</td><td style="text-align: right;" class="val-bal-sc">0</td><td class="val-v-sc-name">-</td></tr>
-                <tr><td style="text-align: center;">3</td><td class="val-grant">-</td><td style="text-align: center;">ST</td><td class="val-hoa-st">2202-01-796</td><td style="text-align: center;">Spell-1</td><td class="val-date">-</td><td style="text-align: right;" class="val-amt-st">0</td><td style="text-align: right;" class="val-util-st">0</td><td style="text-align: right;" class="val-bal-st">0</td><td class="val-v-st-name">-</td></tr>
-                <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="6" style="text-align: center;">Total:</td><td style="text-align: right;" class="val-total">0</td><td style="text-align: right;" class="val-total-util">0</td><td style="text-align: right;" class="val-total-bal">0</td><td></td></tr>
+                <tr><td style="text-align: center;">1</td><td class="val-grant">COMPOSITE SCHOOL GRANT</td><td style="text-align: center;">GEN</td><td class="val-hoa-gen">2202-01-001</td><td style="text-align: center;">Spell-1</td><td class="val-date">31/Oct/2026</td><td style="text-align: right;" class="val-amt-gen">18,000</td><td style="text-align: right;" class="val-util-gen">18,000</td><td style="text-align: right;" class="val-bal-gen">0</td><td class="val-v-gen-name">M/S GEN SUPPLIERS</td></tr>
+                <tr><td style="text-align: center;">2</td><td class="val-grant">COMPOSITE SCHOOL GRANT</td><td style="text-align: center;">SC</td><td class="val-hoa-sc">2202-01-789</td><td style="text-align: center;">Spell-1</td><td class="val-date">31/Oct/2026</td><td style="text-align: right;" class="val-amt-sc">4,250</td><td style="text-align: right;" class="val-util-sc">4,250</td><td style="text-align: right;" class="val-bal-sc">0</td><td class="val-v-sc-name">M/S SC TRADERS</td></tr>
+                <tr><td style="text-align: center;">3</td><td class="val-grant">COMPOSITE SCHOOL GRANT</td><td style="text-align: center;">ST</td><td class="val-hoa-st">2202-01-796</td><td style="text-align: center;">Spell-1</td><td class="val-date">31/Oct/2026</td><td style="text-align: right;" class="val-amt-st">2,750</td><td style="text-align: right;" class="val-util-st">2,750</td><td style="text-align: right;" class="val-bal-st">0</td><td class="val-v-st-name">M/S ST ENTERPRISES</td></tr>
+                <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="6" style="text-align: center;">Total:</td><td style="text-align: right;" class="val-total">25,000</td><td style="text-align: right;" class="val-total-util">25,000</td><td style="text-align: right;" class="val-total-bal">0</td><td></td></tr>
               </tbody>
             </table>
           </div>
@@ -625,10 +738,10 @@
           <div>
             <div style="text-align: center; font-weight: 700; margin-bottom: 12px; border-bottom: 1.5px solid #4b5563; padding-bottom: 6px;">
               <h2 style="font-size: 14px; text-transform: uppercase;">UTILIZATION CERTIFICATE (FY 2026-27)</h2>
-              <p style="font-size: 11.5px;"><span class="val-school">____________________</span> (DDO CODE: <span class="val-ddo">__________</span>), MDL <span class="val-mandal">__________</span>, DIST. <span class="val-dist">__________</span></p>
+              <p style="font-size: 11.5px;"><span class="val-school">MPPS  KUCHANAPALLY</span> (DDO CODE: <span class="val-ddo">18050308008</span>), MDL <span class="val-mandal">HUSNABAD</span>, DIST. <span class="val-dist">SIDDIPET</span></p>
             </div>
             <p style="font-size: 11.5px; line-height: 1.5; margin-top: 12px;">
-              Certified that a sum of Rs. <strong><span class="val-total">0</span>/-</strong> was received under SNA Sparsh Account during FY 2026-27 towards <span class="val-grant" style="font-weight: 600;">____________________</span>.
+              Certified that a sum of Rs. <strong><span class="val-total">25,000</span>/-</strong> was received under SNA Sparsh Account during FY 2026-27 towards <span class="val-grant" style="font-weight: 600;">COMPOSITE SCHOOL GRANT</span>.
             </p>
             <table class="print-table" style="margin-top: 12px;">
               <thead>
@@ -642,17 +755,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td style="text-align: center;">1</td><td style="text-align: center; font-weight: 600;">GEN</td><td style="text-align: right;" class="val-amt-gen">0</td><td style="text-align: right;">0</td><td style="text-align: right;" class="val-util-gen">0</td><td style="text-align: right;" class="val-bal-gen">0</td></tr>
-                <tr><td style="text-align: center;">2</td><td style="text-align: center; font-weight: 600;">SC</td><td style="text-align: right;" class="val-amt-sc">0</td><td style="text-align: right;">0</td><td style="text-align: right;" class="val-util-sc">0</td><td style="text-align: right;" class="val-bal-sc">0</td></tr>
-                <tr><td style="text-align: center;">3</td><td style="text-align: center; font-weight: 600;">ST</td><td style="text-align: right;" class="val-amt-st">0</td><td style="text-align: right;">0</td><td style="text-align: right;" class="val-util-st">0</td><td style="text-align: right;" class="val-bal-st">0</td></tr>
-                <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="2" style="text-align: center;">Total</td><td style="text-align: right;" class="val-total">0</td><td style="text-align: right;">0</td><td style="text-align: right;" class="val-total-util">0</td><td style="text-align: right;" class="val-total-bal">0</td></tr>
+                <tr><td style="text-align: center;">1</td><td style="text-align: center; font-weight: 600;">GEN</td><td style="text-align: right;" class="val-amt-gen">18,000</td><td style="text-align: right;">0</td><td style="text-align: right;" class="val-util-gen">18,000</td><td style="text-align: right;" class="val-bal-gen">0</td></tr>
+                <tr><td style="text-align: center;">2</td><td style="text-align: center; font-weight: 600;">SC</td><td style="text-align: right;" class="val-amt-sc">4,250</td><td style="text-align: right;">0</td><td style="text-align: right;" class="val-util-sc">4,250</td><td style="text-align: right;" class="val-bal-sc">0</td></tr>
+                <tr><td style="text-align: center;">3</td><td style="text-align: center; font-weight: 600;">ST</td><td style="text-align: right;" class="val-amt-st">2,750</td><td style="text-align: right;">0</td><td style="text-align: right;" class="val-util-st">2,750</td><td style="text-align: right;" class="val-bal-st">0</td></tr>
+                <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="2" style="text-align: center;">Total</td><td style="text-align: right;" class="val-total">25,000</td><td style="text-align: right;">0</td><td style="text-align: right;" class="val-total-util">25,000</td><td style="text-align: right;" class="val-total-bal">0</td></tr>
               </tbody>
             </table>
             <div style="margin-top: 32px; display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 600;">
-              <div><p>Place: <span class="val-school">____________________</span><br>Date: <span class="val-date">__________</span></p></div>
+              <div><p>Place: <span class="val-school">MPPS  KUCHANAPALLY</span><br>Date: <span class="val-date">31/Oct/2026</span></p></div>
               <div style="text-align: right;">
                 <p>Signature of Head of Office / DDO</p>
-                <p style="margin-top: 2px;">Name: <span class="val-hm">____________________</span></p>
+                <p style="margin-top: 2px;">Name: <span class="val-hm">K.Vasudeva Reddy, M.Sc.,B.Ed</span></p>
               </div>
             </div>
           </div>
@@ -666,7 +779,7 @@
           <div>
             <div style="text-align: center; font-weight: 700; margin-bottom: 12px; border-bottom: 1.5px solid #4b5563; padding-bottom: 6px;">
               <h2 style="font-size: 14px; text-transform: uppercase;">CONSOLIDATED UTILIZATION CERTIFICATE FOR FY 2026-27</h2>
-              <p style="font-size: 11.5px;">Office Name: <span class="val-school">____________________</span> | UDISE: <span class="val-udise">__________</span></p>
+              <p style="font-size: 11.5px;">Office Name: <span class="val-school">MPPS  KUCHANAPALLY</span> | UDISE: <span class="val-udise">36180601001</span></p>
             </div>
             <table class="print-table" style="text-align: center; font-size: 10px;">
               <thead>
@@ -693,15 +806,15 @@
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td style="text-align: left;" class="val-grant">-</td>
-                  <td class="val-amt-gen">0</td><td class="val-amt-sc">0</td><td class="val-amt-st">0</td><td class="val-total">0</td>
-                  <td class="val-util-gen">0</td><td class="val-util-sc">0</td><td class="val-util-st">0</td><td class="val-total-util">0</td>
+                  <td style="text-align: left;" class="val-grant">COMPOSITE SCHOOL GRANT</td>
+                  <td class="val-amt-gen">18,000</td><td class="val-amt-sc">4,250</td><td class="val-amt-st">2,750</td><td class="val-total">25,000</td>
+                  <td class="val-util-gen">18,000</td><td class="val-util-sc">4,250</td><td class="val-util-st">2,750</td><td class="val-total-util">25,000</td>
                   <td class="val-bal-gen">0</td><td class="val-bal-sc">0</td><td class="val-bal-st">0</td><td class="val-total-bal">0</td>
                 </tr>
                 <tr style="font-weight: 800; background-color: #f9fafb;">
                   <td colspan="2">Total</td>
-                  <td class="val-amt-gen">0</td><td class="val-amt-sc">0</td><td class="val-amt-st">0</td><td class="val-total">0</td>
-                  <td class="val-util-gen">0</td><td class="val-util-sc">0</td><td class="val-util-st">0</td><td class="val-total-util">0</td>
+                  <td class="val-amt-gen">18,000</td><td class="val-amt-sc">4,250</td><td class="val-amt-st">2,750</td><td class="val-total">25,000</td>
+                  <td class="val-util-gen">18,000</td><td class="val-util-sc">4,250</td><td class="val-util-st">2,750</td><td class="val-total-util">25,000</td>
                   <td class="val-bal-gen">0</td><td class="val-bal-sc">0</td><td class="val-bal-st">0</td><td class="val-total-bal">0</td>
                 </tr>
               </tbody>
@@ -719,48 +832,48 @@
             
             <div style="border: 1px solid #4b5563; padding: 11px 14px; border-radius: 4px; font-size: 11px; line-height: 1.55;">
               <div style="display: flex; justify-content: space-between; font-weight: 700;">
-                <span>Date: <span class="val-date">__________</span></span>
+                <span>Date: <span class="val-date">31/Oct/2026</span></span>
                 <span>ADVANCE STAMPED RECEIPT (GEN COMPONENT)</span>
               </div>
-              <p style="margin-top: 5px;">Received with thanks from the Office of <span class="val-school">____________________</span>, the sum of Rs. <strong class="val-util-gen">0</strong>/- towards GENERAL Component (<span class="val-hoa-gen">2202-01-001</span>).</p>
-              <p style="margin-top: 3px; font-weight: 600;">1. Vendor: <span class="val-v-gen-name">-</span> | 2. A/c: <span class="val-v-gen-acc">-</span> | 3. Bank & IFSC: <span class="val-v-gen-ifsc">-</span></p>
+              <p style="margin-top: 5px;">Received with thanks from the Office of <span class="val-school">MPPS  KUCHANAPALLY</span>, the sum of Rs. <strong class="val-util-gen">18,000</strong>/- towards GENERAL Component (<span class="val-hoa-gen">2202-01-001</span>).</p>
+              <p style="margin-top: 3px; font-weight: 600;">1. Vendor: <span class="val-v-gen-name">M/S GEN SUPPLIERS</span> | 2. A/c: <span class="val-v-gen-acc">456</span> | 3. Bank & IFSC: <span class="val-v-gen-ifsc">SBI, SBIN123</span></p>
               <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px;">
                 <div style="width: 50px; height: 50px; border: 1.5px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 8.5px; color: #4b5563; text-align: center;">Affix ₹1/-<br>Stamp</div>
                 <div style="text-align: right; font-weight: 600;">
-                  <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
-                  <p>DDO Code: <span class="val-ddo">__________</span></p>
+                  <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
+                  <p>DDO Code: <span class="val-ddo">18050308008</span></p>
                 </div>
               </div>
             </div>
 
             <div style="border: 1px solid #4b5563; padding: 11px 14px; border-radius: 4px; font-size: 11px; line-height: 1.55;">
               <div style="display: flex; justify-content: space-between; font-weight: 700;">
-                <span>Date: <span class="val-date">__________</span></span>
+                <span>Date: <span class="val-date">31/Oct/2026</span></span>
                 <span>ADVANCE STAMPED RECEIPT (SC COMPONENT)</span>
               </div>
-              <p style="margin-top: 5px;">Received with thanks from the Office of <span class="val-school">____________________</span>, the sum of Rs. <strong class="val-util-sc">0</strong>/- towards SC Component (<span class="val-hoa-sc">2202-01-789</span>).</p>
-              <p style="margin-top: 3px; font-weight: 600;">1. Vendor: <span class="val-v-sc-name">-</span> | 2. A/c: <span class="val-v-sc-acc">-</span> | 3. Bank & IFSC: <span class="val-v-sc-ifsc">-</span></p>
+              <p style="margin-top: 5px;">Received with thanks from the Office of <span class="val-school">MPPS  KUCHANAPALLY</span>, the sum of Rs. <strong class="val-util-sc">4,250</strong>/- towards SC Component (<span class="val-hoa-sc">2202-01-789</span>).</p>
+              <p style="margin-top: 3px; font-weight: 600;">1. Vendor: <span class="val-v-sc-name">M/S SC TRADERS</span> | 2. A/c: <span class="val-v-sc-acc">789</span> | 3. Bank & IFSC: <span class="val-v-sc-ifsc">SBI, SBIN456</span></p>
               <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px;">
                 <div style="width: 50px; height: 50px; border: 1.5px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 8.5px; color: #4b5563; text-align: center;">Affix ₹1/-<br>Stamp</div>
                 <div style="text-align: right; font-weight: 600;">
-                  <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
-                  <p>DDO Code: <span class="val-ddo">__________</span></p>
+                  <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
+                  <p>DDO Code: <span class="val-ddo">18050308008</span></p>
                 </div>
               </div>
             </div>
 
             <div style="border: 1px solid #4b5563; padding: 11px 14px; border-radius: 4px; font-size: 11px; line-height: 1.55;">
               <div style="display: flex; justify-content: space-between; font-weight: 700;">
-                <span>Date: <span class="val-date">__________</span></span>
+                <span>Date: <span class="val-date">31/Oct/2026</span></span>
                 <span>ADVANCE STAMPED RECEIPT (ST COMPONENT)</span>
               </div>
-              <p style="margin-top: 5px;">Received with thanks from the Office of <span class="val-school">____________________</span>, the sum of Rs. <strong class="val-util-st">0</strong>/- towards ST Component (<span class="val-hoa-st">2202-01-796</span>).</p>
-              <p style="margin-top: 3px; font-weight: 600;">1. Vendor: <span class="val-v-st-name">-</span> | 2. A/c: <span class="val-v-st-acc">-</span> | 3. Bank & IFSC: <span class="val-v-st-ifsc">-</span></p>
+              <p style="margin-top: 5px;">Received with thanks from the Office of <span class="val-school">MPPS  KUCHANAPALLY</span>, the sum of Rs. <strong class="val-util-st">2,750</strong>/- towards ST Component (<span class="val-hoa-st">2202-01-796</span>).</p>
+              <p style="margin-top: 3px; font-weight: 600;">1. Vendor: <span class="val-v-st-name">M/S ST ENTERPRISES</span> | 2. A/c: <span class="val-v-st-acc">123</span> | 3. Bank & IFSC: <span class="val-v-st-ifsc">SBI, SBINXYZ1</span></p>
               <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 8px;">
                 <div style="width: 50px; height: 50px; border: 1.5px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 8.5px; color: #4b5563; text-align: center;">Affix ₹1/-<br>Stamp</div>
                 <div style="text-align: right; font-weight: 600;">
-                  <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
-                  <p>DDO Code: <span class="val-ddo">__________</span></p>
+                  <p>Signature of DDO (<span class="val-hm">K.Vasudeva Reddy</span>)</p>
+                  <p>DDO Code: <span class="val-ddo">18050308008</span></p>
                 </div>
               </div>
             </div>
@@ -775,7 +888,7 @@
           <div>
             <div style="text-align: center; font-weight: 700; border-bottom: 1.5px solid #4b5563; padding-bottom: 8px;">
               <h2 style="font-size: 15px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">CERTIFICATION / VOUCHER RECEIPT</h2>
-              <p style="font-size: 12px; margin-top: 4px; font-weight: 600; color: #374151;">School: <span class="val-school" style="color: #000; font-weight: 700;">____________________</span> &nbsp;|&nbsp; UDISE: <span class="val-udise" style="color: #000; font-weight: 700;">__________</span></p>
+              <p style="font-size: 12px; margin-top: 4px; font-weight: 600; color: #374151;">School: <span class="val-school" style="color: #000; font-weight: 700;">MPPS  KUCHANAPALLY</span> &nbsp;|&nbsp; UDISE: <span class="val-udise" style="color: #000; font-weight: 700;">36180601001</span></p>
             </div>
 
             <!-- BALANCED VOUCHER BOX -->
@@ -790,7 +903,7 @@
 
             <div style="margin-top: 32px; text-align: right; font-size: 12px; font-weight: 700;">
               <p>SIGNATURE OF THE HEADMASTER</p>
-              <p style="margin-top: 3px; color: #1f2937;"><span class="val-school">____________________</span></p>
+              <p style="margin-top: 3px; color: #1f2937;"><span class="val-school">MPPS  KUCHANAPALLY</span></p>
             </div>
           </div>
           <div class="footer-line">Designed by Boini Rajashekhar-MIS Husnabad</div>
@@ -801,53 +914,142 @@
   </main>
 
   <script>
+    // EXACT 62 VERIFIED RECORDS FROM "SMC Grants hsb.csv"
+    const husnabadSchools = [
+      {"s":"MPPS  KUCHANAPALLY","u":"36180601001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS  KUCHANAPALLY","u":"36180601001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS  MADATHA","u":"36180600302","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS  MADATHA","u":"36180600302","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS (STAGE) PANDILLA ","u":"36180601102","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS (STAGE) PANDILLA ","u":"36180601102","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS ARAPELLY","u":"36180600204","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS ARAPELLY","u":"36180600204","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":2880,"sc":680,"st":440},
+      {"s":"MPPS BALLUNAYAK THANDA","u":"36180600702","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS BALLUNAYAK THANDA","u":"36180600702","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS BANJERUPALLY","u":"36180601103","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS BANJERUPALLY","u":"36180601103","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS HUSNABAD","u":"36180600202","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
+      {"s":"MPPS HUSNABAD","u":"36180600202","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS KASHI NAGAR","u":"36180600205","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS KASHI NAGAR","u":"36180600205","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS KASTOORBA COLONY","u":"36180600203","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS KASTOORBA COLONY","u":"36180600203","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS MALAPALLY","u":"36180601104","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS MALAPALLY","u":"36180601104","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS MIRZAPUR","u":"36180600703","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS MIRZAPUR","u":"36180600703","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS MOHAMMADAPUR","u":"36180600402","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS MOHAMMADAPUR","u":"36180600402","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":2880,"sc":680,"st":440},
+      {"s":"MPPS PANDILLA","u":"36180601101","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS PANDILLA","u":"36180601101","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS POOLNAYAK THANDA","u":"36180600701","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS POOLNAYAK THANDA","u":"36180600701","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS POTHARAM(S)","u":"36180600801","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
+      {"s":"MPPS POTHARAM(S)","u":"36180600801","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS POTLAPALLY","u":"36180600101","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS POTLAPALLY","u":"36180600101","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS THOTAPALLY","u":"36180600901","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS THOTAPALLY","u":"36180600901","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS UMMAPUR","u":"36180600601","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPPS UMMAPUR","u":"36180600601","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPPS YELLAMBAZAR","u":"36180600212","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPPS YELLAMBAZAR","u":"36180600212","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":3600,"sc":850,"st":550},
+      {"s":"MPUPS GANDHINAGAR","u":"36180600234","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"MPUPS GANDHINAGAR","u":"36180600234","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS JILLALLAGADDA","u":"36180600602","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS JILLALLAGADDA","u":"36180600602","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS NAGARAM","u":"36180600501","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":7200,"sc":1700,"st":1100},
+      {"s":"MPUPS NAGARAM","u":"36180600501","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":5040,"sc":1190,"st":770},
+      {"s":"MRC HUSNABAD","u":"361806","d":"SIDDIPET","m":"HUSNABAD","do":"MRC HUSNABAD","hn":"B.Manila, M.A.,M.Ed","hc":"18050308002","g":"MRC GRANT","gen":64800,"sc":15300,"st":9900},
+      {"s":"ZPHS HUSNABAD","u":"36180600222","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"COMPOSIT SCHOOL GRANT","gen":54000,"sc":12750,"st":8250},
+      {"s":"ZPHS HUSNABAD","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"CRC GRANT","gen":30960,"sc":7310,"st":4730},
+      {"s":"ZPHS HUSNABAD","u":"36180600222","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS HUSNABAD","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS HUSNABAD","hn":"K.Vasudeva Reddy, M.Sc.,B.Ed","hc":"18050308008","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS MIRZAPUR","u":"36180600704","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MIRZAPUR","hn":"A.Venukumar","hc":"18050308011","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS MIRZAPUR","u":"36180600704","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MIRZAPUR","hn":"A.Venukumar","hc":"18050308011","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS MIRZAPUR","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MIRZAPUR","hn":"A.Venukumar","hc":"18050308011","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS MOHAMMADAPUR","u":"36180600403","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MOHAMMADAPUR","hn":"P.Mahender Reddy","hc":"18050308034","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS MOHAMMADAPUR","u":"36180600403","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MOHAMMADAPUR","hn":"P.Mahender Reddy","hc":"18050308034","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTHARAM(S)","u":"36180600802","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"COMPOSIT SCHOOL GRANT","gen":36000,"sc":8500,"st":5500},
+      {"s":"ZPHS POTHARAM(S)","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS POTHARAM-S","u":"3618060001","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"CRC GRANT","gen":30960,"sc":7310,"st":4730},
+      {"s":"ZPHS POTHARAM-S","u":"36180600802","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTHARAM-S","hn":"B.Manila, M.A.,M.Ed","hc":"18050308012","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTLAPALLY","u":"36180600102","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTLAPALLY","hn":"N.Sandhya Sri","hc":"18050308013","g":"COMPOSIT SCHOOL GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTLAPALLY","u":"36180600102","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTLAPALLY","hn":"N.Sandhya Sri","hc":"18050308013","g":"SPORTS GRANT","gen":18000,"sc":4250,"st":2750},
+      {"s":"ZPHS POTLAPALLY","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS POTLAPALLY","hn":"N.Sandhya Sri","hc":"18050308013","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0},
+      {"s":"ZPHS MOHAMMADAPUR","u":"3618060002","d":"SIDDIPET","m":"HUSNABAD","do":"ZPHS MOHAMMADAPUR","hn":"P.Mahender Reddy","hc":"18050308034","g":"ADOLESCENT SAFETY (GCEASCS) GRANT","gen":2000,"sc":0,"st":0}
+    ];
+
+    function pickSchool(index) {
+      const s = husnabadSchools[parseInt(index, 10)];
+      if (!s) return;
+
+      document.getElementById('inSchool').value = s.s;
+      document.getElementById('inUdise').value = s.u;
+      document.getElementById('inDistrict').value = s.d;
+      document.getElementById('inMandal').value = s.m;
+      document.getElementById('inDdoOffice').value = s.do;
+      document.getElementById('inHm').value = s.hn;
+      document.getElementById('inDdoCode').value = s.hc;
+      document.getElementById('inGrant').value = s.g;
+
+      // Sanctioned amounts (locked)
+      document.getElementById('inGenAmt').value = s.gen;
+      document.getElementById('inScAmt').value = s.sc;
+      document.getElementById('inStAmt').value = s.st;
+
+      // Utilized defaults to sanctioned amount (editable)
+      document.getElementById('inGenUtil').value = s.gen;
+      document.getElementById('inScUtil').value = s.sc;
+      document.getElementById('inStUtil').value = s.st;
+
+      renderAll();
+    }
+
     function renderAll() {
-      const getVal = (id, def = '') => {
-        const v = document.getElementById(id).value.trim();
-        return v ? v : def;
-      };
+      const getVal = (id) => document.getElementById(id).value;
       const setEls = (cls, text) => document.querySelectorAll('.' + cls).forEach(el => el.innerText = text);
 
-      setEls('val-school', getVal('inSchool', '____________________'));
-      setEls('val-udise', getVal('inUdise', '__________'));
-      setEls('val-mandal', getVal('inMandal', '__________'));
-      setEls('val-dist', getVal('inDistrict', '__________'));
-      setEls('val-ddo-office', getVal('inDdoOffice', '____________________'));
-      setEls('val-hm', getVal('inHm', '____________________'));
-      setEls('val-ddo', getVal('inDdoCode', '__________'));
-      setEls('val-proc', getVal('inProcNo', '____________________'));
-      setEls('val-date', getVal('inProcDate', '__________'));
-      setEls('val-grant', getVal('inGrant', 'GRANT'));
+      setEls('val-school', getVal('inSchool'));
+      setEls('val-udise', getVal('inUdise'));
+      setEls('val-mandal', getVal('inMandal'));
+      setEls('val-dist', getVal('inDistrict'));
+      setEls('val-ddo-office', getVal('inDdoOffice'));
+      setEls('val-hm', getVal('inHm'));
+      setEls('val-ddo', getVal('inDdoCode'));
+      setEls('val-proc', getVal('inProcNo'));
+      setEls('val-date', getVal('inProcDate'));
+      setEls('val-grant', getVal('inGrant'));
 
-      setEls('val-hoa-gen', getVal('inGenHoa', '2202-01-001'));
-      setEls('val-v-gen-name', getVal('inGenVendor', '-'));
-      setEls('val-v-gen-acc', getVal('inGenAcc', '-'));
-      setEls('val-v-gen-ifsc', getVal('inGenIfsc', '-'));
+      setEls('val-hoa-gen', getVal('inGenHoa'));
+      setEls('val-v-gen-name', getVal('inGenVendor'));
+      setEls('val-v-gen-acc', getVal('inGenAcc'));
+      setEls('val-v-gen-ifsc', getVal('inGenIfsc'));
       
-      const genAmt = Number(document.getElementById('inGenAmt').value || 0);
-      const genUtil = Number(document.getElementById('inGenUtil').value || 0);
+      const genAmt = Number(getVal('inGenAmt') || 0);
+      const genUtil = Number(getVal('inGenUtil') || 0);
       setEls('val-amt-gen', genAmt.toLocaleString('en-IN'));
       setEls('val-util-gen', genUtil.toLocaleString('en-IN'));
       setEls('val-bal-gen', Math.max(0, genAmt - genUtil).toLocaleString('en-IN'));
 
-      setEls('val-hoa-sc', getVal('inScHoa', '2202-01-789'));
-      setEls('val-v-sc-name', getVal('inScVendor', '-'));
-      setEls('val-v-sc-acc', getVal('inScAcc', '-'));
-      setEls('val-v-sc-ifsc', getVal('inScIfsc', '-'));
+      setEls('val-hoa-sc', getVal('inScHoa'));
+      setEls('val-v-sc-name', getVal('inScVendor'));
+      setEls('val-v-sc-acc', getVal('inScAcc'));
+      setEls('val-v-sc-ifsc', getVal('inScIfsc'));
       
-      const scAmt = Number(document.getElementById('inScAmt').value || 0);
-      const scUtil = Number(document.getElementById('inScUtil').value || 0);
+      const scAmt = Number(getVal('inScAmt') || 0);
+      const scUtil = Number(getVal('inScUtil') || 0);
       setEls('val-amt-sc', scAmt.toLocaleString('en-IN'));
       setEls('val-util-sc', scUtil.toLocaleString('en-IN'));
       setEls('val-bal-sc', Math.max(0, scAmt - scUtil).toLocaleString('en-IN'));
 
-      setEls('val-hoa-st', getVal('inStHoa', '2202-01-796'));
-      setEls('val-v-st-name', getVal('inStVendor', '-'));
-      setEls('val-v-st-acc', getVal('inStAcc', '-'));
-      setEls('val-v-st-ifsc', getVal('inStIfsc', '-'));
+      setEls('val-hoa-st', getVal('inStHoa'));
+      setEls('val-v-st-name', getVal('inStVendor'));
+      setEls('val-v-st-acc', getVal('inStAcc'));
+      setEls('val-v-st-ifsc', getVal('inStIfsc'));
       
-      const stAmt = Number(document.getElementById('inStAmt').value || 0);
-      const stUtil = Number(document.getElementById('inStUtil').value || 0);
+      const stAmt = Number(getVal('inStAmt') || 0);
+      const stUtil = Number(getVal('inStUtil') || 0);
       setEls('val-amt-st', stAmt.toLocaleString('en-IN'));
       setEls('val-util-st', stUtil.toLocaleString('en-IN'));
       setEls('val-bal-st', Math.max(0, stAmt - stUtil).toLocaleString('en-IN'));
@@ -872,17 +1074,6 @@
       }
     }
 
-    function clearForm() {
-      if (confirm('Are you sure you want to clear all fields?')) {
-        document.querySelectorAll('input').forEach(inp => {
-          if (!inp.id.includes('Hoa')) {
-            inp.value = '';
-          }
-        });
-        renderAll();
-      }
-    }
-
     // DYNAMIC VISITOR COUNTER
     async function initLivePageViews() {
       const viewsEl = document.getElementById('pageViewsCount');
@@ -904,7 +1095,7 @@
     }
 
     window.onload = () => {
-      renderAll();
+      pickSchool(0);
       switchTab('form');
       initLivePageViews();
     };

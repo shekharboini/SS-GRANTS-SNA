@@ -26,18 +26,6 @@
       justify-content: space-between;
       gap: 15px;
     }
-    .header-logo-box {
-      width: 68px;
-      height: 68px;
-      background: #ffffff;
-      border-radius: 50%;
-      padding: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      flex-shrink: 0;
-    }
     .header-center { text-align: center; flex: 1; }
     .header-title {
       font-size: 22px;
@@ -50,19 +38,8 @@
       font-size: 13.5px;
       font-weight: 500;
       color: #dbeafe;
-      margin-top: 3px;
-      margin-bottom: 6px;
-    }
-    .creator-badge {
-      display: inline-block;
-      background-color: rgba(15, 23, 42, 0.7);
-      border: 1.5px solid #d97706;
-      padding: 3px 16px;
-      border-radius: 9999px;
-      font-size: 12.5px;
-      font-weight: 700;
-      color: #fde047;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+      margin-top: 4px;
+      margin-bottom: 4px;
     }
     .views-badge {
       display: inline-flex;
@@ -70,12 +47,12 @@
       gap: 6px;
       background-color: #0f172a;
       border: 1px solid #334155;
-      padding: 3px 12px;
+      padding: 4px 14px;
       border-radius: 6px;
       font-size: 12px;
       font-weight: 700;
       color: #cbd5e1;
-      margin-top: 6px;
+      margin-top: 4px;
     }
     .header-actions { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
     .btn-print {
@@ -253,28 +230,17 @@
 </head>
 <body>
 
-  <!-- TOP HEADER WITH LOGOS & VIEWS COUNTER -->
+  <!-- TOP HEADER (LOGOS & CREATOR BADGE REMOVED) -->
   <header class="top-header no-print">
     <div class="header-container">
-      <div class="header-logo-box">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Seal_of_Telangana.svg" alt="Telangana Logo" style="width: 100%; height: 100%; object-fit: contain;">
-      </div>
-
       <div class="header-center">
         <h1 class="header-title">SAMAGRA SHIKSHA - SNA SPARSH REPORTS SOFTWARE</h1>
         <p class="header-sub">FY 2026–27 | Complete Proceedings, Annexures & UCs |</p>
         <div>
-          <div class="creator-badge">Created by Boini Rajashekhar (MIS Coordinator) - Husnabad</div>
-        </div>
-        <div>
           <span class="views-badge">
-            <span>👁️</span> Page Views: <span id="pageViewsCount" style="color: #fde047; font-size: 13.5px; font-weight: 900;">18</span>
+            <span>👁️</span> Page Views: <span id="pageViewsCount" style="color: #fde047; font-size: 13.5px; font-weight: 900;">Loading...</span>
           </span>
         </div>
-      </div>
-
-      <div class="header-logo-box">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Seal_of_Telangana.svg" alt="Telangana Logo" style="width: 100%; height: 100%; object-fit: contain;">
       </div>
 
       <div class="header-actions">
@@ -695,7 +661,7 @@
               <p style="margin-top: 4px; font-weight: 600;">1. Vendor: <span class="val-v-gen-name">-</span> | 2. A/c: <span class="val-v-gen-acc">-</span> | 3. Bank & IFSC: <span class="val-v-gen-ifsc">-</span></p>
               <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 14px;">
                 <div style="width: 60px; height: 60px; border: 2px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #6b7280; text-align: center;">Affix ₹1/-<br>Stamp</div>
-                <div style="text-align: right; font-weight: 600;">
+                <div style="text-right font-weight: 600;">
                   <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
                   <p>DDO Code: <span class="val-ddo">__________</span></p>
                 </div>
@@ -711,7 +677,7 @@
               <p style="margin-top: 4px; font-weight: 600;">1. Vendor: <span class="val-v-sc-name">-</span> | 2. A/c: <span class="val-v-sc-acc">-</span> | 3. Bank & IFSC: <span class="val-v-sc-ifsc">-</span></p>
               <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 14px;">
                 <div style="width: 60px; height: 60px; border: 2px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #6b7280; text-align: center;">Affix ₹1/-<br>Stamp</div>
-                <div style="text-align: right; font-weight: 600;">
+                <div style="text-right font-weight: 600;">
                   <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
                   <p>DDO Code: <span class="val-ddo">__________</span></p>
                 </div>
@@ -727,7 +693,7 @@
               <p style="margin-top: 4px; font-weight: 600;">1. Vendor: <span class="val-v-st-name">-</span> | 2. A/c: <span class="val-v-st-acc">-</span> | 3. Bank & IFSC: <span class="val-v-st-ifsc">-</span></p>
               <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 14px;">
                 <div style="width: 60px; height: 60px; border: 2px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #6b7280; text-align: center;">Affix ₹1/-<br>Stamp</div>
-                <div style="text-align: right; font-weight: 600;">
+                <div style="text-right font-weight: 600;">
                   <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
                   <p>DDO Code: <span class="val-ddo">__________</span></p>
                 </div>

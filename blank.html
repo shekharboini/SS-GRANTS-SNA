@@ -259,7 +259,7 @@
     /* SHEET PRINT STYLES - A4 SINGLE PAGE FIT */
     .sheet {
       background-color: #ffffff;
-      padding: 30px 34px;
+      padding: 26px 30px;
       border-radius: 6px;
       box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
       max-width: 820px;
@@ -308,12 +308,12 @@
     .enlarged-receipt-card {
       border: 2px solid #1e3a8a;
       border-radius: 8px;
-      padding: 26px 28px;
+      padding: 22px 24px;
       background: #fafafa;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 180mm;
+      min-height: 195mm;
       margin: 10px 0;
     }
 
@@ -371,8 +371,8 @@
       .enlarged-receipt-card {
         border: 2px solid #000 !important;
         background: #fff !important;
-        min-height: 195mm !important;
-        padding: 24px 22px !important;
+        min-height: 200mm !important;
+        padding: 18px 18px !important;
       }
       .footer-line {
         border-top: 1px solid #9ca3af !important;
@@ -798,51 +798,67 @@
         </div>
       </article>
 
-      <!-- 7. ADVANCE RECEIPTS (ALL 3 PAGES UNDER SINGLE TAB) -->
+      <!-- 7. ADVANCE RECEIPTS (ALL 3 PAGES WITH VENDOR SIGNATURE & DDO COUNTERSIGNATURE) -->
       <div id="tab-receipts" class="tab-content">
         
         <!-- PAGE 1: GEN COMPONENT -->
         <article class="sheet page-break">
           <div class="sheet-inner">
             <div>
-              <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px;">
-                <h2 style="font-size: 17px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
-                <p style="font-size: 13.5px; margin-top: 5px; font-weight: 800; color: #111827;">
+              <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 6px;">
+                <h2 style="font-size: 16px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
+                <p style="font-size: 13px; margin-top: 4px; font-weight: 700; color: #111827;">
                   School: <span class="val-school">____________________</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">__________</span>
                 </p>
-                <p style="font-size: 12.5px; font-weight: 600; color: #374151; margin-top: 2px;">
+                <p style="font-size: 12px; font-weight: 600; color: #374151;">
                   Mandal: <span class="val-mandal">__________</span> &nbsp;|&nbsp; District: <span class="val-dist">__________</span>
                 </p>
               </div>
 
               <div class="enlarged-receipt-card">
                 <div>
-                  <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 14.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 8px;">
+                  <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 13.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 6px;">
                     <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">__________</span></span>
                     <span style="color: #1e3a8a; text-transform: uppercase;">GENERAL COMPONENT (1/3)</span>
                   </div>
                   
-                  <p style="margin-top: 22px; font-size: 14.5px; line-height: 1.8; text-align: justify;">
-                    Received with thanks from the Office of <strong><span class="val-school">____________________</span></strong>, the sum of 
-                    <strong>Rs. <span class="val-util-gen">0</span>/-</strong> towards <strong>GENERAL Component</strong> 
-                    under Head of Account <strong>(<span class="val-hoa-gen">2202-01-001-15-05-500-503</span>)</strong>.
+                  <p style="margin-top: 18px; font-size: 13.5px; line-height: 1.7; text-align: justify;">
+                    Received with thanks from the Office of the <strong><span class="val-school">____________________</span></strong>, Mdl <strong><span class="val-mandal">__________</span></strong>, Dist. <strong><span class="val-dist">__________</span></strong>, the sum of <strong>Rs. <span class="val-util-gen">0</span>/-</strong> towards <strong>GENERAL Component</strong> (Head of Account: <span class="val-hoa-gen">2202-01-001-15-05-500-503</span>) for <span class="val-grant">GRANT</span>.
                   </p>
 
-                  <div id="receiptVendorsGen" style="margin-top: 20px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 14px; font-size: 13.5px; line-height: 1.8;">
+                  <div id="receiptVendorsGen" style="margin-top: 14px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; font-size: 12.5px; line-height: 1.7;">
                     <!-- Dynamically populated vendors -->
                   </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px;">
-                  <div style="width: 80px; height: 85px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
-                    Affix ₹1/-<br>Revenue<br>Stamp
+                <!-- VENDOR SIGNATURE BLOCK -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 24px; padding-bottom: 16px; border-bottom: 1px dashed #94a3b8;">
+                  <div style="width: 75px; height: 80px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
+                    Affix 1/-<br>Revenue<br>Stamp
                   </div>
-                  <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
-                    <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
-                    <p>DDO Code: <span class="val-ddo">__________</span></p>
-                    <p><span class="val-ddo-office">____________________</span></p>
+                  <div style="text-align: right; font-size: 12px; line-height: 1.5;">
+                    <p style="font-weight: 700;">For [<span class="val-v-gen-name">Vendor Name</span>]</p>
+                    <p style="margin-top: 4px; color: #4b5563;">(Signature of Authorized Signatory)</p>
                   </div>
                 </div>
+
+                <!-- DDO COUNTERSIGNATURE BLOCK (WITH PROPER SPACE & MOVED UP) -->
+                <div style="margin-top: 16px;">
+                  <div style="text-align: center; font-weight: 800; font-size: 12.5px; text-decoration: underline; letter-spacing: 0.5px; text-transform: uppercase; color: #000;">
+                    COUNTERSIGNATURE OF DDO
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; font-weight: 700; line-height: 1.6; margin-top: 45px;">
+                    <div>
+                      <p>Date: <span class="val-date">__________</span></p>
+                      <p>Place: <span class="val-ddo-office">____________________</span></p>
+                    </div>
+                    <div style="text-align: right;">
+                      <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
+                      <p>DDO Code: <span class="val-ddo">__________</span></p>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
             <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
@@ -853,44 +869,60 @@
         <article class="sheet page-break">
           <div class="sheet-inner">
             <div>
-              <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px;">
-                <h2 style="font-size: 17px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
-                <p style="font-size: 13.5px; margin-top: 5px; font-weight: 800; color: #111827;">
+              <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 6px;">
+                <h2 style="font-size: 16px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
+                <p style="font-size: 13px; margin-top: 4px; font-weight: 700; color: #111827;">
                   School: <span class="val-school">____________________</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">__________</span>
                 </p>
-                <p style="font-size: 12.5px; font-weight: 600; color: #374151; margin-top: 2px;">
+                <p style="font-size: 12px; font-weight: 600; color: #374151;">
                   Mandal: <span class="val-mandal">__________</span> &nbsp;|&nbsp; District: <span class="val-dist">__________</span>
                 </p>
               </div>
 
               <div class="enlarged-receipt-card">
                 <div>
-                  <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 14.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 8px;">
+                  <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 13.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 6px;">
                     <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">__________</span></span>
                     <span style="color: #1e3a8a; text-transform: uppercase;">SC COMPONENT (2/3)</span>
                   </div>
                   
-                  <p style="margin-top: 22px; font-size: 14.5px; line-height: 1.8; text-align: justify;">
-                    Received with thanks from the Office of <strong><span class="val-school">____________________</span></strong>, the sum of 
-                    <strong>Rs. <span class="val-util-sc">0</span>/-</strong> towards <strong>SC Component</strong> 
-                    under Head of Account <strong>(<span class="val-hoa-sc">2202-01-789-15-05-500-503</span>)</strong>.
+                  <p style="margin-top: 18px; font-size: 13.5px; line-height: 1.7; text-align: justify;">
+                    Received with thanks from the Office of the <strong><span class="val-school">____________________</span></strong>, Mdl <strong><span class="val-mandal">__________</span></strong>, Dist. <strong><span class="val-dist">__________</span></strong>, the sum of <strong>Rs. <span class="val-util-sc">0</span>/-</strong> towards <strong>SC Component</strong> (Head of Account: <span class="val-hoa-sc">2202-01-789-15-05-500-503</span>) for <span class="val-grant">GRANT</span>.
                   </p>
 
-                  <div id="receiptVendorsSc" style="margin-top: 20px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 14px; font-size: 13.5px; line-height: 1.8;">
+                  <div id="receiptVendorsSc" style="margin-top: 14px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; font-size: 12.5px; line-height: 1.7;">
                     <!-- Dynamically populated vendors -->
                   </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px;">
-                  <div style="width: 80px; height: 85px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
-                    Affix ₹1/-<br>Revenue<br>Stamp
+                <!-- VENDOR SIGNATURE BLOCK -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 24px; padding-bottom: 16px; border-bottom: 1px dashed #94a3b8;">
+                  <div style="width: 75px; height: 80px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
+                    Affix 1/-<br>Revenue<br>Stamp
                   </div>
-                  <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
-                    <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
-                    <p>DDO Code: <span class="val-ddo">__________</span></p>
-                    <p><span class="val-ddo-office">____________________</span></p>
+                  <div style="text-align: right; font-size: 12px; line-height: 1.5;">
+                    <p style="font-weight: 700;">For [<span class="val-v-sc-name">Vendor Name</span>]</p>
+                    <p style="margin-top: 4px; color: #4b5563;">(Signature of Authorized Signatory)</p>
                   </div>
                 </div>
+
+                <!-- DDO COUNTERSIGNATURE BLOCK (WITH PROPER SPACE & MOVED UP) -->
+                <div style="margin-top: 16px;">
+                  <div style="text-align: center; font-weight: 800; font-size: 12.5px; text-decoration: underline; letter-spacing: 0.5px; text-transform: uppercase; color: #000;">
+                    COUNTERSIGNATURE OF DDO
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; font-weight: 700; line-height: 1.6; margin-top: 45px;">
+                    <div>
+                      <p>Date: <span class="val-date">__________</span></p>
+                      <p>Place: <span class="val-ddo-office">____________________</span></p>
+                    </div>
+                    <div style="text-align: right;">
+                      <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
+                      <p>DDO Code: <span class="val-ddo">__________</span></p>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
             <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
@@ -901,44 +933,60 @@
         <article class="sheet page-break">
           <div class="sheet-inner">
             <div>
-              <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 8px;">
-                <h2 style="font-size: 17px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
-                <p style="font-size: 13.5px; margin-top: 5px; font-weight: 800; color: #111827;">
+              <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 6px;">
+                <h2 style="font-size: 16px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
+                <p style="font-size: 13px; margin-top: 4px; font-weight: 700; color: #111827;">
                   School: <span class="val-school">____________________</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">__________</span>
                 </p>
-                <p style="font-size: 12.5px; font-weight: 600; color: #374151; margin-top: 2px;">
+                <p style="font-size: 12px; font-weight: 600; color: #374151;">
                   Mandal: <span class="val-mandal">__________</span> &nbsp;|&nbsp; District: <span class="val-dist">__________</span>
                 </p>
               </div>
 
               <div class="enlarged-receipt-card">
                 <div>
-                  <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 14.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 8px;">
+                  <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 13.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 6px;">
                     <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">__________</span></span>
                     <span style="color: #1e3a8a; text-transform: uppercase;">ST COMPONENT (3/3)</span>
                   </div>
                   
-                  <p style="margin-top: 26px; font-size: 15px; line-height: 1.85; text-align: justify;">
-                    Received with thanks from the Office of <strong><span class="val-school">____________________</span></strong>, the sum of 
-                    <strong>Rs. <span class="val-util-st">0</span>/-</strong> towards <strong>ST Component</strong> 
-                    under Head of Account <strong>(<span class="val-hoa-st">2202-01-796-15-05-500-503</span>)</strong>.
+                  <p style="margin-top: 18px; font-size: 13.5px; line-height: 1.7; text-align: justify;">
+                    Received with thanks from the Office of the <strong><span class="val-school">____________________</span></strong>, Mdl <strong><span class="val-mandal">__________</span></strong>, Dist. <strong><span class="val-dist">__________</span></strong>, the sum of <strong>Rs. <span class="val-util-st">0</span>/-</strong> towards <strong>ST Component</strong> (Head of Account: <span class="val-hoa-st">2202-01-796-15-05-500-503</span>) for <span class="val-grant">GRANT</span>.
                   </p>
 
-                  <div id="receiptVendorsSt" style="margin-top: 20px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 14px; font-size: 13.5px; line-height: 1.8;">
+                  <div id="receiptVendorsSt" style="margin-top: 14px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; font-size: 12.5px; line-height: 1.7;">
                     <!-- Dynamically populated vendors -->
                   </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
-                  <div style="width: 85px; height: 90px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
-                    Affix ₹1/-<br>Revenue<br>Stamp
+                <!-- VENDOR SIGNATURE BLOCK -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 24px; padding-bottom: 16px; border-bottom: 1px dashed #94a3b8;">
+                  <div style="width: 75px; height: 80px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
+                    Affix 1/-<br>Revenue<br>Stamp
                   </div>
-                  <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
-                    <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
-                    <p>DDO Code: <span class="val-ddo">__________</span></p>
-                    <p><span class="val-ddo-office">____________________</span></p>
+                  <div style="text-align: right; font-size: 12px; line-height: 1.5;">
+                    <p style="font-weight: 700;">For [<span class="val-v-st-name">Vendor Name</span>]</p>
+                    <p style="margin-top: 4px; color: #4b5563;">(Signature of Authorized Signatory)</p>
                   </div>
                 </div>
+
+                <!-- DDO COUNTERSIGNATURE BLOCK (WITH PROPER SPACE & MOVED UP) -->
+                <div style="margin-top: 16px;">
+                  <div style="text-align: center; font-weight: 800; font-size: 12.5px; text-decoration: underline; letter-spacing: 0.5px; text-transform: uppercase; color: #000;">
+                    COUNTERSIGNATURE OF DDO
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; font-weight: 700; line-height: 1.6; margin-top: 45px;">
+                    <div>
+                      <p>Date: <span class="val-date">__________</span></p>
+                      <p>Place: <span class="val-ddo-office">____________________</span></p>
+                    </div>
+                    <div style="text-align: right;">
+                      <p>Signature of DDO (<span class="val-hm">____________________</span>)</p>
+                      <p>DDO Code: <span class="val-ddo">__________</span></p>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
             <div class="footer-line">Prepared by Boini Rajashekhar-MIS Husnabad</div>
@@ -1002,6 +1050,7 @@
       renderAll();
     }
 
+    // COMPONENT WISE EXACT POSITION INSERTION
     function addNewVendorRow(cat) {
       const hoaMap = {
         'GEN': '2202-01-001-15-05-500-503',
@@ -1009,7 +1058,7 @@
         'ST':  '2202-01-796-15-05-500-503'
       };
       const newId = 'v_' + cat.toLowerCase() + '_' + Date.now();
-      vendorsData.push({
+      const newObj = {
         id: newId,
         cat: cat,
         hoa: hoaMap[cat] || '',
@@ -1018,7 +1067,22 @@
         ifsc: '',
         sAmt: 0,
         uAmt: 0
-      });
+      };
+
+      // Find the last index of this category to add directly below it
+      let insertIdx = -1;
+      for (let i = vendorsData.length - 1; i >= 0; i--) {
+        if (vendorsData[i].cat === cat) {
+          insertIdx = i + 1;
+          break;
+        }
+      }
+
+      if (insertIdx !== -1) {
+        vendorsData.splice(insertIdx, 0, newObj);
+      } else {
+        vendorsData.push(newObj);
+      }
 
       renderVendorInputTable();
       renderAll();
@@ -1130,7 +1194,7 @@
     }
 
     function renderDynamicReports(genTotS, genTotU, scTotS, scTotU, stTotS, stTotU, grandTotalS, grandTotalU, grandTotalBal) {
-      // 1. Filtered data for Proceedings and Resolution
+      // Filtered data for Proceedings and Resolution
       let visibleVendors = vendorsData.filter(v => {
         if (currentFilter !== 'ALL' && v.cat !== currentFilter) return false;
         if (currentFilter === 'ALL' && v.sAmt === 0 && v.uAmt === 0) return false;
@@ -1271,15 +1335,15 @@
 
     function renderReceiptVendorCards() {
       const getListHtml = (cat) => {
-        const list = vendorsData.filter(v => v.cat === cat && (v.name || v.uAmt > 0));
+        const list = vendorsData.filter(v => v.cat === cat && (v.uAmt > 0 || v.name));
         if (list.length === 0) {
-          return '<p><em>No vendors entered under this component.</em></p>';
+          return '<p style="color:#64748b;"><em>No vendor details available.</em></p>';
         }
         return list.map((v, i) => `
-          <div style="margin-bottom: ${i < list.length - 1 ? '10px' : '0'}; border-bottom: ${i < list.length - 1 ? '1px dashed #cbd5e1' : 'none'}; padding-bottom: ${i < list.length - 1 ? '8px' : '0'};">
-            <p><strong>${i + 1}. Vendor Name :</strong> ${v.name || '-'} &nbsp;(Amount: ₹${v.uAmt.toLocaleString('en-IN')})</p>
-            <p><strong>&nbsp;&nbsp;&nbsp;Bank A/c No &nbsp;:</strong> ${v.acc || '-'}</p>
-            <p><strong>&nbsp;&nbsp;&nbsp;Bank & IFSC &nbsp;:</strong> ${v.ifsc || '-'}</p>
+          <div style="margin-bottom: ${i < list.length - 1 ? '8px' : '0'}; border-bottom: ${i < list.length - 1 ? '1px dashed #cbd5e1' : 'none'}; padding-bottom: ${i < list.length - 1 ? '6px' : '0'};">
+            <p><strong>${i + 1}. Name of the Beneficiary / Vendor:</strong> <span style="font-weight:700;">${v.name || '-'}</span> &nbsp;(Amount: ₹${Number(v.uAmt || 0).toLocaleString('en-IN')})</p>
+            <p style="margin-top:2px;">&nbsp;&nbsp;&nbsp;<strong>Bank Account Number:</strong> ${v.acc || '-'}</p>
+            <p style="margin-top:2px;">&nbsp;&nbsp;&nbsp;<strong>Bank Name & IFSC Code:</strong> ${v.ifsc || '-'}</p>
           </div>
         `).join('');
       };
@@ -1291,6 +1355,14 @@
       if (elGen) elGen.innerHTML = getListHtml('GEN');
       if (elSc) elSc.innerHTML = getListHtml('SC');
       if (elSt) elSt.innerHTML = getListHtml('ST');
+
+      const vGen = vendorsData.find(v => v.cat === 'GEN') || {};
+      const vSc  = vendorsData.find(v => v.cat === 'SC') || {};
+      const vSt  = vendorsData.find(v => v.cat === 'ST') || {};
+
+      document.querySelectorAll('.val-v-gen-name').forEach(el => el.innerText = vGen.name || 'Vendor Name');
+      document.querySelectorAll('.val-v-sc-name').forEach(el => el.innerText = vSc.name || 'Vendor Name');
+      document.querySelectorAll('.val-v-st-name').forEach(el => el.innerText = vSt.name || 'Vendor Name');
     }
 
     function switchTab(tabKey) {

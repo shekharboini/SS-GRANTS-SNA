@@ -211,7 +211,7 @@
       border: 1px solid #d1d5db;
     }
 
-    /* COMPONENT FILTER BAR IN DATA ENTRY FORM ONLY */
+    /* COMPONENT FILTER BAR IN DATA ENTRY FORM */
     .filter-bar {
       display: flex;
       align-items: center;
@@ -226,25 +226,60 @@
       color: #1e3a8a;
     }
     .filter-btn {
-      padding: 7px 16px;
-      font-size: 12.5px;
+      padding: 6px 14px;
+      font-size: 12px;
       font-weight: 700;
-      border-radius: 5px;
+      border-radius: 4px;
       border: 1.5px solid #93c5fd;
       background: #ffffff;
       color: #1e3a8a;
       cursor: pointer;
       transition: all 0.15s;
     }
-    .filter-btn:hover {
-      background-color: #dbeafe;
-    }
+    .filter-btn:hover { background-color: #dbeafe; }
     .filter-btn.active {
       background-color: #1e3a8a !important;
       color: #ffffff !important;
       border-color: #1e3a8a !important;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
     }
+
+    /* ADD VENDOR BUTTONS CONTAINER */
+    .add-vendor-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 12px;
+      background-color: #f8fafc;
+      border: 1px dashed #94a3b8;
+      border-radius: 6px;
+    }
+    .btn-add-vendor {
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: opacity 0.15s;
+    }
+    .btn-add-vendor:hover { opacity: 0.9; }
+    .btn-del-row {
+      background-color: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #f87171;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-del-row:hover { background-color: #fca5a5; }
 
     /* SHEET PRINT STYLES - A4 SINGLE PAGE FIT */
     .sheet {
@@ -298,7 +333,7 @@
     .enlarged-receipt-card {
       border: 2px solid #1e3a8a;
       border-radius: 8px;
-      padding: 32px 30px;
+      padding: 26px 28px;
       background: #fafafa;
       display: flex;
       flex-direction: column;
@@ -362,7 +397,7 @@
         border: 2px solid #000 !important;
         background: #fff !important;
         min-height: 195mm !important;
-        padding: 26px 24px !important;
+        padding: 24px 22px !important;
       }
       .footer-line {
         border-top: 1px solid #9ca3af !important;
@@ -536,7 +571,7 @@
         </div>
       </div>
 
-      <div class="section-title">💳 Vendor & Component Details</div>
+      <div class="section-title">💳 Vendor & Component Details (Data Sheet)</div>
 
       <!-- FILTER BUTTONS IN DATA ENTRY FORM -->
       <div class="filter-bar">
@@ -551,52 +586,36 @@
         <table class="styled-table">
           <thead>
             <tr>
-              <th style="width: 80px; text-align: center;">Category</th>
-              <th style="width: 220px;">Head of Account (HOA)</th>
+              <th style="width: 75px; text-align: center;">Category</th>
+              <th style="width: 210px;">Head of Account (HOA)</th>
               <th style="background-color: #fffbeb; color: #92400e;">✏️ Vendor Name</th>
               <th style="background-color: #fffbeb; color: #92400e;">✏️ Bank A/c</th>
               <th style="background-color: #fffbeb; color: #92400e;">✏️ Bank & IFSC</th>
-              <th style="width: 130px;">Sanctioned (₹)</th>
-              <th style="width: 130px; background-color: #fffbeb; color: #92400e;">✏️ Utilized (₹)</th>
+              <th style="width: 125px;">Sanctioned (₹)</th>
+              <th style="width: 125px; background-color: #fffbeb; color: #92400e;">✏️ Utilized (₹)</th>
+              <th style="width: 50px; text-align: center;">Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr id="row-gen">
-              <td style="font-weight: 700; text-align: center; background: #f9fafb;">GEN</td>
-              <td><input id="inGenHoa" value="2202-01-001-15-05-500-503" readonly class="user-locked"></td>
-              <td><input id="inGenVendor" value="M/S GEN SUPPLIERS" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inGenAcc" value="456" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inGenIfsc" value="SBI, SBIN123" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inGenAmt" type="number" value="18000" readonly class="user-locked"></td>
-              <td><input id="inGenUtil" type="number" value="18000" class="user-editable" oninput="renderAll()"></td>
-            </tr>
-            <tr id="row-sc">
-              <td style="font-weight: 700; text-align: center; background: #f9fafb;">SC</td>
-              <td><input id="inScHoa" value="2202-01-789-15-05-500-503" readonly class="user-locked"></td>
-              <td><input id="inScVendor" value="M/S SC TRADERS" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inScAcc" value="789" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inScIfsc" value="SBI, SBIN456" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inScAmt" type="number" value="4250" readonly class="user-locked"></td>
-              <td><input id="inScUtil" type="number" value="4250" class="user-editable" oninput="renderAll()"></td>
-            </tr>
-            <tr id="row-st">
-              <td style="font-weight: 700; text-align: center; background: #f9fafb;">ST</td>
-              <td><input id="inStHoa" value="2202-01-796-15-05-500-503" readonly class="user-locked"></td>
-              <td><input id="inStVendor" value="M/S ST ENTERPRISES" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inStAcc" value="123" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inStIfsc" value="SBI, SBINXYZ1" class="user-editable" oninput="renderAll()"></td>
-              <td><input id="inStAmt" type="number" value="2750" readonly class="user-locked"></td>
-              <td><input id="inStUtil" type="number" value="2750" class="user-editable" oninput="renderAll()"></td>
-            </tr>
+          <tbody id="vendorInputTableBody">
+            <!-- Dynamically populated rows -->
           </tbody>
         </table>
       </div>
+
+      <!-- COMPONENT WISE ADD VENDOR BUTTONS -->
+      <div class="add-vendor-actions">
+        <span style="font-size: 12.5px; font-weight: 700; color: #334155; margin-right: 6px; display: flex; align-items: center;">➕ Add Vendor:</span>
+        <button type="button" class="btn-add-vendor" style="background-color: #2563eb;" onclick="addNewVendorRow('GEN')">➕ Add GEN Vendor</button>
+        <button type="button" class="btn-add-vendor" style="background-color: #7c3aed;" onclick="addNewVendorRow('SC')">➕ Add SC Vendor</button>
+        <button type="button" class="btn-add-vendor" style="background-color: #be185d;" onclick="addNewVendorRow('ST')">➕ Add ST Vendor</button>
+      </div>
+
     </section>
 
     <!-- PRINTABLE TEMPLATES -->
     <div id="print-area">
 
-      <!-- 2. PROCEEDINGS (AUTO-FILTERED ACCORDING TO DATA ENTRY FORM FILTER) -->
+      <!-- 2. PROCEEDINGS -->
       <article id="tab-proceedings" class="sheet tab-content page-break">
         <div class="sheet-inner">
           <div class="proc-body">
@@ -636,7 +655,7 @@
                   </tr>
                 </thead>
                 <tbody id="procTableBody">
-                  <!-- Generated by JS -->
+                  <!-- Auto generated -->
                 </tbody>
               </table>
             </div>
@@ -654,7 +673,7 @@
                   </tr>
                 </thead>
                 <tbody id="procVendorBody">
-                  <!-- Generated by JS -->
+                  <!-- Auto generated -->
                 </tbody>
               </table>
             </div>
@@ -712,11 +731,8 @@
                   <th style="width: 70px; text-align: center;">Remarks</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr><td style="text-align: center; font-weight: 600;">GEN</td><td style="text-align: center;">1</td><td class="val-v-gen-name">M/S GEN SUPPLIERS</td><td class="val-v-gen-acc">456</td><td class="val-v-gen-ifsc">SBI, SBIN123</td><td style="text-align: right;" class="val-util-gen">18,000</td><td style="text-align: center;">Paid</td></tr>
-                <tr><td style="text-align: center; font-weight: 600;">SC</td><td style="text-align: center;">2</td><td class="val-v-sc-name">M/S SC TRADERS</td><td class="val-v-sc-acc">789</td><td class="val-v-sc-ifsc">SBI, SBIN456</td><td style="text-align: right;" class="val-util-sc">4,250</td><td style="text-align: center;">Paid</td></tr>
-                <tr><td style="text-align: center; font-weight: 600;">ST</td><td style="text-align: center;">3</td><td class="val-v-st-name">M/S ST ENTERPRISES</td><td class="val-v-st-acc">123</td><td class="val-v-st-ifsc">SBI, SBINXYZ1</td><td style="text-align: right;" class="val-util-st">2,750</td><td style="text-align: center;">Paid</td></tr>
-                <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="5" style="text-align: center;">TOTAL:</td><td style="text-align: right;" class="val-total-util">25,000</td><td></td></tr>
+              <tbody id="resVendorBody">
+                <!-- Dynamically populated -->
               </tbody>
             </table>
 
@@ -783,11 +799,8 @@
                   <th>Vendor Name</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr><td style="text-align: center;">1</td><td class="val-grant">COMPOSITE SCHOOL GRANT</td><td style="text-align: center;">GEN</td><td class="val-hoa-gen">2202-01-001</td><td style="text-align: center;">Spell-1</td><td class="val-date">31/Oct/2026</td><td style="text-align: right;" class="val-amt-gen">18,000</td><td style="text-align: right;" class="val-util-gen">18,000</td><td style="text-align: right;" class="val-bal-gen">0</td><td class="val-v-gen-name">M/S GEN SUPPLIERS</td></tr>
-                <tr><td style="text-align: center;">2</td><td class="val-grant">COMPOSITE SCHOOL GRANT</td><td style="text-align: center;">SC</td><td class="val-hoa-sc">2202-01-789</td><td style="text-align: center;">Spell-1</td><td class="val-date">31/Oct/2026</td><td style="text-align: right;" class="val-amt-sc">4,250</td><td style="text-align: right;" class="val-util-sc">4,250</td><td style="text-align: right;" class="val-bal-sc">0</td><td class="val-v-sc-name">M/S SC TRADERS</td></tr>
-                <tr><td style="text-align: center;">3</td><td class="val-grant">COMPOSITE SCHOOL GRANT</td><td style="text-align: center;">ST</td><td class="val-hoa-st">2202-01-796</td><td style="text-align: center;">Spell-1</td><td class="val-date">31/Oct/2026</td><td style="text-align: right;" class="val-amt-st">2,750</td><td style="text-align: right;" class="val-util-st">2,750</td><td style="text-align: right;" class="val-bal-st">0</td><td class="val-v-st-name">M/S ST ENTERPRISES</td></tr>
-                <tr style="font-weight: 800; background-color: #f9fafb;"><td colspan="6" style="text-align: center;">Total:</td><td style="text-align: right;" class="val-total">25,000</td><td style="text-align: right;" class="val-total-util">25,000</td><td style="text-align: right;" class="val-total-bal">0</td><td></td></tr>
+              <tbody id="budgetTableBody">
+                <!-- Dynamically populated -->
               </tbody>
             </table>
           </div>
@@ -911,21 +924,19 @@
                     <span style="color: #1e3a8a; text-transform: uppercase;">GENERAL COMPONENT (1/3)</span>
                   </div>
                   
-                  <p style="margin-top: 26px; font-size: 15px; line-height: 1.85; text-align: justify;">
+                  <p style="margin-top: 22px; font-size: 14.5px; line-height: 1.8; text-align: justify;">
                     Received with thanks from the Office of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, the sum of 
                     <strong>Rs. <span class="val-util-gen">18,000</span>/-</strong> towards <strong>GENERAL Component</strong> 
                     under Head of Account <strong>(<span class="val-hoa-gen">2202-01-001-15-05-500-503</span>)</strong>.
                   </p>
 
-                  <div style="margin-top: 26px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 18px; font-size: 14px; line-height: 1.85;">
-                    <p><strong>1. Vendor Name :</strong> <span class="val-v-gen-name">M/S GEN SUPPLIERS</span></p>
-                    <p><strong>2. Bank A/c No &nbsp;:</strong> <span class="val-v-gen-acc">456</span></p>
-                    <p><strong>3. Bank & IFSC &nbsp;:</strong> <span class="val-v-gen-ifsc">SBI, SBIN123</span></p>
+                  <div id="receiptVendorsGen" style="margin-top: 20px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 14px; font-size: 13.5px; line-height: 1.8;">
+                    <!-- Dynamically populated vendors -->
                   </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
-                  <div style="width: 85px; height: 90px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px;">
+                  <div style="width: 80px; height: 85px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
                     Affix ₹1/-<br>Revenue<br>Stamp
                   </div>
                   <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
@@ -961,21 +972,19 @@
                     <span style="color: #1e3a8a; text-transform: uppercase;">SC COMPONENT (2/3)</span>
                   </div>
                   
-                  <p style="margin-top: 26px; font-size: 15px; line-height: 1.85; text-align: justify;">
+                  <p style="margin-top: 22px; font-size: 14.5px; line-height: 1.8; text-align: justify;">
                     Received with thanks from the Office of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, the sum of 
                     <strong>Rs. <span class="val-util-sc">4,250</span>/-</strong> towards <strong>SC Component</strong> 
                     under Head of Account <strong>(<span class="val-hoa-sc">2202-01-789-15-05-500-503</span>)</strong>.
                   </p>
 
-                  <div style="margin-top: 26px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 18px; font-size: 14px; line-height: 1.85;">
-                    <p><strong>1. Vendor Name :</strong> <span class="val-v-sc-name">M/S SC TRADERS</span></p>
-                    <p><strong>2. Bank A/c No &nbsp;:</strong> <span class="val-v-sc-acc">789</span></p>
-                    <p><strong>3. Bank & IFSC &nbsp;:</strong> <span class="val-v-sc-ifsc">SBI, SBIN456</span></p>
+                  <div id="receiptVendorsSc" style="margin-top: 20px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 14px; font-size: 13.5px; line-height: 1.8;">
+                    <!-- Dynamically populated vendors -->
                   </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
-                  <div style="width: 85px; height: 90px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px;">
+                  <div style="width: 80px; height: 85px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
                     Affix ₹1/-<br>Revenue<br>Stamp
                   </div>
                   <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
@@ -1011,21 +1020,19 @@
                     <span style="color: #1e3a8a; text-transform: uppercase;">ST COMPONENT (3/3)</span>
                   </div>
                   
-                  <p style="margin-top: 26px; font-size: 15px; line-height: 1.85; text-align: justify;">
+                  <p style="margin-top: 22px; font-size: 14.5px; line-height: 1.8; text-align: justify;">
                     Received with thanks from the Office of <strong><span class="val-school">MPPS  KUCHANAPALLY</span></strong>, the sum of 
                     <strong>Rs. <span class="val-util-st">2,750</span>/-</strong> towards <strong>ST Component</strong> 
                     under Head of Account <strong>(<span class="val-hoa-st">2202-01-796-15-05-500-503</span>)</strong>.
                   </p>
 
-                  <div style="margin-top: 26px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 18px; font-size: 14px; line-height: 1.85;">
-                    <p><strong>1. Vendor Name :</strong> <span class="val-v-st-name">M/S ST ENTERPRISES</span></p>
-                    <p><strong>2. Bank A/c No &nbsp;:</strong> <span class="val-v-st-acc">123</span></p>
-                    <p><strong>3. Bank & IFSC &nbsp;:</strong> <span class="val-v-st-ifsc">SBI, SBINXYZ1</span></p>
+                  <div id="receiptVendorsSt" style="margin-top: 20px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 14px; font-size: 13.5px; line-height: 1.8;">
+                    <!-- Dynamically populated vendors -->
                   </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
-                  <div style="width: 85px; height: 90px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 36px;">
+                  <div style="width: 80px; height: 85px; border: 2px dashed #4b5563; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #4b5563; text-align: center; background: #fff;">
                     Affix ₹1/-<br>Revenue<br>Stamp
                   </div>
                   <div style="text-align: right; font-weight: 700; font-size: 13.5px; line-height: 1.6;">
@@ -1141,6 +1148,13 @@
 
     let currentFilter = 'ALL';
 
+    // DYNAMIC VENDOR LIST MODEL
+    let vendorsData = [
+      { id: 'v_gen_0', cat: 'GEN', hoa: '2202-01-001-15-05-500-503', name: 'M/S GEN SUPPLIERS', acc: '456', ifsc: 'SBI, SBIN123', sAmt: 18000, uAmt: 18000 },
+      { id: 'v_sc_0',  cat: 'SC',  hoa: '2202-01-789-15-05-500-503',  name: 'M/S SC TRADERS',    acc: '789', ifsc: 'SBI, SBIN456', sAmt: 4250,  uAmt: 4250 },
+      { id: 'v_st_0',  cat: 'ST',  hoa: '2202-01-796-15-05-500-503',  name: 'M/S ST ENTERPRISES', acc: '123', ifsc: 'SBI, SBINXYZ1', sAmt: 2750,  uAmt: 2750 }
+    ];
+
     function setComponentFilter(filter) {
       currentFilter = filter;
       
@@ -1152,16 +1166,80 @@
       const actBtn = document.getElementById('form-flt-' + filter.toLowerCase());
       if (actBtn) actBtn.classList.add('active');
 
-      // Filter rows in Data Entry Form table
-      const rowGen = document.getElementById('row-gen');
-      const rowSc = document.getElementById('row-sc');
-      const rowSt = document.getElementById('row-st');
+      renderVendorInputTable();
+      renderAll();
+    }
 
-      if (rowGen) rowGen.style.display = (filter === 'ALL' || filter === 'GEN') ? '' : 'none';
-      if (rowSc) rowSc.style.display = (filter === 'ALL' || filter === 'SC') ? '' : 'none';
-      if (rowSt) rowSt.style.display = (filter === 'ALL' || filter === 'ST') ? '' : 'none';
+    function addNewVendorRow(cat) {
+      const hoaMap = {
+        'GEN': '2202-01-001-15-05-500-503',
+        'SC':  '2202-01-789-15-05-500-503',
+        'ST':  '2202-01-796-15-05-500-503'
+      };
+      const newId = 'v_' + cat.toLowerCase() + '_' + Date.now();
+      vendorsData.push({
+        id: newId,
+        cat: cat,
+        hoa: hoaMap[cat] || '',
+        name: '',
+        acc: '',
+        ifsc: '',
+        sAmt: 0,
+        uAmt: 0
+      });
 
-      renderProceedingsTables();
+      renderVendorInputTable();
+      renderAll();
+    }
+
+    function removeVendorRow(id) {
+      if (vendorsData.length <= 1) {
+        alert('At least one vendor record is required.');
+        return;
+      }
+      vendorsData = vendorsData.filter(v => v.id !== id);
+      renderVendorInputTable();
+      renderAll();
+    }
+
+    function updateVendorField(id, field, value) {
+      const item = vendorsData.find(v => v.id === id);
+      if (item) {
+        if (field === 'sAmt' || field === 'uAmt') {
+          item[field] = Number(value) || 0;
+        } else {
+          item[field] = value;
+        }
+      }
+      renderAll();
+    }
+
+    function renderVendorInputTable() {
+      const tbody = document.getElementById('vendorInputTableBody');
+      if (!tbody) return;
+
+      let html = '';
+      vendorsData.forEach((v) => {
+        const isHidden = (currentFilter !== 'ALL' && v.cat !== currentFilter);
+        const rowDisplay = isHidden ? 'display: none;' : '';
+
+        html += `
+          <tr id="row-${v.id}" style="${rowDisplay}">
+            <td style="font-weight: 700; text-align: center; background: #f9fafb;">${v.cat}</td>
+            <td><input value="${v.hoa}" class="user-locked" readonly></td>
+            <td><input value="${v.name}" placeholder="Vendor Name" class="user-editable" oninput="updateVendorField('${v.id}', 'name', this.value)"></td>
+            <td><input value="${v.acc}" placeholder="Account No" class="user-editable" oninput="updateVendorField('${v.id}', 'acc', this.value)"></td>
+            <td><input value="${v.ifsc}" placeholder="Bank & IFSC" class="user-editable" oninput="updateVendorField('${v.id}', 'ifsc', this.value)"></td>
+            <td><input type="number" value="${v.sAmt}" class="user-editable" oninput="updateVendorField('${v.id}', 'sAmt', this.value)"></td>
+            <td><input type="number" value="${v.uAmt}" class="user-editable" oninput="updateVendorField('${v.id}', 'uAmt', this.value)"></td>
+            <td style="text-align: center;">
+              <button type="button" class="btn-del-row" onclick="removeVendorRow('${v.id}')" title="Delete Row">❌</button>
+            </td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
     }
 
     function pickSchool(index) {
@@ -1177,102 +1255,14 @@
       document.getElementById('inDdoCode').value = s.hc;
       document.getElementById('inGrant').value = s.g;
 
-      // Sanctioned amounts (locked)
-      document.getElementById('inGenAmt').value = s.gen;
-      document.getElementById('inScAmt').value = s.sc;
-      document.getElementById('inStAmt').value = s.st;
-
-      // Utilized defaults to sanctioned amount (editable)
-      document.getElementById('inGenUtil').value = s.gen;
-      document.getElementById('inScUtil').value = s.sc;
-      document.getElementById('inStUtil').value = s.st;
-
-      setComponentFilter('ALL');
-      renderAll();
-    }
-
-    function renderProceedingsTables() {
-      const getVal = (id, def = '') => {
-        const el = document.getElementById(id);
-        return el ? el.value.trim() : def;
-      };
-
-      const genAmt = Number((document.getElementById('inGenAmt') || {}).value || 0);
-      const genUtil = Number((document.getElementById('inGenUtil') || {}).value || 0);
-      const scAmt = Number((document.getElementById('inScAmt') || {}).value || 0);
-      const scUtil = Number((document.getElementById('inScUtil') || {}).value || 0);
-      const stAmt = Number((document.getElementById('inStAmt') || {}).value || 0);
-      const stUtil = Number((document.getElementById('inStUtil') || {}).value || 0);
-
-      const items = [
-        { cat: 'GEN', hoa: getVal('inGenHoa', '2202-01-001-15-05-500-503'), vendor: getVal('inGenVendor', '-'), acc: getVal('inGenAcc', '-'), ifsc: getVal('inGenIfsc', '-'), sAmt: genAmt, uAmt: genUtil },
-        { cat: 'SC',  hoa: getVal('inScHoa', '2202-01-789-15-05-500-503'),  vendor: getVal('inScVendor', '-'),  acc: getVal('inScAcc', '-'),  ifsc: getVal('inScIfsc', '-'),  sAmt: scAmt,  uAmt: scUtil },
-        { cat: 'ST',  hoa: getVal('inStHoa', '2202-01-796-15-05-500-503'),  vendor: getVal('inStVendor', '-'),  acc: getVal('inStAcc', '-'),  ifsc: getVal('inStIfsc', '-'),  sAmt: stAmt,  uAmt: stUtil }
+      // Reset base vendors according to selected school
+      vendorsData = [
+        { id: 'v_gen_0', cat: 'GEN', hoa: '2202-01-001-15-05-500-503', name: 'M/S GEN SUPPLIERS', acc: '456', ifsc: 'SBI, SBIN123', sAmt: s.gen, uAmt: s.gen },
+        { id: 'v_sc_0',  cat: 'SC',  hoa: '2202-01-789-15-05-500-503',  name: 'M/S SC TRADERS',    acc: '789', ifsc: 'SBI, SBIN456', sAmt: s.sc,  uAmt: s.sc },
+        { id: 'v_st_0',  cat: 'ST',  hoa: '2202-01-796-15-05-500-503',  name: 'M/S ST ENTERPRISES', acc: '123', ifsc: 'SBI, SBINXYZ1', sAmt: s.st,  uAmt: s.st }
       ];
 
-      // Filter rows
-      let visibleItems = items.filter(it => {
-        if (currentFilter !== 'ALL' && it.cat !== currentFilter) return false;
-        if (currentFilter === 'ALL' && it.sAmt === 0 && it.uAmt === 0) return false;
-        return true;
-      });
-
-      if (visibleItems.length === 0) {
-        visibleItems = items.filter(it => currentFilter === 'ALL' || it.cat === currentFilter);
-      }
-
-      let procTbody = '';
-      let vendorTbody = '';
-      let totSanctioned = 0;
-      let totUtilized = 0;
-
-      visibleItems.forEach((it, idx) => {
-        const bal = Math.max(0, it.sAmt - it.uAmt);
-        totSanctioned += it.sAmt;
-        totUtilized += it.uAmt;
-
-        procTbody += `<tr>
-          <td style="text-align: center;">${idx + 1}</td>
-          <td>${it.hoa}</td>
-          <td style="text-align: center; font-weight: 600;">${it.cat}</td>
-          <td style="text-align: right;">${it.sAmt.toLocaleString('en-IN')}</td>
-          <td style="text-align: right;">${it.uAmt.toLocaleString('en-IN')}</td>
-          <td style="text-align: right;">${bal.toLocaleString('en-IN')}</td>
-        </tr>`;
-
-        vendorTbody += `<tr>
-          <td style="text-align: center; font-weight: 600;">${it.cat}</td>
-          <td>${it.vendor}</td>
-          <td>${it.acc}</td>
-          <td>${it.ifsc}</td>
-          <td style="text-align: right;">${it.uAmt.toLocaleString('en-IN')}</td>
-        </tr>`;
-      });
-
-      const totBal = Math.max(0, totSanctioned - totUtilized);
-      procTbody += `<tr style="font-weight: 800; background-color: #f9fafb;">
-        <td colspan="3" style="text-align: center;">TOTAL</td>
-        <td style="text-align: right;">${totSanctioned.toLocaleString('en-IN')}</td>
-        <td style="text-align: right;">${totUtilized.toLocaleString('en-IN')}</td>
-        <td style="text-align: right;">${totBal.toLocaleString('en-IN')}</td>
-      </tr>`;
-
-      vendorTbody += `<tr style="font-weight: 800; background-color: #f9fafb;">
-        <td colspan="4" style="text-align: center;">TOTAL</td>
-        <td style="text-align: right;">${totUtilized.toLocaleString('en-IN')}</td>
-      </tr>`;
-
-      const pTable = document.getElementById('procTableBody');
-      const vTable = document.getElementById('procVendorBody');
-      if (pTable) pTable.innerHTML = procTbody;
-      if (vTable) vTable.innerHTML = vendorTbody;
-
-      document.querySelectorAll('.val-proc-total').forEach(el => el.innerText = totSanctioned.toLocaleString('en-IN'));
-
-      const compTextEl = document.getElementById('procComponentText');
-      if (compTextEl) {
-        compTextEl.innerText = currentFilter === 'ALL' ? '' : `(${currentFilter} COMPONENT)`;
-      }
+      setComponentFilter('ALL');
     }
 
     function renderAll() {
@@ -1293,48 +1283,206 @@
       setEls('val-date', getVal('inProcDate'));
       setEls('val-grant', getVal('inGrant'));
 
-      setEls('val-hoa-gen', getVal('inGenHoa'));
-      setEls('val-v-gen-name', getVal('inGenVendor'));
-      setEls('val-v-gen-acc', getVal('inGenAcc'));
-      setEls('val-v-gen-ifsc', getVal('inGenIfsc'));
-      
-      const genAmt = Number((document.getElementById('inGenAmt') || {}).value || 0);
-      const genUtil = Number((document.getElementById('inGenUtil') || {}).value || 0);
-      setEls('val-amt-gen', genAmt.toLocaleString('en-IN'));
-      setEls('val-util-gen', genUtil.toLocaleString('en-IN'));
-      setEls('val-bal-gen', Math.max(0, genAmt - genUtil).toLocaleString('en-IN'));
+      // Calculate totals from dynamic vendorsData
+      let genTotS = 0, genTotU = 0;
+      let scTotS = 0, scTotU = 0;
+      let stTotS = 0, stTotU = 0;
 
-      setEls('val-hoa-sc', getVal('inScHoa'));
-      setEls('val-v-sc-name', getVal('inScVendor'));
-      setEls('val-v-sc-acc', getVal('inScAcc'));
-      setEls('val-v-sc-ifsc', getVal('inScIfsc'));
-      
-      const scAmt = Number((document.getElementById('inScAmt') || {}).value || 0);
-      const scUtil = Number((document.getElementById('inScUtil') || {}).value || 0);
-      setEls('val-amt-sc', scAmt.toLocaleString('en-IN'));
-      setEls('val-util-sc', scUtil.toLocaleString('en-IN'));
-      setEls('val-bal-sc', Math.max(0, scAmt - scUtil).toLocaleString('en-IN'));
+      vendorsData.forEach(v => {
+        if (v.cat === 'GEN') { genTotS += v.sAmt; genTotU += v.uAmt; }
+        else if (v.cat === 'SC') { scTotS += v.sAmt; scTotU += v.uAmt; }
+        else if (v.cat === 'ST') { stTotS += v.sAmt; stTotU += v.uAmt; }
+      });
 
-      setEls('val-hoa-st', getVal('inStHoa'));
-      setEls('val-v-st-name', getVal('inStVendor'));
-      setEls('val-v-st-acc', getVal('inStAcc'));
-      setEls('val-v-st-ifsc', getVal('inStIfsc'));
-      
-      const stAmt = Number((document.getElementById('inStAmt') || {}).value || 0);
-      const stUtil = Number((document.getElementById('inStUtil') || {}).value || 0);
-      setEls('val-amt-st', stAmt.toLocaleString('en-IN'));
-      setEls('val-util-st', stUtil.toLocaleString('en-IN'));
-      setEls('val-bal-st', Math.max(0, stAmt - stUtil).toLocaleString('en-IN'));
+      setEls('val-hoa-gen', '2202-01-001-15-05-500-503');
+      setEls('val-amt-gen', genTotS.toLocaleString('en-IN'));
+      setEls('val-util-gen', genTotU.toLocaleString('en-IN'));
+      setEls('val-bal-gen', Math.max(0, genTotS - genTotU).toLocaleString('en-IN'));
 
-      const total = genAmt + scAmt + stAmt;
-      const totalUtil = genUtil + scUtil + stUtil;
-      const totalBal = Math.max(0, total - totalUtil);
+      setEls('val-hoa-sc', '2202-01-789-15-05-500-503');
+      setEls('val-amt-sc', scTotS.toLocaleString('en-IN'));
+      setEls('val-util-sc', scTotU.toLocaleString('en-IN'));
+      setEls('val-bal-sc', Math.max(0, scTotS - scTotU).toLocaleString('en-IN'));
 
-      setEls('val-total', total.toLocaleString('en-IN'));
-      setEls('val-total-util', totalUtil.toLocaleString('en-IN'));
-      setEls('val-total-bal', totalBal.toLocaleString('en-IN'));
+      setEls('val-hoa-st', '2202-01-796-15-05-500-503');
+      setEls('val-amt-st', stTotS.toLocaleString('en-IN'));
+      setEls('val-util-st', stTotU.toLocaleString('en-IN'));
+      setEls('val-bal-st', Math.max(0, stTotS - stTotU).toLocaleString('en-IN'));
 
-      renderProceedingsTables();
+      const grandTotalS = genTotS + scTotS + stTotS;
+      const grandTotalU = genTotU + scTotU + stTotU;
+      const grandTotalBal = Math.max(0, grandTotalS - grandTotalU);
+
+      setEls('val-total', grandTotalS.toLocaleString('en-IN'));
+      setEls('val-total-util', grandTotalU.toLocaleString('en-IN'));
+      setEls('val-total-bal', grandTotalBal.toLocaleString('en-IN'));
+
+      renderDynamicReports(genTotS, genTotU, scTotS, scTotU, stTotS, stTotU, grandTotalS, grandTotalU, grandTotalBal);
+    }
+
+    function renderDynamicReports(genTotS, genTotU, scTotS, scTotU, stTotS, stTotU, grandTotalS, grandTotalU, grandTotalBal) {
+      // 1. Filtered data for Proceedings and Resolution
+      let visibleVendors = vendorsData.filter(v => {
+        if (currentFilter !== 'ALL' && v.cat !== currentFilter) return false;
+        if (currentFilter === 'ALL' && v.sAmt === 0 && v.uAmt === 0) return false;
+        return true;
+      });
+
+      if (visibleVendors.length === 0) {
+        visibleVendors = vendorsData.filter(v => currentFilter === 'ALL' || v.cat === currentFilter);
+      }
+
+      // Summary components for table 1 in proceedings
+      let compMap = {};
+      visibleVendors.forEach(v => {
+        if (!compMap[v.cat]) {
+          compMap[v.cat] = { hoa: v.hoa, sAmt: 0, uAmt: 0 };
+        }
+        compMap[v.cat].sAmt += v.sAmt;
+        compMap[v.cat].uAmt += v.uAmt;
+      });
+
+      let procTbody = '';
+      let procTotS = 0, procTotU = 0;
+      let sNo = 1;
+      for (let c in compMap) {
+        const item = compMap[c];
+        const bal = Math.max(0, item.sAmt - item.uAmt);
+        procTotS += item.sAmt;
+        procTotU += item.uAmt;
+        procTbody += `
+          <tr>
+            <td style="text-align: center;">${sNo++}</td>
+            <td>${item.hoa}</td>
+            <td style="text-align: center; font-weight: 600;">${c}</td>
+            <td style="text-align: right;">${item.sAmt.toLocaleString('en-IN')}</td>
+            <td style="text-align: right;">${item.uAmt.toLocaleString('en-IN')}</td>
+            <td style="text-align: right;">${bal.toLocaleString('en-IN')}</td>
+          </tr>
+        `;
+      }
+      procTbody += `
+        <tr style="font-weight: 800; background-color: #f9fafb;">
+          <td colspan="3" style="text-align: center;">TOTAL</td>
+          <td style="text-align: right;">${procTotS.toLocaleString('en-IN')}</td>
+          <td style="text-align: right;">${procTotU.toLocaleString('en-IN')}</td>
+          <td style="text-align: right;">${Math.max(0, procTotS - procTotU).toLocaleString('en-IN')}</td>
+        </tr>
+      `;
+
+      // Annexures Vendor rows
+      let procVendorTbody = '';
+      let resVendorTbody = '';
+      let budgetTbody = '';
+      let grantName = (document.getElementById('inGrant') || {}).value || 'COMPOSITE SCHOOL GRANT';
+      let procDate = (document.getElementById('inProcDate') || {}).value || '31/Oct/2026';
+
+      visibleVendors.forEach((v, idx) => {
+        procVendorTbody += `
+          <tr>
+            <td style="text-align: center; font-weight: 600;">${v.cat}</td>
+            <td>${v.name || '-'}</td>
+            <td>${v.acc || '-'}</td>
+            <td>${v.ifsc || '-'}</td>
+            <td style="text-align: right;">${v.uAmt.toLocaleString('en-IN')}</td>
+          </tr>
+        `;
+
+        resVendorTbody += `
+          <tr>
+            <td style="text-align: center; font-weight: 600;">${v.cat}</td>
+            <td style="text-align: center;">${idx + 1}</td>
+            <td>${v.name || '-'}</td>
+            <td>${v.acc || '-'}</td>
+            <td>${v.ifsc || '-'}</td>
+            <td style="text-align: right;">${v.uAmt.toLocaleString('en-IN')}</td>
+            <td style="text-align: center;">Paid</td>
+          </tr>
+        `;
+
+        budgetTbody += `
+          <tr>
+            <td style="text-align: center;">${idx + 1}</td>
+            <td>${grantName}</td>
+            <td style="text-align: center;">${v.cat}</td>
+            <td>${v.hoa.split('-').slice(0, 3).join('-')}</td>
+            <td style="text-align: center;">Spell-1</td>
+            <td>${procDate}</td>
+            <td style="text-align: right;">${v.sAmt.toLocaleString('en-IN')}</td>
+            <td style="text-align: right;">${v.uAmt.toLocaleString('en-IN')}</td>
+            <td style="text-align: right;">${Math.max(0, v.sAmt - v.uAmt).toLocaleString('en-IN')}</td>
+            <td>${v.name || '-'}</td>
+          </tr>
+        `;
+      });
+
+      procVendorTbody += `
+        <tr style="font-weight: 800; background-color: #f9fafb;">
+          <td colspan="4" style="text-align: center;">TOTAL</td>
+          <td style="text-align: right;">${procTotU.toLocaleString('en-IN')}</td>
+        </tr>
+      `;
+
+      resVendorTbody += `
+        <tr style="font-weight: 800; background-color: #f9fafb;">
+          <td colspan="5" style="text-align: center;">TOTAL:</td>
+          <td style="text-align: right;">${procTotU.toLocaleString('en-IN')}</td>
+          <td></td>
+        </tr>
+      `;
+
+      budgetTbody += `
+        <tr style="font-weight: 800; background-color: #f9fafb;">
+          <td colspan="6" style="text-align: center;">Total:</td>
+          <td style="text-align: right;">${procTotS.toLocaleString('en-IN')}</td>
+          <td style="text-align: right;">${procTotU.toLocaleString('en-IN')}</td>
+          <td style="text-align: right;">${Math.max(0, procTotS - procTotU).toLocaleString('en-IN')}</td>
+          <td></td>
+        </tr>
+      `;
+
+      const pTable = document.getElementById('procTableBody');
+      const pvTable = document.getElementById('procVendorBody');
+      const rTable = document.getElementById('resVendorBody');
+      const bTable = document.getElementById('budgetTableBody');
+
+      if (pTable) pTable.innerHTML = procTbody;
+      if (pvTable) pvTable.innerHTML = procVendorTbody;
+      if (rTable) rTable.innerHTML = resVendorTbody;
+      if (bTable) bTable.innerHTML = budgetTbody;
+
+      document.querySelectorAll('.val-proc-total').forEach(el => el.innerText = procTotS.toLocaleString('en-IN'));
+      const compTextEl = document.getElementById('procComponentText');
+      if (compTextEl) {
+        compTextEl.innerText = currentFilter === 'ALL' ? '' : `(${currentFilter} COMPONENT)`;
+      }
+
+      // Populate Advance Receipts vendors list
+      renderReceiptVendorCards();
+    }
+
+    function renderReceiptVendorCards() {
+      const getListHtml = (cat) => {
+        const list = vendorsData.filter(v => v.cat === cat && v.uAmt > 0);
+        if (list.length === 0) {
+          return '<p><em>No vendors under this component.</em></p>';
+        }
+        return list.map((v, i) => `
+          <div style="margin-bottom: ${i < list.length - 1 ? '10px' : '0'}; border-bottom: ${i < list.length - 1 ? '1px dashed #cbd5e1' : 'none'}; padding-bottom: ${i < list.length - 1 ? '8px' : '0'};">
+            <p><strong>${i + 1}. Vendor Name :</strong> ${v.name || '-'} &nbsp;(Amount: ₹${v.uAmt.toLocaleString('en-IN')})</p>
+            <p><strong>&nbsp;&nbsp;&nbsp;Bank A/c No &nbsp;:</strong> ${v.acc || '-'}</p>
+            <p><strong>&nbsp;&nbsp;&nbsp;Bank & IFSC &nbsp;:</strong> ${v.ifsc || '-'}</p>
+          </div>
+        `).join('');
+      };
+
+      const elGen = document.getElementById('receiptVendorsGen');
+      const elSc = document.getElementById('receiptVendorsSc');
+      const elSt = document.getElementById('receiptVendorsSt');
+
+      if (elGen) elGen.innerHTML = getListHtml('GEN');
+      if (elSc) elSc.innerHTML = getListHtml('SC');
+      if (elSt) elSt.innerHTML = getListHtml('ST');
     }
 
     function switchTab(tabKey) {
@@ -1351,10 +1499,6 @@
           }
         }
       }
-    }
-
-    function clearForm() {
-      pickSchool(document.getElementById('schoolSelector').value);
     }
 
     // DYNAMIC VISITOR COUNTER

@@ -284,7 +284,7 @@
     /* SHEET PRINT STYLES - A4 SINGLE PAGE FIT */
     .sheet {
       background-color: #ffffff;
-      padding: 30px 34px;
+      padding: 26px 30px;
       border-radius: 6px;
       box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
       max-width: 820px;
@@ -333,12 +333,12 @@
     .enlarged-receipt-card {
       border: 2px solid #1e3a8a;
       border-radius: 8px;
-      padding: 24px 26px;
+      padding: 22px 24px;
       background: #fafafa;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 185mm;
+      min-height: 195mm;
       margin: 10px 0;
     }
 
@@ -396,8 +396,8 @@
       .enlarged-receipt-card {
         border: 2px solid #000 !important;
         background: #fff !important;
-        min-height: 195mm !important;
-        padding: 20px 20px !important;
+        min-height: 200mm !important;
+        padding: 18px 18px !important;
       }
       .footer-line {
         border-top: 1px solid #9ca3af !important;
@@ -597,7 +597,7 @@
             </tr>
           </thead>
           <tbody id="vendorInputTableBody">
-            <!-- Populated dynamically -->
+            <!-- Dynamically populated rows -->
           </tbody>
         </table>
       </div>
@@ -732,7 +732,7 @@
                 </tr>
               </thead>
               <tbody id="resVendorBody">
-                <!-- Populated dynamically -->
+                <!-- Dynamically populated -->
               </tbody>
             </table>
 
@@ -800,7 +800,7 @@
                 </tr>
               </thead>
               <tbody id="budgetTableBody">
-                <!-- Populated dynamically -->
+                <!-- Dynamically populated -->
               </tbody>
             </table>
           </div>
@@ -944,12 +944,12 @@
                   </div>
                 </div>
 
-                <!-- DDO COUNTERSIGNATURE BLOCK -->
-                <div style="margin-top: 14px;">
-                  <div style="text-align: center; font-weight: 800; font-size: 12px; text-decoration: underline; letter-spacing: 0.5px; margin-bottom: 14px; text-transform: uppercase;">
+                <!-- DDO COUNTERSIGNATURE BLOCK (WITH PROPER SPACE & MOVED UP) -->
+                <div style="margin-top: 16px;">
+                  <div style="text-align: center; font-weight: 800; font-size: 12.5px; text-decoration: underline; letter-spacing: 0.5px; text-transform: uppercase; color: #000;">
                     COUNTERSIGNATURE OF DDO
                   </div>
-                  <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; font-weight: 700; line-height: 1.6;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; font-weight: 700; line-height: 1.6; margin-top: 45px;">
                     <div>
                       <p>Date: <span class="val-date">31/Oct/2026</span></p>
                       <p>Place: <span class="val-ddo-office">ZPHS HUSNABAD</span></p>
@@ -1008,12 +1008,12 @@
                   </div>
                 </div>
 
-                <!-- DDO COUNTERSIGNATURE BLOCK -->
-                <div style="margin-top: 14px;">
-                  <div style="text-align: center; font-weight: 800; font-size: 12px; text-decoration: underline; letter-spacing: 0.5px; margin-bottom: 14px; text-transform: uppercase;">
+                <!-- DDO COUNTERSIGNATURE BLOCK (WITH PROPER SPACE & MOVED UP) -->
+                <div style="margin-top: 16px;">
+                  <div style="text-align: center; font-weight: 800; font-size: 12.5px; text-decoration: underline; letter-spacing: 0.5px; text-transform: uppercase; color: #000;">
                     COUNTERSIGNATURE OF DDO
                   </div>
-                  <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; font-weight: 700; line-height: 1.6;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; font-weight: 700; line-height: 1.6; margin-top: 45px;">
                     <div>
                       <p>Date: <span class="val-date">31/Oct/2026</span></p>
                       <p>Place: <span class="val-ddo-office">ZPHS HUSNABAD</span></p>
@@ -1072,12 +1072,12 @@
                   </div>
                 </div>
 
-                <!-- DDO COUNTERSIGNATURE BLOCK -->
-                <div style="margin-top: 14px;">
-                  <div style="text-align: center; font-weight: 800; font-size: 12px; text-decoration: underline; letter-spacing: 0.5px; margin-bottom: 14px; text-transform: uppercase;">
+                <!-- DDO COUNTERSIGNATURE BLOCK (WITH PROPER SPACE & MOVED UP) -->
+                <div style="margin-top: 16px;">
+                  <div style="text-align: center; font-weight: 800; font-size: 12.5px; text-decoration: underline; letter-spacing: 0.5px; text-transform: uppercase; color: #000;">
                     COUNTERSIGNATURE OF DDO
                   </div>
-                  <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; font-weight: 700; line-height: 1.6;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; font-weight: 700; line-height: 1.6; margin-top: 45px;">
                     <div>
                       <p>Date: <span class="val-date">31/Oct/2026</span></p>
                       <p>Place: <span class="val-ddo-office">ZPHS HUSNABAD</span></p>
@@ -1218,6 +1218,7 @@
       renderAll();
     }
 
+    // COMPONENT WISE EXACT POSITION INSERTION
     function addNewVendorRow(cat) {
       const hoaMap = {
         'GEN': '2202-01-001-15-05-500-503',
@@ -1225,7 +1226,7 @@
         'ST':  '2202-01-796-15-05-500-503'
       };
       const newId = 'v_' + cat.toLowerCase() + '_' + Date.now();
-      vendorsData.push({
+      const newObj = {
         id: newId,
         cat: cat,
         hoa: hoaMap[cat] || '',
@@ -1234,7 +1235,22 @@
         ifsc: '',
         sAmt: 0,
         uAmt: 0
-      });
+      };
+
+      // Find the last index of this category to insert directly below it
+      let insertIdx = -1;
+      for (let i = vendorsData.length - 1; i >= 0; i--) {
+        if (vendorsData[i].cat === cat) {
+          insertIdx = i + 1;
+          break;
+        }
+      }
+
+      if (insertIdx !== -1) {
+        vendorsData.splice(insertIdx, 0, newObj);
+      } else {
+        vendorsData.push(newObj);
+      }
 
       renderVendorInputTable();
       renderAll();
@@ -1583,4 +1599,3 @@
   </script>
 </body>
 </html>
-```[cite: 1, 2, 3, 5]

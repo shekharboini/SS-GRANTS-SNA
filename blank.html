@@ -450,7 +450,7 @@
     <!-- TAB 1: FORM -->
     <section id="tab-form" class="tab-content form-card">
       <div class="notice-box">
-        ✏️ School details mariyu expenditure particulars kinda enter cheyandi. Proceedings lo kooda meeru direct ga click chesi edit chesukovachu.
+        ✏️ School particulars mariyu expenditure details kindha enter cheyandi. Proceedings lo kooda meeru direct ga click chesi edit chesukovachu.
       </div>
 
       <div class="section-title">🏫 School & Grant Details</div>
@@ -472,8 +472,8 @@
           <input type="text" id="inDistrict" placeholder="e.g., SIDDIPET" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
-          <label style="color: #92400e;">✏️ Headmaster / DDO Name (Editable)</label>
-          <input type="text" id="inHm" placeholder="e.g., K.Vasudeva Reddy, M.Sc.,B.Ed" class="user-editable" oninput="syncFromForm()" onkeyup="syncFromForm()">
+          <label style="color: #92400e;">✏️ Headmaster / Mandal Educational Officer / DDO Name (Editable)</label>
+          <input type="text" id="inHm" placeholder="e.g., K.Vasudeva Reddy, M.Sc.,B.Ed / Smt. B. Manila" class="user-editable" oninput="syncFromForm()" onkeyup="syncFromForm()">
         </div>
         <div class="field-group">
           <label>DDO Code</label>
@@ -481,7 +481,7 @@
         </div>
         <div class="field-group">
           <label>DDO School / Office Name</label>
-          <input type="text" id="inDdoOffice" placeholder="e.g., ZPHS HUSNABAD" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inDdoOffice" placeholder="e.g., ZPHS HUSNABAD / MEO OFFICE HUSNABAD" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
           <label>Proceedings No</label>
@@ -544,7 +544,7 @@
           <div class="proc-body">
             <div style="text-align: center; font-weight: 700;">
               <h2 style="font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">
-                PROCEEDINGS OF THE GAZETTED HEADMASTER, <span class="val-ddo-office editable-inline" contenteditable="true" oninput="syncDirectEdit('val-ddo-office', 'inDdoOffice', this)">____________________</span>
+                PROCEEDINGS OF THE <span class="val-ddo-desig editable-inline" contenteditable="true">GAZETTED HEADMASTER / MANDAL EDUCATIONAL OFFICER</span>, <span class="val-ddo-office editable-inline" contenteditable="true" oninput="syncDirectEdit('val-ddo-office', 'inDdoOffice', this)">____________________</span>
               </h2>
               <p style="font-size: 12px; margin-top: 3px;">
                 Present: <span class="val-hm editable-inline" contenteditable="true" oninput="syncDirectEdit('val-hm', 'inHm', this)">____________________</span>
@@ -615,7 +615,7 @@
                 <p>3. Office copy</p>
               </div>
               <div style="text-align: right; margin-top: 15px;">
-                <p style="font-weight: 800; font-size: 12.5px;">Gazetted Headmaster</p>
+                <p style="font-weight: 800; font-size: 12.5px;"><span class="val-ddo-desig-sign editable-inline" contenteditable="true">Gazetted Headmaster / Mandal Educational Officer</span></p>
                 <p style="margin-top: 2px;"><span class="val-ddo-office">____________________</span></p>
               </div>
             </div>
@@ -642,7 +642,7 @@
             </div>
 
             <p style="font-size: 11px; margin-top: 8px; line-height: 1.5; text-align: justify;">
-              The Headmaster, SMC Chairman, Committee Members, and staff of <strong><span class="val-school">____________________</span></strong>, Mandal <strong><span class="val-mandal">__________</span></strong>, District <strong><span class="val-dist">__________</span></strong> have unanimously resolved to utilize the Sanctioned <span class="val-grant">GRANT</span> under the GEN/SC/ST head amounting to Rs. <strong><span class="val-total">0</span>/-</strong> received under SNA SPARSH account.
+              The Headmaster / Mandal Educational Officer, SMC Chairman, Committee Members, and staff of <strong><span class="val-school">____________________</span></strong>, Mandal <strong><span class="val-mandal">__________</span></strong>, District <strong><span class="val-dist">__________</span></strong> have unanimously resolved to utilize the Sanctioned <span class="val-grant">GRANT</span> under the GEN/SC/ST head amounting to Rs. <strong><span class="val-total">0</span>/-</strong> received under SNA SPARSH account.
             </p>
             <p style="font-size: 11px; margin-top: 5px; line-height: 1.5; text-align: justify;">
               Out of the sanctioned amount, a sum of Rs. <strong><span class="val-total-util">0</span>/-</strong> for the present spell shall be paid towards expenditures incurred by transferring the amount to the respective vendors' bank accounts through IFMIS portal as shown in the Annexure below:
@@ -694,7 +694,7 @@
                 </div>
                 <div style="text-align: center;">
                   <p style="font-weight: 700;">__________________________</p>
-                  <p style="font-weight: 700; margin-top: 2px;">Signature of the Headmaster</p>
+                  <p style="font-weight: 700; margin-top: 2px;">Signature of Headmaster / MEO</p>
                   <p style="font-size: 10px;"><span class="val-school">____________________</span></p>
                 </div>
               </div>
@@ -1005,7 +1005,7 @@
             </p>
 
             <div style="margin-top: 32px; text-align: right; font-size: 12px; font-weight: 700;">
-              <p>SIGNATURE OF THE HEADMASTER</p>
+              <p>SIGNATURE OF THE HEADMASTER / MEO</p>
               <p style="margin-top: 3px; color: #1f2937;"><span class="val-school">____________________</span></p>
             </div>
           </div>
@@ -1025,7 +1025,6 @@
       { id: 'v_st_0',  cat: 'ST',  hoa: '2202-01-796-15-05-500-503',  name: '', acc: '', ifsc: '', sAmt: 0, uAmt: 0 }
     ];
 
-    // TWO-WAY DIRECT SYNC: Direct inline editing on proceedings updates form inputs and all documents
     function syncDirectEdit(className, formInputId, element) {
       const text = element.innerText.trim();
       const inputEl = document.getElementById(formInputId);
@@ -1056,7 +1055,6 @@
       renderAll();
     }
 
-    // EXACT COMPONENT-WISE ROW INSERTION
     function addNewVendorRow(cat) {
       const hoaMap = {
         'GEN': '2202-01-001-15-05-500-503',
@@ -1340,7 +1338,6 @@
       renderReceiptVendorCards();
     }
 
-    // INDIVIDUAL VENDOR DETAILS WITH CORRESPONDING SIGNATURE BLOCK DIRECTLY UNDERNEATH
     function renderReceiptVendorCards() {
       const getIntegratedVendorsHtml = (cat) => {
         const list = vendorsData.filter(v => v.cat === cat && (v.uAmt > 0 || v.name));

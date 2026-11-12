@@ -89,16 +89,6 @@
       border: 1px solid #e5e7eb;
       margin-bottom: 24px;
     }
-    .notice-box {
-      background-color: #fffbeb;
-      border: 1px solid #fcd34d;
-      border-radius: 6px;
-      padding: 12px 16px;
-      font-size: 13px;
-      color: #92400e;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
     .section-title {
       font-size: 15px;
       font-weight: 700;
@@ -256,7 +246,7 @@
     .proc-body {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
     .editable-inline {
       outline: none;
@@ -272,23 +262,23 @@
     .print-table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 6px;
-      font-size: 11.5px;
+      margin-top: 4px;
+      font-size: 11px;
     }
     .print-table th {
       background-color: #f3f4f6;
       font-weight: 700;
       border: 1px solid #374151;
-      padding: 6px 8px;
+      padding: 5px 7px;
     }
     .print-table td {
       border: 1px solid #374151;
-      padding: 5px 8px;
+      padding: 5px 7px;
     }
     .footer-line {
       border-top: 1px solid #d1d5db;
       padding-top: 8px;
-      margin-top: 16px;
+      margin-top: 14px;
       font-size: 10.5px;
       color: #4b5563;
       text-align: center;
@@ -358,7 +348,7 @@
         box-shadow: none !important; 
         border: 1.5px solid #000 !important; 
         margin: 0 !important; 
-        padding: 16px 20px !important;
+        padding: 14px 18px !important;
         height: 265mm !important;
         max-height: 265mm !important;
         overflow: hidden !important;
@@ -374,11 +364,11 @@
         justify-content: space-between !important;
       }
       .proc-body {
-        gap: 10px !important;
+        gap: 8px !important;
       }
       .print-table th, .print-table td {
-        padding: 5px 6px !important;
-        font-size: 10.5px !important;
+        padding: 4px 6px !important;
+        font-size: 10px !important;
       }
       .voucher-box { 
         height: 130mm !important; 
@@ -430,10 +420,6 @@
 
     <!-- TAB 1: FORM -->
     <section id="tab-form" class="tab-content form-card">
-      <div class="notice-box">
-        ✏️ School particulars mariyu expenditure details kindha enter cheyandi. Proceedings lo kooda meeru direct ga click chesi edit chesukovachu.
-      </div>
-
       <div class="section-title">🏫 School & Grant Details</div>
       <div class="form-grid">
         <div class="field-group">
@@ -475,6 +461,18 @@
         <div class="field-group">
           <label>Grant Name</label>
           <input type="text" id="inGrant" class="user-editable" oninput="syncFromForm()">
+        </div>
+        <div class="field-group">
+          <label>Major Component Name</label>
+          <input type="text" id="inMajorComp" class="user-editable" oninput="syncFromForm()">
+        </div>
+        <div class="field-group">
+          <label>Sub Component Name</label>
+          <input type="text" id="inSubComp" class="user-editable" oninput="syncFromForm()">
+        </div>
+        <div class="field-group">
+          <label>Activity</label>
+          <input type="text" id="inActivity" class="user-editable" oninput="syncFromForm()">
         </div>
       </div>
 
@@ -537,19 +535,19 @@
               <span>Date: <span class="val-date editable-inline" contenteditable="true" oninput="syncDirectEdit('val-date', 'inProcDate', this)">__________</span></span>
             </div>
 
-            <div style="font-size: 11.5px; line-height: 1.55; text-align: justify;">
-              <p style="margin-bottom: 6px;">
+            <div style="font-size: 11px; line-height: 1.5; text-align: justify;">
+              <p style="margin-bottom: 5px;">
                 <strong>Sub:</strong> SMC- SNA SPARSH- Samagra Shiksha Funds Sanction of expenditure in the Financial year (FY)-2026-27 towards <strong><span class="val-grant editable-inline" contenteditable="true" oninput="syncDirectEdit('val-grant', 'inGrant', this)">____________________</span></strong> of <strong><span class="val-school editable-inline" contenteditable="true" oninput="syncDirectEdit('val-school', 'inSchool', this)">____________________</span></strong> orders Issued - Reg.
               </p>
               
-              <div style="margin-bottom: 6px; padding-left: 6px; border-left: 2px solid #cbd5e1; font-size: 11px;">
+              <div style="margin-bottom: 5px; padding-left: 6px; border-left: 2px solid #cbd5e1; font-size: 10.5px;">
                 <p><strong>Ref:</strong> 1. State project Director Circular Memo No.TF/619/FCI/SNA SPARSH-SS/2026. Dt. 03.07.2026</p>
                 <p style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. State project Director Prc.RCNo.2191/CSG/TSS/PLG/T7/2026-1, Date. 07/08/2026</p>
                 <p style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. School Resolution and Committee Recommendations Dated: <span class="val-date">__________</span></p>
                 <p style="margin-top: 2px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. G.O. MS NO. 40 Edu-(ser. V) Dept., Dt. 07.05.2002.</p>
               </div>
 
-              <p style="font-size: 11.5px;">
+              <p style="font-size: 11px;">
                 <strong>ORDERS:</strong> Sanction is hereby accorded for Rs. <strong><span class="val-proc-total">0</span>/-</strong> towards implementation of programmes under <strong><span class="val-grant">____________________</span></strong> <span id="procComponentText"></span>.
               </p>
             </div>
@@ -571,8 +569,30 @@
               </table>
             </div>
 
+            <!-- COMPONENT & ACTIVITY TABLE ABOVE VENDOR DETAILS -->
             <div>
-              <div style="font-weight: 700; font-size: 11.5px; margin-top: 4px; text-transform: uppercase; color: #1f2937;">Annexure (Vendor Details):</div>
+              <table class="print-table" style="text-align: center;">
+                <thead>
+                  <tr>
+                    <th style="width: 24%;">Major Component Name</th>
+                    <th style="width: 28%;">Sub Component Name</th>
+                    <th style="width: 24%;">Activity</th>
+                    <th style="width: 24%;">Sanctioned Amount under ALL Component</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="val-major-comp editable-inline" contenteditable="true" oninput="syncDirectEdit('val-major-comp', 'inMajorComp', this)">-</span></td>
+                    <td><span class="val-sub-comp editable-inline" contenteditable="true" oninput="syncDirectEdit('val-sub-comp', 'inSubComp', this)">-</span></td>
+                    <td><span class="val-activity editable-inline" contenteditable="true" oninput="syncDirectEdit('val-activity', 'inActivity', this)">-</span></td>
+                    <td style="font-weight: 700;">₹ <span class="val-proc-total">0</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div>
+              <div style="font-weight: 700; font-size: 11px; margin-top: 2px; text-transform: uppercase; color: #1f2937;">Annexure (Vendor Details):</div>
               <table class="print-table">
                 <thead>
                   <tr>
@@ -588,15 +608,15 @@
               </table>
             </div>
 
-            <div style="margin-top: 24px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 600;">
-              <div style="line-height: 1.5;">
+            <div style="margin-top: 16px; display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 600;">
+              <div style="line-height: 1.4;">
                 <p><strong>Copy to:</strong></p>
                 <p>1. DPO <span class="val-dist">__________</span></p>
                 <p>2. STO Concerned</p>
                 <p>3. Office copy</p>
               </div>
-              <div style="text-align: right; margin-top: 15px;">
-                <p style="font-weight: 800; font-size: 12.5px;"><span class="val-ddo-desig-sign editable-inline" contenteditable="true">Gazetted Headmaster / Mandal Educational Officer</span></p>
+              <div style="text-align: right; margin-top: 12px;">
+                <p style="font-weight: 800; font-size: 12px;"><span class="val-ddo-desig-sign editable-inline" contenteditable="true">Gazetted Headmaster / Mandal Educational Officer</span></p>
                 <p style="margin-top: 2px;"><span class="val-ddo-office">____________________</span></p>
               </div>
             </div>
@@ -1008,7 +1028,10 @@
       }
       document.querySelectorAll('.' + className).forEach(el => {
         if (el !== element) {
-          el.innerText = text || (formInputId === 'inProcDate' ? '__________' : '____________________');
+          let defVal = '____________________';
+          if (formInputId === 'inProcDate') defVal = '__________';
+          else if (['inMajorComp', 'inSubComp', 'inActivity'].includes(formInputId)) defVal = '-';
+          el.innerText = text || defVal;
         }
       });
     }
@@ -1139,6 +1162,9 @@
       setEls('val-proc', getVal('inProcNo', '____________________'));
       setEls('val-date', getVal('inProcDate', '__________'));
       setEls('val-grant', getVal('inGrant', 'GRANT'));
+      setEls('val-major-comp', getVal('inMajorComp', '-'));
+      setEls('val-sub-comp', getVal('inSubComp', '-'));
+      setEls('val-activity', getVal('inActivity', '-'));
 
       let genTotS = 0, genTotU = 0;
       let scTotS = 0, scTotU = 0;

@@ -9,9 +9,9 @@
     body { background-color: #f3f4f6; color: #111827; }
 
     .top-header {
-      background-color: #1e3a8a;
+      background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
       color: #ffffff;
-      padding: 16px 20px;
+      padding: 18px 20px;
       box-shadow: 0 4px 6px -1px rgba(0,0,0,0.15);
       position: sticky;
       top: 0;
@@ -36,22 +36,8 @@
     .header-sub {
       font-size: 13.5px;
       font-weight: 500;
-      color: #dbeafe;
-      margin-top: 4px;
-      margin-bottom: 4px;
-    }
-    .views-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background-color: #0f172a;
-      border: 1px solid #334155;
-      padding: 4px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #cbd5e1;
-      margin-top: 4px;
+      color: #ccfbf1;
+      margin-top: 5px;
     }
     .header-actions { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
     .btn-print {
@@ -61,7 +47,7 @@
       font-weight: 700;
       padding: 7px 14px;
       border-radius: 6px;
-      border: none;
+      border: 1px solid #34d399;
       cursor: pointer;
     }
     .btn-reset {
@@ -187,31 +173,31 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      background-color: #eff6ff;
-      border: 1.5px solid #3b82f6;
+      background-color: #f0fdfa;
+      border: 1.5px solid #14b8a6;
       border-radius: 8px;
       padding: 10px 16px;
       margin-bottom: 16px;
       font-size: 13px;
       font-weight: 700;
-      color: #1e3a8a;
+      color: #0f766e;
     }
     .filter-btn {
       padding: 6px 14px;
       font-size: 12px;
       font-weight: 700;
       border-radius: 4px;
-      border: 1.5px solid #93c5fd;
+      border: 1.5px solid #5eead4;
       background: #ffffff;
-      color: #1e3a8a;
+      color: #0f766e;
       cursor: pointer;
       transition: all 0.15s;
     }
-    .filter-btn:hover { background-color: #dbeafe; }
+    .filter-btn:hover { background-color: #ccfbf1; }
     .filter-btn.active {
-      background-color: #1e3a8a !important;
+      background-color: #0f766e !important;
       color: #ffffff !important;
-      border-color: #1e3a8a !important;
+      border-color: #0f766e !important;
       box-shadow: 0 1px 3px rgba(0,0,0,0.15);
     }
 
@@ -275,7 +261,7 @@
     .editable-inline {
       outline: none;
       cursor: text;
-      border-bottom: 1px dashed #93c5fd;
+      border-bottom: 1px dashed #5eead4;
       padding: 0 2px;
     }
     .editable-inline:focus {
@@ -310,7 +296,7 @@
     }
 
     .enlarged-receipt-card {
-      border: 2px solid #1e3a8a;
+      border: 2px solid #0f766e;
       border-radius: 8px;
       padding: 20px 22px;
       background: #fafafa;
@@ -419,11 +405,6 @@
       <div class="header-center">
         <h1 class="header-title">SAMAGRA SHIKSHA - SNA SPARSH REPORTS SOFTWARE</h1>
         <p class="header-sub">FY 2026–27 | Complete Proceedings, Annexures & UCs |</p>
-        <div>
-          <span class="views-badge">
-            <span>👁️</span> Page Views: <span id="pageViewsCount" style="color: #fde047; font-size: 13.5px; font-weight: 900;">Loading...</span>
-          </span>
-        </div>
       </div>
 
       <div class="header-actions">
@@ -434,15 +415,15 @@
   </header>
 
   <nav class="nav-tabs no-print">
-    <button onclick="switchTab('form')" id="btn-form" class="tab-btn" style="background-color: #1d4ed8;">1. Data Entry Form</button>
-    <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn" style="background-color: #4f46e5;">2. Proceedings</button>
+    <button onclick="switchTab('form')" id="btn-form" class="tab-btn" style="background-color: #0f766e;">1. Data Entry Form</button>
+    <button onclick="switchTab('proceedings')" id="btn-proceedings" class="tab-btn" style="background-color: #0d9488;">2. Proceedings</button>
     <button onclick="switchTab('resolution')" id="btn-resolution" class="tab-btn" style="background-color: #7c3aed;">3. Resolution</button>
     <button onclick="switchTab('budget')" id="btn-budget" class="tab-btn" style="background-color: #d97706;">4. Budget Register</button>
     <button onclick="switchTab('single-uc')" id="btn-single-uc" class="tab-btn" style="background-color: #059669;">5. Single UC</button>
     <button onclick="switchTab('consolidated-uc')" id="btn-consolidated-uc" class="tab-btn" style="background-color: #0e7490;">6. Consolidated UC</button>
     <button onclick="switchTab('receipts')" id="btn-receipts" class="tab-btn" style="background-color: #be185d;">7. Receipts (3 Pages: GEN, SC, ST)</button>
     <button onclick="switchTab('voucher')" id="btn-voucher" class="tab-btn" style="background-color: #e11d48;">8. Voucher Slip</button>
-    <button onclick="switchTab('all')" id="btn-all" class="tab-btn" style="background-color: #3b0764; color: #fde047; border: 1px solid #fde047;">📑 View All (Print Ready)</button>
+    <button onclick="switchTab('all')" id="btn-all" class="tab-btn" style="background-color: #134e4a; color: #fde047; border: 1px solid #fde047;">📑 View All (Print Ready)</button>
   </nav>
 
   <main class="main-container">
@@ -528,7 +509,7 @@
 
       <div class="add-vendor-actions">
         <span style="font-size: 12.5px; font-weight: 700; color: #334155; margin-right: 6px; display: flex; align-items: center;">➕ Add Vendor:</span>
-        <button type="button" class="btn-add-vendor" style="background-color: #2563eb;" onclick="addNewVendorRow('GEN')">➕ Add GEN Vendor</button>
+        <button type="button" class="btn-add-vendor" style="background-color: #0f766e;" onclick="addNewVendorRow('GEN')">➕ Add GEN Vendor</button>
         <button type="button" class="btn-add-vendor" style="background-color: #7c3aed;" onclick="addNewVendorRow('SC')">➕ Add SC Vendor</button>
         <button type="button" class="btn-add-vendor" style="background-color: #be185d;" onclick="addNewVendorRow('ST')">➕ Add ST Vendor</button>
       </div>
@@ -538,13 +519,13 @@
     <!-- PRINTABLE TEMPLATES -->
     <div id="print-area">
 
-      <!-- 2. PROCEEDINGS (WITH DIRECT INLINE EDITING) -->
+      <!-- 2. PROCEEDINGS -->
       <article id="tab-proceedings" class="sheet tab-content page-break">
         <div class="sheet-inner">
           <div class="proc-body">
             <div style="text-align: center; font-weight: 700;">
               <h2 style="font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px;">
-                PROCEEDINGS OF THE <span class="val-ddo-desig editable-inline" contenteditable="true">GAZETTED HEADMASTER / MANDAL EDUCATIONAL OFFICER</span>, <span class="val-ddo-office editable-inline" contenteditable="true" oninput="syncDirectEdit('val-ddo-office', 'inDdoOffice', this)">____________________</span>
+                PROCEEDINGS OF THE <span class="val-ddo-desig editable-inline" contenteditable="true">GAZETTED HEADMASTER / MANDAL EDUCATIONAL OFFICER</span>, <span class="val-ddo-office editable-inline" style="color: #0f766e;" contenteditable="true" oninput="syncDirectEdit('val-ddo-office', 'inDdoOffice', this)">____________________</span>
               </h2>
               <p style="font-size: 12px; margin-top: 3px;">
                 Present: <span class="val-hm editable-inline" contenteditable="true" oninput="syncDirectEdit('val-hm', 'inHm', this)">____________________</span>
@@ -831,8 +812,8 @@
       <article id="tab-receipts-gen" class="sheet tab-content page-break">
         <div class="sheet-inner">
           <div>
-            <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 6px;">
-              <h2 style="font-size: 16px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
+            <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #0f766e; padding-bottom: 6px;">
+              <h2 style="font-size: 16px; text-transform: uppercase; color: #0f766e; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
               <p style="font-size: 13px; margin-top: 4px; font-weight: 700; color: #111827;">
                 School: <span class="val-school">____________________</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">__________</span>
               </p>
@@ -845,19 +826,17 @@
               <div>
                 <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 13.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 6px;">
                   <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">__________</span></span>
-                  <span style="color: #1e3a8a; text-transform: uppercase;">GENERAL COMPONENT (1/3)</span>
+                  <span style="color: #0f766e; text-transform: uppercase;">GENERAL COMPONENT (1/3)</span>
                 </div>
                 
                 <p style="margin-top: 16px; font-size: 13px; line-height: 1.7; text-align: justify;">
                   Received with thanks from the Office of the <strong><span class="val-school">____________________</span></strong>, Mdl <strong><span class="val-mandal">__________</span></strong>, Dist. <strong><span class="val-dist">__________</span></strong>, the sum of <strong>Rs. <span class="val-util-gen">0</span>/-</strong> towards <strong>GENERAL Component</strong> (Head of Account: <span class="val-hoa-gen">2202-01-001-15-05-500-503</span>) for <span class="val-grant">GRANT</span>.
                 </p>
 
-                <!-- VENDORS CONTAINER WITH INDIVIDUAL DETAILS + SIGNATURES DIRECTLY UNDERNEATH -->
                 <div id="receiptVendorsGen" style="margin-top: 14px;">
                 </div>
               </div>
 
-              <!-- DDO COUNTERSIGNATURE WITH AMPLE SIGN SPACE -->
               <div style="margin-top: 14px; border-top: 1px dashed #94a3b8; padding-top: 10px;">
                 <div style="text-align: center; font-weight: 800; font-size: 12.5px; text-decoration: underline; letter-spacing: 0.5px; text-transform: uppercase; color: #000;">
                   COUNTERSIGNATURE OF DDO
@@ -884,8 +863,8 @@
       <article id="tab-receipts-sc" class="sheet tab-content page-break">
         <div class="sheet-inner">
           <div>
-            <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 6px;">
-              <h2 style="font-size: 16px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
+            <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #0f766e; padding-bottom: 6px;">
+              <h2 style="font-size: 16px; text-transform: uppercase; color: #0f766e; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
               <p style="font-size: 13px; margin-top: 4px; font-weight: 700; color: #111827;">
                 School: <span class="val-school">____________________</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">__________</span>
               </p>
@@ -898,19 +877,17 @@
               <div>
                 <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 13.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 6px;">
                   <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">__________</span></span>
-                  <span style="color: #1e3a8a; text-transform: uppercase;">SC COMPONENT (2/3)</span>
+                  <span style="color: #0f766e; text-transform: uppercase;">SC COMPONENT (2/3)</span>
                 </div>
                 
                 <p style="margin-top: 16px; font-size: 13px; line-height: 1.7; text-align: justify;">
                   Received with thanks from the Office of the <strong><span class="val-school">____________________</span></strong>, Mdl <strong><span class="val-mandal">__________</span></strong>, Dist. <strong><span class="val-dist">__________</span></strong>, the sum of <strong>Rs. <span class="val-util-sc">0</span>/-</strong> towards <strong>SC Component</strong> (Head of Account: <span class="val-hoa-sc">2202-01-789-15-05-500-503</span>) for <span class="val-grant">GRANT</span>.
                 </p>
 
-                <!-- VENDORS CONTAINER WITH INDIVIDUAL DETAILS + SIGNATURES DIRECTLY UNDERNEATH -->
                 <div id="receiptVendorsSc" style="margin-top: 14px;">
                 </div>
               </div>
 
-              <!-- DDO COUNTERSIGNATURE WITH AMPLE SIGN SPACE -->
               <div style="margin-top: 14px; border-top: 1px dashed #94a3b8; padding-top: 10px;">
                 <div style="text-align: center; font-weight: 800; font-size: 12.5px; text-decoration: underline; letter-spacing: 0.5px; text-transform: uppercase; color: #000;">
                   COUNTERSIGNATURE OF DDO
@@ -937,8 +914,8 @@
       <article id="tab-receipts-st" class="sheet tab-content page-break">
         <div class="sheet-inner">
           <div>
-            <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #1e3a8a; padding-bottom: 6px;">
-              <h2 style="font-size: 16px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
+            <div style="text-align: center; font-weight: 700; border-bottom: 2px solid #0f766e; padding-bottom: 6px;">
+              <h2 style="font-size: 16px; text-transform: uppercase; color: #0f766e; letter-spacing: 0.5px;">ADVANCE STAMPED RECEIPT</h2>
               <p style="font-size: 13px; margin-top: 4px; font-weight: 700; color: #111827;">
                 School: <span class="val-school">____________________</span> &nbsp;|&nbsp; UDISE: <span class="val-udise">__________</span>
               </p>
@@ -951,19 +928,17 @@
               <div>
                 <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 13.5px; border-bottom: 1.5px solid #d1d5db; padding-bottom: 6px;">
                   <span>Date: <span class="val-date" style="border-bottom: 1px dotted #000;">__________</span></span>
-                  <span style="color: #1e3a8a; text-transform: uppercase;">ST COMPONENT (3/3)</span>
+                  <span style="color: #0f766e; text-transform: uppercase;">ST COMPONENT (3/3)</span>
                 </div>
                 
                 <p style="margin-top: 16px; font-size: 13px; line-height: 1.7; text-align: justify;">
                   Received with thanks from the Office of the <strong><span class="val-school">____________________</span></strong>, Mdl <strong><span class="val-mandal">__________</span></strong>, Dist. <strong><span class="val-dist">__________</span></strong>, the sum of <strong>Rs. <span class="val-util-st">0</span>/-</strong> towards <strong>ST Component</strong> (Head of Account: <span class="val-hoa-st">2202-01-796-15-05-500-503</span>) for <span class="val-grant">GRANT</span>.
                 </p>
 
-                <!-- VENDORS CONTAINER WITH INDIVIDUAL DETAILS + SIGNATURES DIRECTLY UNDERNEATH -->
                 <div id="receiptVendorsSt" style="margin-top: 14px;">
                 </div>
               </div>
 
-              <!-- DDO COUNTERSIGNATURE WITH AMPLE SIGN SPACE -->
               <div style="margin-top: 14px; border-top: 1px dashed #94a3b8; padding-top: 10px;">
                 <div style="text-align: center; font-weight: 800; font-size: 12.5px; text-decoration: underline; letter-spacing: 0.5px; text-transform: uppercase; color: #000;">
                   COUNTERSIGNATURE OF DDO
@@ -991,7 +966,7 @@
         <div class="sheet-inner">
           <div>
             <div style="text-align: center; font-weight: 700; border-bottom: 1.5px solid #4b5563; padding-bottom: 8px;">
-              <h2 style="font-size: 15px; text-transform: uppercase; color: #1e3a8a; letter-spacing: 0.5px;">CERTIFICATION / VOUCHER RECEIPT</h2>
+              <h2 style="font-size: 15px; text-transform: uppercase; color: #0f766e; letter-spacing: 0.5px;">CERTIFICATION / VOUCHER RECEIPT</h2>
               <p style="font-size: 12px; margin-top: 4px; font-weight: 600; color: #374151;">School: <span class="val-school" style="color: #000; font-weight: 700;">____________________</span> &nbsp;|&nbsp; UDISE: <span class="val-udise" style="color: #000; font-weight: 700;">__________</span></p>
             </div>
 
@@ -1421,29 +1396,9 @@
       }
     }
 
-    async function initLivePageViews() {
-      const viewsEl = document.getElementById('pageViewsCount');
-      if (!viewsEl) return;
-
-      try {
-        const res = await fetch('https://api.counterapi.dev/v1/rajashekhar-husnabad-grants/visits/up');
-        const data = await res.json();
-        if (data && data.count) {
-          viewsEl.innerText = data.count;
-        } else {
-          viewsEl.innerText = '18';
-        }
-      } catch (err) {
-        let localCount = Number(localStorage.getItem('hsb_page_views') || 15) + 1;
-        localStorage.setItem('hsb_page_views', localCount);
-        viewsEl.innerText = localCount;
-      }
-    }
-
     window.onload = () => {
       setComponentFilter('ALL');
       switchTab('form');
-      initLivePageViews();
     };
   </script>
 </body>

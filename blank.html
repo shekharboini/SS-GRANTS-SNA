@@ -438,43 +438,43 @@
       <div class="form-grid">
         <div class="field-group">
           <label>School Name</label>
-          <input type="text" id="inSchool" placeholder="e.g., MPPS KUCHANAPALLY" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inSchool" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
           <label>UDISE Code</label>
-          <input type="text" id="inUdise" placeholder="e.g., 36180601001" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inUdise" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
           <label>Mandal</label>
-          <input type="text" id="inMandal" placeholder="e.g., HUSNABAD" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inMandal" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
           <label>District</label>
-          <input type="text" id="inDistrict" placeholder="e.g., SIDDIPET" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inDistrict" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
           <label style="color: #92400e;">✏️ Headmaster / Mandal Educational Officer / DDO Name (Editable)</label>
-          <input type="text" id="inHm" placeholder="e.g., K.Vasudeva Reddy, M.Sc.,B.Ed / Smt. B. Manila" class="user-editable" oninput="syncFromForm()" onkeyup="syncFromForm()">
+          <input type="text" id="inHm" class="user-editable" oninput="syncFromForm()" onkeyup="syncFromForm()">
         </div>
         <div class="field-group">
           <label>DDO Code</label>
-          <input type="text" id="inDdoCode" placeholder="e.g., 18050308008" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inDdoCode" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
           <label>DDO School / Office Name</label>
-          <input type="text" id="inDdoOffice" placeholder="e.g., ZPHS HUSNABAD / MEO OFFICE HUSNABAD" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inDdoOffice" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
           <label>Proceedings No</label>
-          <input type="text" id="inProcNo" placeholder="e.g., 01/PMSHRI/2026-27" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inProcNo" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
           <label>Order Date</label>
-          <input type="text" id="inProcDate" placeholder="e.g., 31/Oct/2026" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inProcDate" class="user-editable" oninput="syncFromForm()">
         </div>
         <div class="field-group">
           <label>Grant Name</label>
-          <input type="text" id="inGrant" placeholder="e.g., COMPOSITE SCHOOL GRANT" class="user-editable" oninput="syncFromForm()">
+          <input type="text" id="inGrant" class="user-editable" oninput="syncFromForm()">
         </div>
       </div>
 
@@ -1101,9 +1101,9 @@
           <tr id="row-${v.id}" style="${rowDisplay}">
             <td style="font-weight: 700; text-align: center; background: #f9fafb;">${v.cat}</td>
             <td><input value="${v.hoa}" class="user-locked" readonly></td>
-            <td><input value="${v.name}" placeholder="Vendor Name" class="user-editable" oninput="updateVendorField('${v.id}', 'name', this.value)"></td>
-            <td><input value="${v.acc}" placeholder="Account No" class="user-editable" oninput="updateVendorField('${v.id}', 'acc', this.value)"></td>
-            <td><input value="${v.ifsc}" placeholder="Bank & IFSC" class="user-editable" oninput="updateVendorField('${v.id}', 'ifsc', this.value)"></td>
+            <td><input value="${v.name}" class="user-editable" oninput="updateVendorField('${v.id}', 'name', this.value)"></td>
+            <td><input value="${v.acc}" class="user-editable" oninput="updateVendorField('${v.id}', 'acc', this.value)"></td>
+            <td><input value="${v.ifsc}" class="user-editable" oninput="updateVendorField('${v.id}', 'ifsc', this.value)"></td>
             <td><input type="number" value="${v.sAmt}" class="user-editable" oninput="updateVendorField('${v.id}', 'sAmt', this.value)"></td>
             <td><input type="number" value="${v.uAmt}" class="user-editable" oninput="updateVendorField('${v.id}', 'uAmt', this.value)"></td>
             <td style="text-align: center;">
